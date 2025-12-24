@@ -10,8 +10,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function ConditionDetail({ params }: { params: { slug: string } }) {
-    const condition = healthConditions.find((c) => c.slug === params.slug);
+export default async function ConditionDetail({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
+    const condition = healthConditions.find((c) => c.slug === slug);
 
     if (!condition) {
         notFound();
@@ -30,7 +31,6 @@ export default function ConditionDetail({ params }: { params: { slug: string } }
                     <Link href="/health-conditions" className={styles.backLink}>
                         <ArrowLeft size={16} /> Back to Conditions
                     </Link>
-                    <div className={styles.iconWrapper}>{condition.icon}</div>
                     <h1 className={styles.title}>{condition.name}</h1>
                     <p className={styles.description}>{condition.description}</p>
                 </div>
