@@ -1,0 +1,120 @@
+.page {
+    min-height: 100vh;
+    background-color: var(--color-background);
+}
+
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 4rem 0;
+    text-align: center;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+}
+
+.title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-light);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.content {
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+}
+
+.searchContainer {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 1.1rem;
+    outline: none;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+}
+
+.searchInput:focus {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: all 0.3s;
+    overflow: hidden;
+    height: 100%;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background-color: var(--color-background-alt);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+.cardContent {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.cardDesc {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.learnMore {
+    color: var(--color-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

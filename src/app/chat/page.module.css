@@ -1,0 +1,173 @@
+.page {
+    background-color: #f7f9f8;
+    height: calc(100vh - 80px);
+    /* Subtract header approx */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    padding: 2rem 1rem;
+    gap: 2rem;
+}
+
+.sidebar {
+    width: 250px;
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        display: flex;
+    }
+}
+
+.newChatBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.newChatBtn:hover {
+    opacity: 0.9;
+}
+
+.history h4 {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.historyItem {
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    color: var(--color-text-main);
+    transition: background 0.2s;
+}
+
+.historyItem:hover {
+    background: #e0e7e3;
+}
+
+.main {
+    flex: 1;
+    background: white;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.chatArea {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.message {
+    display: flex;
+    gap: 1rem;
+    max-width: 80%;
+}
+
+.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.bot .avatar {
+    background: var(--color-primary-light);
+    color: white;
+}
+
+.user .avatar {
+    background: #eee;
+    color: #555;
+}
+
+.bubble {
+    padding: 1rem 1.5rem;
+    border-radius: 1.5rem;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.bot .bubble {
+    background: #f0fdf4;
+    color: var(--color-text-main);
+    border-top-left-radius: 0.5rem;
+}
+
+.user .bubble {
+    background: var(--color-primary);
+    color: white;
+    border-top-right-radius: 0.5rem;
+}
+
+.inputWrapper {
+    padding: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: 1rem;
+    background: white;
+}
+
+.inputWrapper input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    outline: none;
+    font-size: 1rem;
+}
+
+.inputWrapper input:focus {
+    border-color: var(--color-primary);
+}
+
+.inputWrapper button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    color: var(--color-primary);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.inputWrapper button:hover {
+    transform: scale(1.05);
+}

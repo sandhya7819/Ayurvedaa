@@ -1,0 +1,95 @@
+'use client';
+
+import { useState } from 'react';
+import { Search, Filter } from 'lucide-react';
+import { popularHerbs } from '@/lib/data';
+import styles from './page.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+
+export default function HerbsPage() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedDosha, setSelectedDosha] = useState('All');
+
+    const filteredHerbs = popularHerbs.filter(herb => {
+        const matchesSearch = herb.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            herb.benefit.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesDosha = selectedDosha === 'All' || herb.dosha.includes(selectedDosha);
+        return matchesSearch && matchesDosha;
+    });
+
+    return (
+        <div className={styles.page}>
+            {/* Header */}
+            <div className={styles.header}>
+                <div className="container">
+                    <h1 className={styles.title}>Herbs Directory</h1>
+                    <p className={styles.subtitle}>Explore the A-Z guide of nature's most powerful healing plants.</p>
+                </div>
+            </div>
+
+            <div className={`container ${styles.content}`}>
+                {/* Controls */}
+                <div className={styles.controls}>
+                    <div className={styles.searchWrapper}>
+                        <Search className={styles.searchIcon} size={20} />
+                        <input
+                            type="text"
+                            placeholder="Search herbs by name or benefit..."
+                            className={styles.searchInput}
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                    </div>
+
+                    <div className={styles.filterWrapper}>
+                        <Filter size={18} className={styles.filterIcon} />
+                        <select
+                            className={styles.filterSelect}
+                            value={selectedDosha}
+                            onChange={(e) => setSelectedDosha(e.target.value)}
+                        >
+                            <option value="All">All Doshas</option>
+                            <option value="Vata">Vata Balancing</option>
+                            <option value="Pitta">Pitta Balancing</option>
+                            <option value="Kapha">Kapha Balancing</option>
+                            <option value="Tridosha">Tridosha (All 3)</option>
+                        </select>
+                    </div>
+                </div>
+
+                {/* Grid */}
+                <div className={styles.grid}>
+                    {filteredHerbs.length > 0 ? (
+                        filteredHerbs.map((herb) => (
+                            <Link key={herb.id} href={`/herbs/${herb.slug}`} className={styles.card}>
+                                <div className={styles.imagePlaceholder}>
+                                    <Image
+                                        src={herb.image}
+                                        alt={herb.name}
+                                        fill
+                                        className={styles.cardImage}
+                                        style={{ objectFit: 'cover' }}
+                                    />
+                                </div>
+                                <div className={styles.cardContent}>
+                                    <div className={styles.badges}>
+                                        <span className={styles.benefitBadge}>{herb.benefit}</span>
+                                        <span className={styles.doshaBadge}>{herb.dosha}</span>
+                                    </div>
+                                    <h3 className={styles.cardTitle}>{herb.name}</h3>
+                                    <p className={styles.cardDesc}>{herb.description}</p>
+                                    <span className={styles.readMore}>Read More →</span>
+                                </div>
+                            </Link>
+                        ))
+                    ) : (
+                        <div className={styles.noResults}>
+                            <p>No herbs found matching your search.</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </div>
+    );
+}
