@@ -10,17 +10,37 @@ export const healthConditions = [
         description_hi: 'कड़वी जड़ी-बूटियों और जीवन शैली में बदलाव के साथ रक्त शर्करा के स्तर को प्राकृतिक रूप से प्रबंधित करें।',
         details: {
             overview: 'In Ayurveda, Diabetes is known as Madhumeha (Sweet Urine). It is classified as a Kapha disorder caused by poor digestion and accumulation of toxins.',
-            symptoms: ['Excessive thirst', 'Frequent urination', 'Fatigue', 'Blurred vision'],
-            causes: ['Sedentary lifestyle', 'Excessive sugar intake', 'Stress', 'Genetic factors'],
-            recommendations: ['Avoid sweets and dairy', 'Exercise daily (Walking/Yoga)', 'Drink warm water']
+            ayurvedic_explanation: 'Madhumeha is one of the 20 types of Prameha (Urinary disorders). It originates from an imbalance in Kapha dosha due to excessive consumption of sweet, heavy, and cold foods, leading to "Agni Mandya" (weak digestion) and "Ama" (toxin) formation. This blocks the channels (Strotas) of the pancreas.',
+            symptoms: ['Excessive thirst (Polydipsia)', 'Frequent urination (Polyuria)', 'Fatigue & Lethargy', 'Blurred vision', 'Slow healing of wounds'],
+            causes: ['Sedentary lifestyle (Asyasukbam)', 'Excessive sugar & carb intake', 'Stress & Anxiety', 'Genetic factors (Sahaja)', 'Sleeping after meals'],
+            recommendations: ['Avoid sweets and dairy', 'Exercise daily (Walking/Yoga)', 'Drink warm water'],
+            diet_lifestyle: {
+                diet: ['Eat bitter vegetables (Karen, Methi, Neem).', 'Use Barley (Jau) and Ragi instead of Wheat.', 'Include spices like Turmeric, Cinnamon, Fenugreek.', 'Avoid heavy fruits like Mango, Banana, Custard Apple.'],
+                lifestyle: ['Walk for at least 30 minutes daily.', 'Practice Yoga: Mandukasana, Surya Namaskar.', 'Avoid sleeping during the day (Diwaswapna).', 'Dry powder massage (Udvartana) to reduce Kapha.']
+            },
+            dos_and_donts: {
+                dos: ['Drink copper-charged water in morning.', 'Monitor blood sugar regularly.', 'Manage stress with Meditation.'],
+                donts: ['Do not skip meals or fast for long periods.', 'Avoid alcohol and smoking.', 'Do not walk barefoot to prevent injury.']
+            },
+            medicines: ['Chandraprabha Vati', 'Vasant Kusumakar Ras', 'Triphala Churna', 'Nisha Amalaki']
         },
         details_hi: {
             overview: 'आयुर्वेद में मधुमेह को मधुमेहा (मीठा मूत्र) के नाम से जाना जाता है। इसे कफ विकार के रूप में वर्गीकृत किया गया है जो खराब पाचन और विषाक्त पदार्थों के संचय के कारण होता है।',
-            symptoms: ['अत्यधिक प्यास', 'बार-बार पेशाब आना', 'थकान', 'धुंधली दृष्टि'],
-            causes: ['बैठने वाली जीवन शैली', 'अत्यधिक चीनी का सेवन', 'तनाव', 'आनुवंशिक कारक'],
-            recommendations: ['मिठाई और डेयरी से बचें', 'रोजाना व्यायाम करें (चलना/योग)', 'गर्म पानी पिएं']
+            ayurvedic_explanation: 'मधुमेह 20 प्रकार के प्रमेह (मूत्र संबंधी विकारों) में से एक है। यह मीठे, भारी और ठंडे खाद्य पदार्थों के अत्यधिक सेवन के कारण कफ दोष में असंतुलन से उत्पन्न होता है, जिससे "अग्नि मांद्य" (कमजोर पाचन) और "आम" (विषाक्त पदार्थ) का निर्माण होता है। यह अग्न्याशय के चैनलों (स्रोतों) को अवरुद्ध करता है।',
+            symptoms: ['अत्यधिक प्यास (Polydipsia)', 'बार-बार पेशाब आना (Polyuria)', 'थकान और सुस्ती', 'धुंधली दृष्टि', 'घावों का धीमा भरना'],
+            causes: ['बैठने वाली जीवन शैली (आस्यासुखम्)', 'अत्यधिक चीनी और कार्ब का सेवन', 'तनाव और चिंता', 'आनुवंशिक कारक (सहज)', 'भोजन के बाद सोना'],
+            recommendations: ['मिठाई और डेयरी से बचें', 'रोजाना व्यायाम करें (चलना/योग)', 'गर्म पानी पिएं'],
+            diet_lifestyle: {
+                diet: ['कड़वी सब्जियां (करेला, मेथी, नीम) खाएं।', 'गेहूं की जगह जौ और रागी का प्रयोग करें।', 'हल्दी, दालचीनी, मेथी जैसे मसालों को शामिल करें।', 'आम, केला, शरीफा जैसे भारी फलों से बचें।'],
+                lifestyle: ['रोजाना कम से कम 30 मिनट टहलें।', 'योग करें: मंडुकासन, सूर्य नमस्कार।', 'दिन में सोने से बचें (दिवास्वप्न)।', 'कफ कम करने के लिए सूखे पाउडर की मालिश (उद्वर्तन) करें।']
+            },
+            dos_and_donts: {
+                dos: ['सुबह तांबे के बर्तन का पानी पिएं।', 'नियमित रूप से रक्त शर्करा की जाँच करें।', 'ध्यान (Meditation) से तनाव प्रबंधित करें।'],
+                donts: ['भोजन न छोड़ें और न ही लंबे समय तक उपवास करें।', 'शराब और धूम्रपान से बचें।', 'चोट से बचने के लिए नंगे पैर न चलें।']
+            },
+            medicines: ['चंद्रप्रभा वटी', 'वसंत कुसुमाकर रस', 'त्रिफला चूर्ण', 'निशा आमलकी']
         },
-        recommendedHerbs: ['turmeric', 'neem', 'giloy']
+        recommendedHerbs: ['turmeric', 'neem', 'giloy', 'gudmar', 'jamun']
     },
     {
         id: '2',
@@ -204,7 +224,7 @@ export const popularHerbs = [
         dosha: 'Pitta-Kapha',
         description: 'A powerful brain tonic that enhances memory, concentration, and calm.',
         description_hi: 'एक शक्तिशाली मस्तिष्क टॉनिक जो याददाश्त, एकाग्रता और शांति को बढ़ाता है।',
-        image: '/images/brahmi.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Brahmi is a creeping herb traditionally used to enhance cognitive function and calm the nervous system.',
             benefits: ['Improves memory', 'Reduces anxiety', 'Promotes hair growth', 'Treats insomnia'],
@@ -228,7 +248,7 @@ export const popularHerbs = [
         dosha: 'Tridosha',
         description: 'The golden spice known for its potent anti-inflammatory and antiseptic properties.',
         description_hi: 'सुनहरा मसाला जो अपने शक्तिशाली विरोधी भड़काऊ और एंटीसेप्टिक गुणों के लिए जाना जाता है।',
-        image: '/images/turmeric.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Turmeric owes its healing power to Curcumin. It is a staple in every Indian household for injury and immunity.',
             benefits: ['Reduces joint pain', 'Heals wounds', 'Purifies blood', 'Good for skin glow'],
@@ -252,7 +272,7 @@ export const popularHerbs = [
         dosha: 'Tridosha',
         description: 'The "Root of Immortality" (Amrita). Excellent for fevers and heavy infections.',
         description_hi: '"अमरता की जड़" (अमृता)। बुखार और भारी संक्रमण के लिए उत्कृष्ट।',
-        image: '/images/giloy.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Giloy is a climbing shrub and an essential herb in Ayurvedic medicine, often used to treat chronic fevers.',
             benefits: ['Boosts immunity', 'Treats chronic fever', 'Improves digestion', 'Reduces stress'],
@@ -276,7 +296,7 @@ export const popularHerbs = [
         dosha: 'Vata-Pitta',
         description: 'The primary rejuvenative tonic for women. Supports reproductive health.',
         description_hi: 'महिलाओं के लिए प्राथमिक कायाकल्प टॉनिक। प्रजनन स्वास्थ्य का समर्थन करता है।',
-        image: '/images/shatavari.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Shatavari means "she who possesses a hundred husbands". It is the foremost herb for female fertility and vitality.',
             benefits: ['Balances hormones', 'Supports lactation', 'Reduces menopause symptoms', 'Anti-ulcer'],
@@ -300,7 +320,7 @@ export const popularHerbs = [
         dosha: 'Tridosha',
         description: 'The richest natural source of Vitamin C. Great for hair, skin, and eyes.',
         description_hi: 'विटामिन सी का सबसे समृद्ध प्राकृतिक स्रोत। बालों, त्वचा और आंखों के लिए बढ़िया।',
-        image: '/images/amla.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Amla is a superfood that balances all three doshas. It is the base for Chyawanprash.',
             benefits: ['Highest Vitamin C', 'Anti-aging', 'Promotes hair growth', 'Improves eyesight'],
@@ -324,7 +344,7 @@ export const popularHerbs = [
         dosha: 'Pitta-Kapha',
         description: 'Nature’s best blood purifier and antiseptic. Clears acne and skin,issues.',
         description_hi: 'प्रकृति का सबसे अच्छा रक्त शोधक और एंटीसेप्टिक। मुँहासे और त्वचा की समस्याओं को साफ करता है।',
-        image: '/images/neem.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Neem is a bitter herb used extensively for skin diseases and detoxification.',
             benefits: ['Purifies blood', 'Treats acne & eczema', 'Anti-fungal', 'Oral health'],
@@ -348,7 +368,7 @@ export const popularHerbs = [
         dosha: 'Pitta-Kapha',
         description: 'The best cardiotonic in Ayurveda. Strengthens heart muscles.',
         description_hi: 'आयुर्वेद में सबसे अच्छा कार्डियोटोनिक। हृदय की मांसपेशियों को मजबूत करता है।',
-        image: '/images/arjuna.jpg',
+        image: '/images/product-generic.png',
         details: {
             overview: 'Arjuna bark is famous for cardiac health. It protects the heart and helps in maintaining healthy cholesterol.',
             benefits: ['Strengthens heart', 'Regulates blood pressure', 'Lowers cholesterol', 'Heals fractures'],
