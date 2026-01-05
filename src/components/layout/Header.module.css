@@ -104,6 +104,26 @@
     color: var(--color-primary);
 }
 
+.langToggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(26, 71, 49, 0.05);
+    padding: 0.5rem 0.75rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    border: 1px solid rgba(26, 71, 49, 0.1);
+    transition: all 0.3s;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.langToggle:hover {
+    background: rgba(26, 71, 49, 0.1);
+    transform: translateY(-2px);
+}
+
 .mobileMenuBtn {
     display: block;
     background: none;

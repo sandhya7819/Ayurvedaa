@@ -6,14 +6,19 @@ import { popularHerbs } from '@/lib/data';
 import styles from './page.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function HerbsPage() {
+    const { language, t } = useLanguage();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedDosha, setSelectedDosha] = useState('All');
 
     const filteredHerbs = popularHerbs.filter(herb => {
-        const matchesSearch = herb.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            herb.benefit.toLowerCase().includes(searchTerm.toLowerCase());
+        const name = language === 'hi' ? (herb.name_hi || herb.name) : herb.name;
+        const benefit = language === 'hi' ? (herb.benefit_hi || herb.benefit) : herb.benefit;
+
+        const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            benefit.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesDosha = selectedDosha === 'All' || herb.dosha.includes(selectedDosha);
         return matchesSearch && matchesDosha;
     });
@@ -23,8 +28,12 @@ export default function HerbsPage() {
             {/* Header */}
             <div className={styles.header}>
                 <div className="container">
-                    <h1 className={styles.title}>Herbs Directory</h1>
-                    <p className={styles.subtitle}>Explore the A-Z guide of nature's most powerful healing plants.</p>
+                    <h1 className={styles.title}>{language === 'hi' ? 'जड़ी-बूटी निर्देशिका' : 'Herbs Directory'}</h1>
+                    <p className={styles.subtitle}>
+                        {language === 'hi'
+                            ? 'प्रकृति के सबसे शक्तिशाली उपचार पौधों की A-Z मार्गदर्शिका।'
+                            : "Explore the A-Z guide of nature's most powerful healing plants."}
+                    </p>
                 </div>
             </div>
 
@@ -35,7 +44,7 @@ export default function HerbsPage() {
                         <Search className={styles.searchIcon} size={20} />
                         <input
                             type="text"
-                            placeholder="Search herbs by name or benefit..."
+                            placeholder={language === 'hi' ? "जड़ी-बूटी के नाम या लाभ से खोजें..." : "Search herbs by name or benefit..."}
                             className={styles.searchInput}
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
@@ -49,11 +58,11 @@ export default function HerbsPage() {
                             value={selectedDosha}
                             onChange={(e) => setSelectedDosha(e.target.value)}
                         >
-                            <option value="All">All Doshas</option>
-                            <option value="Vata">Vata Balancing</option>
-                            <option value="Pitta">Pitta Balancing</option>
-                            <option value="Kapha">Kapha Balancing</option>
-                            <option value="Tridosha">Tridosha (All 3)</option>
+                            <option value="All">{language === 'hi' ? 'सभी दोष' : 'All Doshas'}</option>
+                            <option value="Vata">{language === 'hi' ? 'वात संतुलन' : 'Vata Balancing'}</option>
+                            <option value="Pitta">{language === 'hi' ? 'पित्त संतुलन' : 'Pitta Balancing'}</option>
+                            <option value="Kapha">{language === 'hi' ? 'कफ संतुलन' : 'Kapha Balancing'}</option>
+                            <option value="Tridosha">{language === 'hi' ? 'त्रिदोष (तीनों)' : 'Tridosha (All 3)'}</option>
                         </select>
                     </div>
                 </div>
@@ -74,18 +83,26 @@ export default function HerbsPage() {
                                 </div>
                                 <div className={styles.cardContent}>
                                     <div className={styles.badges}>
-                                        <span className={styles.benefitBadge}>{herb.benefit}</span>
+                                        <span className={styles.benefitBadge}>
+                                            {language === 'hi' ? (herb.benefit_hi || herb.benefit) : herb.benefit}
+                                        </span>
                                         <span className={styles.doshaBadge}>{herb.dosha}</span>
                                     </div>
-                                    <h3 className={styles.cardTitle}>{herb.name}</h3>
-                                    <p className={styles.cardDesc}>{herb.description}</p>
-                                    <span className={styles.readMore}>Read More →</span>
+                                    <h3 className={styles.cardTitle}>
+                                        {language === 'hi' ? (herb.name_hi || herb.name) : herb.name}
+                                    </h3>
+                                    <p className={styles.cardDesc}>
+                                        {language === 'hi' ? (herb.description_hi || herb.description) : herb.description}
+                                    </p>
+                                    <span className={styles.readMore}>
+                                        {language === 'hi' ? 'और पढ़ें →' : 'Read More →'}
+                                    </span>
                                 </div>
                             </Link>
                         ))
                     ) : (
                         <div className={styles.noResults}>
-                            <p>No herbs found matching your search.</p>
+                            <p>{language === 'hi' ? 'आपकी खोज से मेल खाती कोई जड़ी-बूटी नहीं मिली।' : 'No herbs found matching your search.'}</p>
                         </div>
                     )}
                 </div>

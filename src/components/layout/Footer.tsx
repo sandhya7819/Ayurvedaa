@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer className={styles.footer}>
             <div className={`container ${styles.container}`}>
@@ -13,49 +18,49 @@ export default function Footer() {
                             <span className={styles.logoText}>Ayurveda Guide</span>
                         </Link>
                         <p className={styles.description}>
-                            Modern wisdom from ancient roots. Your trusted companion for holistic healing and wellness.
+                            {t('footer_desc')}
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div className={styles.column}>
-                        <h3 className={styles.heading}>Discover</h3>
+                        <h3 className={styles.heading}>{t('discover')}</h3>
                         <ul className={styles.links}>
-                            <li><Link href="/herbs">Herbs A-Z</Link></li>
-                            <li><Link href="/health-conditions">Health Conditions</Link></li>
-                            <li><Link href="/medicines">Medicines</Link></li>
-                            <li><Link href="/products">Curated Products</Link></li>
+                            <li><Link href="/herbs">{t('herbs_az')}</Link></li>
+                            <li><Link href="/health-conditions">{t('conditions')}</Link></li>
+                            <li><Link href="/medicines">{t('medicines')}</Link></li>
+                            <li><Link href="/products">{t('curated_products')}</Link></li>
                         </ul>
                     </div>
 
                     {/* Support */}
                     <div className={styles.column}>
-                        <h3 className={styles.heading}>Support</h3>
+                        <h3 className={styles.heading}>{t('support')}</h3>
                         <ul className={styles.links}>
-                            <li><Link href="/doctors">Find a Doctor</Link></li>
-                            <li><Link href="/contact">Contact Us</Link></li>
-                            <li><Link href="/privacy">Privacy Policy</Link></li>
-                            <li><Link href="/disclaimer">Medical Disclaimer</Link></li>
+                            <li><Link href="/doctors">{t('find_doctor')}</Link></li>
+                            <li><Link href="/contact">{t('contact_us')}</Link></li>
+                            <li><Link href="/privacy">{t('privacy_policy')}</Link></li>
+                            <li><Link href="/disclaimer">{t('medical_disclaimer')}</Link></li>
                         </ul>
                     </div>
 
                     {/* Connect */}
                     <div className={styles.column}>
-                        <h3 className={styles.heading}>Stay Connected</h3>
-                        <p className={styles.text}>Subscribe for seasonal health tips.</p>
+                        <h3 className={styles.heading}>{t('stay_connected')}</h3>
+                        <p className={styles.text}>{t('subscribe_text')}</p>
                         <form className={styles.newsletter}>
                             <input
                                 type="email"
-                                placeholder="Your email"
+                                placeholder={t('your_email')}
                                 className={styles.input}
                             />
-                            <button type="submit" className={styles.subscribeBtn}>Arrow</button>
+                            <button type="submit" className={styles.subscribeBtn}>→</button>
                         </form>
                     </div>
                 </div>
 
                 <div className={styles.bottom}>
-                    <p>&copy; {new Date().getFullYear()} Ayurveda Guide. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Ayurveda Guide. {t('rights_reserved')}</p>
                 </div>
             </div>
         </footer>

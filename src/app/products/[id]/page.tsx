@@ -2,7 +2,7 @@ import { products } from '@/lib/data';
 import styles from './page.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, Star, ShoppingCart, Truck, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Star, ShoppingCart, Truck, ShieldCheck, Leaf, Heart } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
@@ -11,8 +11,9 @@ export async function generateStaticParams() {
     }));
 }
 
-export default function ProductDetail({ params }: { params: { id: string } }) {
-    const product = products.find((p) => p.id === params.id);
+export default async function ProductDetail({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const product = products.find((p) => p.id === id);
 
     if (!product) {
         notFound();
@@ -21,12 +22,15 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
     return (
         <article className={styles.container}>
             <div className="container">
+                {/* Breadcrumb */}
                 <div className={styles.breadcrumb}>
                     <Link href="/products" className={styles.backLink}>
-                        <ArrowLeft size={16} /> Back to Products
+                        <ArrowLeft size={16} /> Store
                     </Link>
                     <span>/</span>
-                    <span>{product.name}</span>
+                    <span>{product.category}</span>
+                    <span>/</span>
+                    <span style={{ color: '#111827', fontWeight: 500 }}>{product.name}</span>
                 </div>
 
                 <div className={styles.grid}>
@@ -38,6 +42,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                                 alt={product.name}
                                 fill
                                 className={styles.img}
+                                priority
                             />
                         </div>
                     </div>
@@ -48,28 +53,49 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                         <h1 className={styles.title}>{product.name}</h1>
 
                         <div className={styles.rating}>
-                            <Star size={18} fill="currentColor" color="#fcd34d" />
-                            <span>{product.rating} (124 reviews)</span>
+                            <div className={styles.ratingStars}>
+                                {[...Array(5)].map((_, i) => (
+                                    <Star
+                                        key={i}
+                                        size={18}
+                                        fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
+                                        stroke={i < Math.floor(product.rating) ? "none" : "currentColor"}
+                                    />
+                                ))}
+                            </div>
+                            <span>{product.rating} / 5</span>
+                            <span>•</span>
+                            <span>{product.details.reviews.length} Review{product.details.reviews.length !== 1 ? 's' : ''}</span>
                         </div>
 
-                        <div className={styles.price}>{product.price}</div>
+                        <div className={styles.price}>
+                            {product.price}
+                            <span className={styles.priceTag}>In Stock</span>
+                        </div>
 
                         <p className={styles.description}>{product.details.description}</p>
 
                         <div className={styles.actions}>
-                            <button className="btn btn-primary">
-                                <ShoppingCart size={18} style={{ marginRight: '8px' }} /> Add to Cart
+                            <button className={styles.addToCartBtn}>
+                                <ShoppingCart size={20} /> Add to Cart
+                            </button>
+                            <button className="btn btn-outline" style={{ padding: '0 1rem', borderColor: '#e5e7eb' }}>
+                                <Heart size={20} color="#4b5563" />
                             </button>
                         </div>
 
                         <div className={styles.features}>
                             <div className={styles.feature}>
-                                <Truck size={20} />
-                                <span>Free Shipping on orders over $50</span>
+                                <Truck size={20} className={styles.featureIcon} />
+                                <span>Free Shipping &gt; $50</span>
                             </div>
                             <div className={styles.feature}>
-                                <ShieldCheck size={20} />
-                                <span>Authenticity Guaranteed</span>
+                                <ShieldCheck size={20} className={styles.featureIcon} />
+                                <span>100% Authentic</span>
+                            </div>
+                            <div className={styles.feature}>
+                                <Leaf size={20} className={styles.featureIcon} />
+                                <span>Organic Ingredients</span>
                             </div>
                         </div>
                     </div>
@@ -84,13 +110,16 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                                 <div key={index} className={styles.reviewCard}>
                                     <div className={styles.reviewHeader}>
                                         <span className={styles.reviewer}>{review.user}</span>
-                                        <span className={styles.stars}>{"★".repeat(review.rating)}</span>
+                                        <span className={styles.reviewStars}>{"★".repeat(review.rating)}</span>
                                     </div>
-                                    <p>{review.comment}</p>
+                                    <p className={styles.reviewText}>{review.comment}</p>
                                 </div>
                             ))
                         ) : (
-                            <p className={styles.noReviews}>No reviews yet. Be the first to review!</p>
+                            <div className={styles.noReviews}>
+                                <p>No reviews yet.</p>
+                                <p style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>Be the first to share your experience with this product!</p>
+                            </div>
                         )}
                     </div>
                 </div>

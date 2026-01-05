@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { Star } from 'lucide-react';
 import styles from './TrustedProducts.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 const products = [
     { id: 1, name: 'Ashwagandha Gold', brand: 'Organic India', price: '$25', rating: 4.8, image: '/images/product1.jpg' },
@@ -10,12 +13,14 @@ const products = [
 ];
 
 export default function TrustedProducts() {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.section}>
             <div className="container">
                 <div className={styles.header}>
-                    <h2 className={styles.title}>Trusted Ayurvedic Products</h2>
-                    <Link href="/products" className={styles.link}>View All Products &rarr;</Link>
+                    <h2 className={styles.title}>{t('trusted_products')}</h2>
+                    <Link href="/products" className={styles.link}>{t('view_all_products')} &rarr;</Link>
                 </div>
 
                 <div className={styles.grid}>
@@ -34,7 +39,7 @@ export default function TrustedProducts() {
                                 <h3 className={styles.name}>{product.name}</h3>
                                 <div className={styles.footer}>
                                     <span className={styles.price}>{product.price}</span>
-                                    <button className={styles.buyBtn}>View Details</button>
+                                    <button className={styles.buyBtn}>{t('view_details')}</button>
                                 </div>
                             </div>
                         </div>

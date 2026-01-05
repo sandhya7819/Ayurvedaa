@@ -1,15 +1,20 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { healthConditions } from '@/lib/data';
 import styles from './ConditionCategories.module.css';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ConditionCategories() {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.section}>
             <div className="container">
                 <div className={styles.header}>
-                    <h2 className={styles.title}>Browse by Health Concern</h2>
-                    <p className={styles.subtitle}>Find Ayurvedic solutions tailored to your specific needs.</p>
+                    <h2 className={styles.title}>{t('browse_conditions')}</h2>
+                    <p className={styles.subtitle}>{t('condition_subtitle')}</p>
                 </div>
 
                 <div className={styles.grid}>

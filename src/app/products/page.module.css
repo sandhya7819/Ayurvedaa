@@ -1,134 +1,196 @@
 .page {
-    background-color: var(--color-background);
+    background-color: #f8f9fa;
+    /* Light, clean background */
     min-height: 100vh;
+    font-family: var(--font-sans);
 }
 
-.header {
-    background-color: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    padding: 4rem 0;
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1a4d2e 0%, #2f855a 100%);
+    /* Deep Ayurvedic Green gradient */
+    color: white;
+    padding: 6rem 0 4rem;
     text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/pattern-overlay.png') opacity 0.1;
+    /* Optional pattern if available, else subtle texture */
+    pointer-events: none;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    font-weight: 800;
     margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    font-family: var(--font-serif);
+    /* If available, or standard serif */
 }
 
 .subtitle {
-    font-size: 1.2rem;
-    color: var(--color-text-muted);
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
 }
 
-.content {
-    padding: 4rem 1rem;
+/* Product Grid */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
+/* Product Card */
 .card {
     background: white;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    transition: all 0.3s;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #2f855a;
 }
 
-.imagePlaceholder {
-    height: 250px;
-    background: #f9fafb;
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    /* Square image */
+    background-color: #f7f7f7;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ccc;
 }
 
-.cardBody {
+.cardImage {
+    object-fit: contain;
+    transition: transform 0.6s ease;
     padding: 1.5rem;
 }
 
-.meta {
+.card:hover .cardImage {
+    transform: scale(1.1);
+}
+
+.cardContent {
+    padding: 1.5rem;
+    flex-grow: 1;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    font-size: 0.85rem;
+    flex-direction: column;
+}
+
+.cardHeader {
+    margin-bottom: 0.75rem;
 }
 
 .brand {
-    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
     font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.productName {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+.card:hover .productName {
+    color: #2f855a;
+    /* Green on hover */
 }
 
 .rating {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: var(--color-secondary);
-    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
-.name {
-    font-size: 1.1rem;
-    margin-bottom: 0.25rem;
-    color: var(--color-text-main);
+.star {
+    fill: #fbbf24;
+    color: #fbbf24;
 }
 
-.category {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    display: block;
-    margin-bottom: 1.5rem;
+.ratingValue {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-left: 0.25rem;
 }
 
-.footer {
+.cardFooter {
+    margin-top: auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
 }
 
 .price {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
 }
 
-.buyBtn {
-    background: var(--color-primary);
+.actionButton {
+    background-color: #1a4d2e;
     color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-sm);
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    /* Pill shape */
     font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.buyBtn:hover {
-    background: var(--color-primary-light);
-}
-
-.nameLink {
+    font-size: 0.875rem;
     text-decoration: none;
-    color: inherit;
-    transition: color 0.2s;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-.nameLink:hover .name {
-    color: var(--color-primary);
-    text-decoration: underline;
-}
-
-.img {
-    object-fit: contain;
-    padding: 1rem;
+.actionButton:hover {
+    background-color: #2f855a;
 }

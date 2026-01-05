@@ -3,6 +3,7 @@ import { Playfair_Display, Lato } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ChatWidget from "@/components/chat/ChatWidget";
+import { LanguageProvider } from "@/context/LanguageContext";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -31,12 +32,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${lato.variable}`}>
-        <Header />
-        <main style={{ minHeight: '80vh' }}>
-          {children}
-        </main>
-        <Footer />
-        <ChatWidget />
+        <LanguageProvider>
+          <Header />
+          <main style={{ minHeight: '80vh' }}>
+            {children}
+          </main>
+          <Footer />
+          <ChatWidget />
+        </LanguageProvider>
       </body>
     </html>
   );

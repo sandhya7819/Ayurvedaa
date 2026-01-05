@@ -1,16 +1,21 @@
+'use client';
+
 import Link from 'next/link';
 import { popularHerbs } from '@/lib/data';
 import styles from './FeaturedHerbs.module.css';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function FeaturedHerbs() {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.section}>
             <div className="container">
                 <div className={styles.header}>
-                    <h2 className={styles.title}>Nature&apos;s Pharmacy</h2>
-                    <p className={styles.subtitle}>Explore the healing power of the most potent Ayurvedic herbs.</p>
+                    <h2 className={styles.title}>{t('natures_pharmacy')}</h2>
+                    <p className={styles.subtitle}>{t('herbs_subtitle')}</p>
                 </div>
 
                 <div className={styles.grid}>
@@ -29,7 +34,7 @@ export default function FeaturedHerbs() {
                                 <h3 className={styles.herbName}>{herb.name}</h3>
                                 <p className={styles.description}>{herb.description}</p>
                                 <Link href={`/herbs/${herb.slug}`} className={styles.link}>
-                                    Learn More <ArrowRight size={16} />
+                                    {t('learn_more')} <ArrowRight size={16} />
                                 </Link>
                             </div>
                         </div>

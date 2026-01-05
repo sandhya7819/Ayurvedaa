@@ -1,25 +1,30 @@
+'use client';
+
 import styles from './TrustSection.module.css';
 import { ShieldCheck, Leaf, HeartHandshake } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function TrustSection() {
+    const { t } = useLanguage();
+
     return (
         <section className={styles.section}>
             <div className="container">
                 <div className={styles.grid}>
                     <div className={styles.item}>
                         <ShieldCheck size={48} className={styles.icon} strokeWidth={1.5} />
-                        <h3>Authentic Information</h3>
-                        <p>Verified by certified Ayurvedic practitioners and classical texts.</p>
+                        <h3>{t('authentic_info')}</h3>
+                        <p>{t('authentic_desc')}</p>
                     </div>
                     <div className={styles.item}>
                         <Leaf size={48} className={styles.icon} strokeWidth={1.5} />
-                        <h3>100% Natural Approach</h3>
-                        <p>Focusing on holistic healing through nature's bounty.</p>
+                        <h3>{t('natural_approach')}</h3>
+                        <p>{t('natural_desc')}</p>
                     </div>
                     <div className={styles.item}>
                         <HeartHandshake size={48} className={styles.icon} strokeWidth={1.5} />
-                        <h3>Community Trusted</h3>
-                        <p>Helping thousands find their path to wellness since 2010.</p>
+                        <h3>{t('community_trusted')}</h3>
+                        <p>{t('community_desc')}</p>
                     </div>
                 </div>
             </div>

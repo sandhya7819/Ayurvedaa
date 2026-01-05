@@ -1,67 +1,311 @@
 
-// ... (Previous Health Conditions and Herbs data remains the same)
 export const healthConditions = [
     {
         id: '1',
         name: 'Diabetes (Madhumeha)',
+        name_hi: 'मधुमेह (Diabetes)',
         slug: 'diabetes',
         image: '/images/conditions/diabetes.jpg',
         description: 'Manage blood sugar levels naturally with bitter herbs and lifestyle changes.',
+        description_hi: 'कड़वी जड़ी-बूटियों और जीवन शैली में बदलाव के साथ रक्त शर्करा के स्तर को प्राकृतिक रूप से प्रबंधित करें।',
         details: {
             overview: 'In Ayurveda, Diabetes is known as Madhumeha (Sweet Urine). It is classified as a Kapha disorder caused by poor digestion and accumulation of toxins.',
             symptoms: ['Excessive thirst', 'Frequent urination', 'Fatigue', 'Blurred vision'],
             causes: ['Sedentary lifestyle', 'Excessive sugar intake', 'Stress', 'Genetic factors'],
             recommendations: ['Avoid sweets and dairy', 'Exercise daily (Walking/Yoga)', 'Drink warm water']
         },
+        details_hi: {
+            overview: 'आयुर्वेद में मधुमेह को मधुमेहा (मीठा मूत्र) के नाम से जाना जाता है। इसे कफ विकार के रूप में वर्गीकृत किया गया है जो खराब पाचन और विषाक्त पदार्थों के संचय के कारण होता है।',
+            symptoms: ['अत्यधिक प्यास', 'बार-बार पेशाब आना', 'थकान', 'धुंधली दृष्टि'],
+            causes: ['बैठने वाली जीवन शैली', 'अत्यधिक चीनी का सेवन', 'तनाव', 'आनुवंशिक कारक'],
+            recommendations: ['मिठाई और डेयरी से बचें', 'रोजाना व्यायाम करें (चलना/योग)', 'गर्म पानी पिएं']
+        },
         recommendedHerbs: ['turmeric', 'neem', 'giloy']
     },
-    { id: '2', name: 'Digestion (Agni)', slug: 'digestion', image: '/images/conditions/digestion.jpg', description: 'Resolve bloating, acidity, and constipation by restoring digestive fire.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '3', name: 'Stress & Anxiety', slug: 'stress', image: '/images/conditions/stress.jpg', description: 'Calm the mind.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '4', name: 'Skin Care', slug: 'skin-care', image: '/images/conditions/skin-care.jpg', description: 'Purify blood.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '5', name: 'Joint Pain', slug: 'joint-pain', image: '/images/conditions/joint-pain.jpg', description: 'Alleviate inflammation.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '6', name: 'Immunity', slug: 'immunity', image: '/images/conditions/immunity.jpg', description: 'Build deep resilience.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '7', name: 'Hair Care', slug: 'hair-care', image: '/images/conditions/hair-care.jpg', description: 'Prevent hair fall.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '8', name: 'Heart Health', slug: 'heart-health', image: '/images/conditions/heart-health.jpg', description: 'Support cardiovascular function.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '9', name: 'Respiratory', slug: 'respiratory', image: '/images/conditions/respiratory.jpg', description: 'Clear congestion.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
-    { id: '10', name: 'Sexual Health', slug: 'sexual-health', image: '/images/conditions/sexual-health.jpg', description: 'Boost vitality.', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: [] },
+    {
+        id: '2',
+        name: 'Digestion (Agni)',
+        name_hi: 'पाचन (Digestion)',
+        slug: 'digestion',
+        image: '/images/conditions/digestion.jpg',
+        description: 'Resolve bloating, acidity, and constipation by restoring digestive fire.',
+        description_hi: 'पाचन अग्नि को बहाल करके सूजन, एसिडिटी और कब्ज का समाधान करें।',
+        details: { overview: '', symptoms: [], causes: [], recommendations: [] },
+        recommendedHerbs: ['triphala', 'ginger', 'ajwain']
+    },
+    {
+        id: '3',
+        name: 'Stress & Anxiety',
+        name_hi: 'तनाव और चिंता',
+        slug: 'stress',
+        image: '/images/conditions/stress.jpg',
+        description: 'Calm the mind.',
+        description_hi: 'मन को शांत करें।',
+        details: { overview: '', symptoms: [], causes: [], recommendations: [] },
+        recommendedHerbs: ['ashwagandha', 'brahmi', 'jatamansi']
+    },
+    { id: '4', name: 'Skin Care', name_hi: 'त्वचा की देखभाल', slug: 'skin-care', image: '/images/conditions/skin-care.jpg', description: 'Purify blood.', description_hi: 'रक्त शुद्ध करें।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['neem', 'manjistha', 'turmeric'] },
+    { id: '5', name: 'Joint Pain', name_hi: 'जोड़ो का दर्द', slug: 'joint-pain', image: '/images/conditions/joint-pain.jpg', description: 'Alleviate inflammation.', description_hi: 'सूजन कम करें।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['shallaki', 'guggul', 'ginger'] },
+    { id: '6', name: 'Immunity', name_hi: 'रोग प्रतिरोधक क्षमता', slug: 'immunity', image: '/images/conditions/immunity.jpg', description: 'Build deep resilience.', description_hi: 'गहरी लचक बनाएं।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['amla', 'giloy', 'tulsi'] },
+    { id: '7', name: 'Hair Care', name_hi: 'बालों की देखभाल', slug: 'hair-care', image: '/images/conditions/hair-care.jpg', description: 'Prevent hair fall.', description_hi: 'बालों का झड़ना रोकें।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['bhringraj', 'amla', 'shikakai'] },
+    { id: '8', name: 'Heart Health', name_hi: 'हृदय स्वास्थ', slug: 'heart-health', image: '/images/conditions/heart-health.jpg', description: 'Support cardiovascular function.', description_hi: 'हृदय संबंधी कार्यों का समर्थन करें।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['arjuna', 'garlic'] },
+    { id: '9', name: 'Respiratory', name_hi: 'श्वसन क्रिया', slug: 'respiratory', image: '/images/conditions/respiratory.jpg', description: 'Clear congestion.', description_hi: 'जकड़न साफ़ करें।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['tulsi', 'vasaka', 'mulethi'] },
+    { id: '10', name: 'Sexual Health', name_hi: 'यौन स्वास्थ्य', slug: 'sexual-health', image: '/images/conditions/sexual-health.jpg', description: 'Boost vitality.', description_hi: 'जीवन शक्ति बढ़ाएं।', details: { overview: '', symptoms: [], causes: [], recommendations: [] }, recommendedHerbs: ['shilajit', 'safed-musli', 'ashwagandha'] },
 ];
 
 export const popularHerbs = [
     {
         id: '1',
         name: 'Ashwagandha',
+        name_hi: 'अश्वगंधा',
         slug: 'ashwagandha',
         benefit: 'Stress Relief & Energy',
+        benefit_hi: 'तनाव राहत और ऊर्जा',
         dosha: 'Vata-Kapha',
         description: 'The "King of Herbs" known for adaptogenic properties. Helps body resist stress and boosts energy.',
+        description_hi: '"जड़ी-बूटियों का राजा" जो अपने एडाप्टोजेनिक गुणों के लिए जाना जाता है। शरीर को तनाव से लड़ने और ऊर्जा बढ़ाने में मदद करता है।',
         image: '/images/ashwagandha.png',
         details: {
             overview: 'Ashwagandha is one of the most important herbs in Ayurveda, used for thousands of years as a Rasayana for its wide-ranging health benefits.',
             benefits: ['Reduces cortisol levels', 'Boosts brain function', 'Increases muscle mass', 'Lowers blood sugar'],
             usage: 'Typically consumed as a powder (churna) mixed with warm milk or honey at night.',
             precautions: 'Avoid during pregnancy. High doses may cause digestive upset.'
+        },
+        details_hi: {
+            overview: 'अश्वगंधा आयुर्वेद की सबसे महत्वपूर्ण जड़ी-बूटियों में से एक है, जिसका उपयोग हजारों वर्षों से इसके व्यापक स्वास्थ्य लाभों के लिए रसायन के रूप में किया जाता है।',
+            benefits: ['तनाव (कोर्टिसोल) के स्तर को कम करता है', 'मस्तिष्क की कार्यक्षमता को बढ़ाता है', 'मांसपेशियों को बढ़ाता है', 'रक्त शर्करा को कम करता है'],
+            usage: 'आमतौर पर रात में गर्म दूध या शहद के साथ पाउडर (चूर्ण) के रूप में सेवन किया जाता है।',
+            precautions: 'गर्भावस्था के दौरान बचें। उच्च खुराक से पाचन संबंधी गड़बड़ी हो सकती है।'
         }
     },
-    // ... (Keep other herbs as is)
-    { id: '2', name: 'Tulsi', slug: 'tulsi', benefit: 'Immunity', dosha: 'Vata-Kapha', description: 'Holy Basil.', image: '/images/tulsi.png', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '3', name: 'Triphala', slug: 'triphala', benefit: 'Digestion', dosha: 'Tridosha', description: 'Cleansing blend.', image: '/images/triphala.png', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '4', name: 'Brahmi', slug: 'brahmi', benefit: 'Memory', dosha: 'Pitta-Kapha', description: 'Cognitive booster.', image: '/images/brahmi.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '5', name: 'Turmeric', slug: 'turmeric', benefit: 'Inflammation', dosha: 'Tridosha', description: 'Anti-inflammatory.', image: '/images/turmeric.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '6', name: 'Giloy', slug: 'giloy', benefit: 'Immunity', dosha: 'Tridosha', description: 'Immunity booster.', image: '/images/giloy.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '7', name: 'Shatavari', slug: 'shatavari', benefit: 'Womens Health', dosha: 'Vata-Pitta', description: 'Hormonal balance.', image: '/images/shatavari.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '8', name: 'Amla', slug: 'amla', benefit: 'Vitamin C', dosha: 'Tridosha', description: 'Antioxidant.', image: '/images/amla.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '9', name: 'Neem', slug: 'neem', benefit: 'Skin', dosha: 'Pitta-Kapha', description: 'Blood purifier.', image: '/images/neem.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
-    { id: '10', name: 'Arjuna', slug: 'arjuna', benefit: 'Heart', dosha: 'Pitta-Kapha', description: 'Heart tonic.', image: '/images/arjuna.jpg', details: { overview: '', benefits: [], usage: '', precautions: '' } },
+    {
+        id: '2',
+        name: 'Tulsi',
+        name_hi: 'तुलसी',
+        slug: 'tulsi',
+        benefit: 'Immunity',
+        benefit_hi: 'रोग प्रतिरोधक क्षमता',
+        dosha: 'Vata-Kapha',
+        description: 'Holy Basil, known for its divine healing properties and respiratory support.',
+        description_hi: 'पवित्र तुलसी, अपने दिव्य उपचार गुणों और श्वसन समर्थन के लिए जानी जाती है।',
+        image: '/images/tulsi.png',
+        details: {
+            overview: 'Tulsi is revered as "The Queen of Herbs" and is an adaptogen that helps the body cope with stress and infections.',
+            benefits: ['Boosts immunity', 'Relieves cough & cold', 'Reduces stress', 'Anti-bacterial'],
+            usage: 'Chew fresh leaves or drink as tea (decoction) with ginger and honey.',
+            precautions: 'May lower blood sugar levels. Monitor if diabetic.'
+        },
+        details_hi: {
+            overview: 'तुलसी को "जड़ी-बूटियों की रानी" के रूप में पूजा जाता है और यह एक एडाप्टोजेन है जो शरीर को तनाव और संक्रमण से निपटने में मदद करता है।',
+            benefits: ['इम्युनिटी बढ़ाता है', 'खांसी और सर्दी से राहत देता है', 'तनाव कम करता है', 'बैक्टीरिया-रोधी'],
+            usage: 'ताजी पत्तियां चबाएं या अदरक और शहद के साथ चाय (काढ़ा) के रूप में पिएं।',
+            precautions: 'रक्त शर्करा के स्तर को कम कर सकता है। मधुमेह रोगियों को निगरानी रखनी चाहिए।'
+        }
+    },
+    {
+        id: '3',
+        name: 'Triphala',
+        name_hi: 'त्रिफला',
+        slug: 'triphala',
+        benefit: 'Digestion',
+        benefit_hi: 'पाचन',
+        dosha: 'Tridosha',
+        description: 'A balancing blend of three fruits: Amla, Bibhitaki, and Haritaki.',
+        description_hi: 'तीन फलों का संतुलित मिश्रण: आंवला, बिभीतकी और हरितकी।',
+        image: '/images/triphala.png',
+        details: {
+            overview: 'Triphala is a polyherbal medicine consisting of three fruits. It is gentle, non-habit forming, and rejuvenates the entire digestive tract.',
+            benefits: ['Natural laxative', 'Detoxifies the body', 'improves eyesight', 'Anti-oxidant rich'],
+            usage: 'Take 1 teaspoon with warm water at bedtime for cleansing.',
+            precautions: 'Avoid in cases of diarrhea and pregnancy.'
+        },
+        details_hi: {
+            overview: 'त्रिफला तीन फलों से बनी एक बहु-औषधीय दवा है। यह सौम्य है, आदत नहीं डालता है, और पूरे पाचन तंत्र को फिर से जीवंत करता है।',
+            benefits: ['प्राकृतिक रेचक (Laxative)', 'शरीर को डिटॉक्स करता है', 'आंखों की रोशनी बढ़ाता है', 'एंटी-ऑक्सीडेंट से भरपूर'],
+            usage: 'सफाई के लिए सोते समय गर्म पानी के साथ 1 चम्मच लें।',
+            precautions: 'दस्त और गर्भावस्था के मामलों में बचें।'
+        }
+    },
+    {
+        id: '4',
+        name: 'Brahmi',
+        name_hi: 'ब्रह्मी',
+        slug: 'brahmi',
+        benefit: 'Memory',
+        benefit_hi: 'याददाश्त',
+        dosha: 'Pitta-Kapha',
+        description: 'A powerful brain tonic that enhances memory, concentration, and calm.',
+        description_hi: 'एक शक्तिशाली मस्तिष्क टॉनिक जो याददाश्त, एकाग्रता और शांति को बढ़ाता है।',
+        image: '/images/brahmi.jpg',
+        details: {
+            overview: 'Brahmi is a creeping herb traditionally used to enhance cognitive function and calm the nervous system.',
+            benefits: ['Improves memory', 'Reduces anxiety', 'Promotes hair growth', 'Treats insomnia'],
+            usage: 'Consumed as juice, powder, or medicated ghee (Brahmi Ghrita).',
+            precautions: 'May slow heart rate. Consult if you have heart conditions.'
+        },
+        details_hi: {
+            overview: 'ब्रह्मी एक रेंगने वाली जड़ी बूटी है जिसका उपयोग पारंपरिक रूप से संज्ञानात्मक कार्य को बढ़ाने और तंत्रिका तंत्र को शांत करने के लिए किया जाता है।',
+            benefits: ['याददाश्त में सुधार करता है', 'चिंता कम करता है', 'बालों के विकास को बढ़ावा देता है', 'अनिद्रा का इलाज करता है'],
+            usage: 'रस, पाउडर, या औषधीय घी (ब्रह्मी घृत) के रूप में सेवन किया जाता है।',
+            precautions: 'हृदय गति को धीमा कर सकता है। हृदय रोग होने पर परामर्श करें।'
+        }
+    },
+    {
+        id: '5',
+        name: 'Turmeric (Haldi)',
+        name_hi: 'हल्दी',
+        slug: 'turmeric',
+        benefit: 'Inflammation',
+        benefit_hi: 'सूजन',
+        dosha: 'Tridosha',
+        description: 'The golden spice known for its potent anti-inflammatory and antiseptic properties.',
+        description_hi: 'सुनहरा मसाला जो अपने शक्तिशाली विरोधी भड़काऊ और एंटीसेप्टिक गुणों के लिए जाना जाता है।',
+        image: '/images/turmeric.jpg',
+        details: {
+            overview: 'Turmeric owes its healing power to Curcumin. It is a staple in every Indian household for injury and immunity.',
+            benefits: ['Reduces joint pain', 'Heals wounds', 'Purifies blood', 'Good for skin glow'],
+            usage: 'Mix in warm milk (Golden Milk) or use in cooking.',
+            precautions: 'High doses may thin the blood. Caution before surgery.'
+        },
+        details_hi: {
+            overview: 'हल्दी की उपचार शक्ति करक्यूमिन के कारण है। यह चोट और प्रतिरक्षा के लिए हर भारतीय घर में मुख्य है।',
+            benefits: ['जोड़ों के दर्द को कम करता है', 'घाव भरता है', 'रक्त को शुद्ध करता है', 'त्वचा की चमक के लिए अच्छा है'],
+            usage: 'गर्म दूध में मिलाएं (हल्दी वाला दूध) या खाना पकाने में उपयोग करें।',
+            precautions: 'उच्च खुराक रक्त को पतला कर सकती है। सर्जरी से पहले सावधानी बरतें।'
+        }
+    },
+    {
+        id: '6',
+        name: 'Giloy (Guduchi)',
+        name_hi: 'गिलोय',
+        slug: 'giloy',
+        benefit: 'Immunity',
+        benefit_hi: 'रोग प्रतिरोधक क्षमता',
+        dosha: 'Tridosha',
+        description: 'The "Root of Immortality" (Amrita). Excellent for fevers and heavy infections.',
+        description_hi: '"अमरता की जड़" (अमृता)। बुखार और भारी संक्रमण के लिए उत्कृष्ट।',
+        image: '/images/giloy.jpg',
+        details: {
+            overview: 'Giloy is a climbing shrub and an essential herb in Ayurvedic medicine, often used to treat chronic fevers.',
+            benefits: ['Boosts immunity', 'Treats chronic fever', 'Improves digestion', 'Reduces stress'],
+            usage: 'Decoction (Kadha) of the stem or ready-made tablets/juice.',
+            precautions: 'May lower blood sugar. Use cautiously for auto-immune diseases.'
+        },
+        details_hi: {
+            overview: 'गिलोय एक चढ़ने वाली झाड़ी है और आयुर्वेदिक चिकित्सा में एक आवश्यक जड़ी-बूटी है, जिसका उपयोग अक्सर पुराने बुखार के इलाज के लिए किया जाता है।',
+            benefits: ['इम्युनिटी बढ़ाता है', 'पुराने बुखार का इलाज करता है', 'पाचन में सुधार करता है', 'तनाव कम करता है'],
+            usage: 'तने का काढ़ा या तैयार गोलियां/रस।',
+            precautions: 'रक्त शर्करा कम कर सकता है। ऑटो-इम्यून बीमारियों के लिए सावधानी से उपयोग करें।'
+        }
+    },
+    {
+        id: '7',
+        name: 'Shatavari',
+        name_hi: 'शतावरी',
+        slug: 'shatavari',
+        benefit: 'Womens Health',
+        benefit_hi: 'महिला स्वास्थ्य',
+        dosha: 'Vata-Pitta',
+        description: 'The primary rejuvenative tonic for women. Supports reproductive health.',
+        description_hi: 'महिलाओं के लिए प्राथमिक कायाकल्प टॉनिक। प्रजनन स्वास्थ्य का समर्थन करता है।',
+        image: '/images/shatavari.jpg',
+        details: {
+            overview: 'Shatavari means "she who possesses a hundred husbands". It is the foremost herb for female fertility and vitality.',
+            benefits: ['Balances hormones', 'Supports lactation', 'Reduces menopause symptoms', 'Anti-ulcer'],
+            usage: 'Powder with milk or as granules (Kalpa).',
+            precautions: 'Avoid if you have high estrogen sensitivity.'
+        },
+        details_hi: {
+            overview: 'शतावरी का अर्थ है "वह जिसके सौ पति हों"। यह महिला प्रजनन क्षमता और जीवन शक्ति के लिए अग्रणी जड़ी बूटी है।',
+            benefits: ['हार्मोन संतुलित करता है', 'स्तनपान का समर्थन करता है', 'रजोनिवृत्ति के लक्षणों को कम करता है', 'अल्सर विरोधी'],
+            usage: 'दूध के साथ पाउडर या कणिकाओं (कल्प) के रूप में।',
+            precautions: 'यदि आपको उच्च एस्ट्रोजेन संवेदनशीलता है तो बचें।'
+        }
+    },
+    {
+        id: '8',
+        name: 'Amla (Amalaki)',
+        name_hi: 'आंवला',
+        slug: 'amla',
+        benefit: 'Vitamin C',
+        benefit_hi: 'विटामिन सी',
+        dosha: 'Tridosha',
+        description: 'The richest natural source of Vitamin C. Great for hair, skin, and eyes.',
+        description_hi: 'विटामिन सी का सबसे समृद्ध प्राकृतिक स्रोत। बालों, त्वचा और आंखों के लिए बढ़िया।',
+        image: '/images/amla.jpg',
+        details: {
+            overview: 'Amla is a superfood that balances all three doshas. It is the base for Chyawanprash.',
+            benefits: ['Highest Vitamin C', 'Anti-aging', 'Promotes hair growth', 'Improves eyesight'],
+            usage: 'Raw fruit, juice, candy (murabba), or powder.',
+            precautions: 'Avoid eating at night if prone to acidity or cough.'
+        },
+        details_hi: {
+            overview: 'आंवला एक सुपरफूड है जो तीनों दोषों को संतुलित करता है। यह च्यवनप्राश का आधार है।',
+            benefits: ['उच्चतम विटामिन सी', 'एंटी-एजिंग', 'बालों के विकास को बढ़ावा देता है', 'आंखों की रोशनी बढ़ाता है'],
+            usage: 'कच्चा phal, रस, कैंडी (मुरब्बा), या पाउडर।',
+            precautions: 'यदि एसिडिटी या खांसी की प्रवृत्ति हो तो रात में खाने से बचें।'
+        }
+    },
+    {
+        id: '9',
+        name: 'Neem',
+        name_hi: 'नीम',
+        slug: 'neem',
+        benefit: 'Skin & Detox',
+        benefit_hi: 'त्वचा और डिटॉक्स',
+        dosha: 'Pitta-Kapha',
+        description: 'Nature’s best blood purifier and antiseptic. Clears acne and skin,issues.',
+        description_hi: 'प्रकृति का सबसे अच्छा रक्त शोधक और एंटीसेप्टिक। मुँहासे और त्वचा की समस्याओं को साफ करता है।',
+        image: '/images/neem.jpg',
+        details: {
+            overview: 'Neem is a bitter herb used extensively for skin diseases and detoxification.',
+            benefits: ['Purifies blood', 'Treats acne & eczema', 'Anti-fungal', 'Oral health'],
+            usage: 'Neem leaves paste, oil, or capsules.',
+            precautions: 'Avoid if trying to conceive (men) or pregnant.'
+        },
+        details_hi: {
+            overview: 'नीम एक कड़वी जड़ी बूटी है जिसका व्यापक रूप से त्वचा रोगों और विषहरण (Detox) के लिए उपयोग किया जाता है।',
+            benefits: ['रक्त शुद्ध करता है', 'मुँहासे और एक्जिमा का इलाज करता है', 'एंटी-फंगल', 'मुख का स्वास्थ्य'],
+            usage: 'नीम के पत्तों का पेस्ट, तेल, या कैप्सूल।',
+            precautions: 'गर्भवती महिलाओं और गर्भधारण का प्रयास कर रहे पुरुषों को बचना चाहिए।'
+        }
+    },
+    {
+        id: '10',
+        name: 'Arjuna',
+        name_hi: 'अर्जुन',
+        slug: 'arjuna',
+        benefit: 'Heart Health',
+        benefit_hi: 'हृदय स्वास्थ',
+        dosha: 'Pitta-Kapha',
+        description: 'The best cardiotonic in Ayurveda. Strengthens heart muscles.',
+        description_hi: 'आयुर्वेद में सबसे अच्छा कार्डियोटोनिक। हृदय की मांसपेशियों को मजबूत करता है।',
+        image: '/images/arjuna.jpg',
+        details: {
+            overview: 'Arjuna bark is famous for cardiac health. It protects the heart and helps in maintaining healthy cholesterol.',
+            benefits: ['Strengthens heart', 'Regulates blood pressure', 'Lowers cholesterol', 'Heals fractures'],
+            usage: 'Bark powder boiled in milk (Arjuna Ksheera Pak).',
+            precautions: 'Monitor blood pressure if on medication.'
+        },
+        details_hi: {
+            overview: 'अर्जुन की छाल हृदय स्वास्थ्य के लिए प्रसिद्ध है। यह हृदय की रक्षा करता है और स्वस्थ कोलेस्ट्रॉल बनाए रखने में मदद करता है।',
+            benefits: ['हृदय को मजबूत करता है', 'रक्तचाप को नियंत्रित करता है', 'कोलेस्ट्रॉल कम करता है', 'हड्डी के फ्रैक्चर को भरता है'],
+            usage: 'दूध में उबाला गया छाल का पाउडर (अर्जुन क्षीर पाक)।',
+            precautions: 'दवा लेने पर रक्तचाप की निगरानी करें।'
+        }
+    },
 ];
 
 export const medicines = [
     {
         id: '1',
         name: 'Chyawanprash',
+        name_hi: 'च्यवनप्राश',
         slug: 'chyawanprash',
         category: 'Rasayana',
         image: '/images/product-generic.png',
         description: 'Immunity boosting jam made with Amla and 40+ herbs.',
+        description_hi: 'आंवला और 40+ जड़ी बूटियों से बना इम्युनिटी बढ़ाने वाला जाम।',
         benefits: ['Boosts Immunity', 'Anti-aging', 'Improves Digestion'],
         details: {
             ingredients: ['Amla', 'Ghee', 'Honey', 'Ashwagandha', 'Pippali'],
@@ -73,10 +317,12 @@ export const medicines = [
     {
         id: '2',
         name: 'Ashokarishta',
+        name_hi: 'अशोकारिष्ट',
         slug: 'ashokarishta',
         category: 'Arishta',
         image: '/images/product-generic.png',
         description: 'Liquid tonic for women’s health and hormonal balance.',
+        description_hi: 'महिलाओं के स्वास्थ्य और हार्मोनल संतुलन के लिए लिक्विड टॉनिक।',
         benefits: ['Menstrual Health', 'Reduces Pain', 'Hormonal Balance'],
         details: {
             ingredients: ['Ashoka Bark', 'Jaggery', 'Dhataki', 'Musta'],
@@ -85,44 +331,29 @@ export const medicines = [
             safety: 'Contain self-generated alcohol. Avoid in acidity.'
         }
     },
+    // Add translations for others if needed, using placeholders for now
     {
         id: '3',
         name: 'Triphala Churna',
+        name_hi: 'त्रिफला चूर्ण',
         slug: 'triphala-churna',
         category: 'Churna',
         image: '/images/product-generic.png',
         description: 'Powder blend for digestive health and detoxification.',
+        description_hi: 'पाचन स्वास्थ्य और डिटॉक्स के लिए पाउडर मिश्रण।',
         benefits: ['Relieves Constipation', 'Eye Health', 'Detox'],
-        details: {
-            ingredients: ['Amalaki', 'Bibhitaki', 'Haritaki'],
-            dosage: '1 teaspoon with warm water at bedtime.',
-            indication: 'Constipation, indigestion, eye disorders.',
-            safety: 'Safe for long-term use. Avoid in diarrhea.'
-        }
+        details: { ingredients: ['Amalaki', 'Bibhitaki', 'Haritaki'], dosage: '1 teaspoon with warm water at bedtime.', indication: 'Constipation, indigestion, eye disorders.', safety: 'Safe for long-term use. Avoid in diarrhea.' }
     },
-    {
-        id: '4',
-        name: 'Kanchanar Guggulu',
-        slug: 'kanchanar-guggulu',
-        category: 'Guggulu',
-        image: '/images/product-generic.png',
-        description: 'Tablet for thyroid health and reducing cysts/growths.',
-        benefits: ['Thyroid Support', 'Lymphatic Detox', 'PCOS'],
-        details: {
-            ingredients: ['Kanchanar Bark', 'Guggulu', 'Triphala', 'Trikatu'],
-            dosage: '2 tablets twice a day with warm water.',
-            indication: 'Hypothyroidism, PCOS, lipoma, lymphadenitis.',
-            safety: 'Consult a doctor during pregnancy.'
-        }
-    },
-    { id: '5', name: 'Sitopaladi Churna', slug: 'sitopaladi-churna', category: 'Churna', image: '/images/product-generic.png', description: 'Trusted powder for cough, cold, and respiratory issues.', benefits: ['Relieves Cough', 'Clears Chest', 'Fever Support'], details: { ingredients: ['Mishri', 'Vanshalochan', 'Pippali', 'Cardamom', 'Cinnamon'], dosage: '1/2 to 1 teaspoon with honey.', indication: 'Cough, cold, fever, burning sensation.', safety: 'Safe for children.' } },
-    { id: '6', name: 'Brahmi Ghrita', slug: 'brahmi-ghrita', category: 'Ghrita', image: '/images/product-generic.png', description: 'Medicated ghee for memory and mental clarity.', benefits: ['Memory Boost', 'Mental Calm', 'Sleep Aid'], details: { ingredients: ['Ghee', 'Brahmi', 'Shankhpushpi', 'Vacha'], dosage: '1 teaspoon with warm milk on empty stomach.', indication: 'Memory loss, anxiety, insomnia.', safety: 'Monitor cholesterol if taken in excess.' } },
+    { id: '4', name: 'Kanchanar Guggulu', name_hi: 'कचनार गुग्गुलु', slug: 'kanchanar-guggulu', category: 'Guggulu', image: '/images/product-generic.png', description: 'Tablet for thyroid health and reducing cysts/growths.', description_hi: 'थायराइड स्वास्थ्य और अल्सर/गांठ को कम करने के लिए टैबलेट।', benefits: ['Thyroid Support', 'Lymphatic Detox', 'PCOS'], details: { ingredients: ['Kanchanar Bark', 'Guggulu', 'Triphala', 'Trikatu'], dosage: '2 tablets twice a day with warm water.', indication: 'Hypothyroidism, PCOS, lipoma, lymphadenitis.', safety: 'Consult a doctor during pregnancy.' } },
+    { id: '5', name: 'Sitopaladi Churna', name_hi: 'सितोपलादि चूर्ण', slug: 'sitopaladi-churna', category: 'Churna', image: '/images/product-generic.png', description: 'Trusted powder for cough, cold, and respiratory issues.', description_hi: 'खांसी, सर्दी और सांस की समस्याओं के लिए विश्वसनीय पाउडर।', benefits: ['Relieves Cough', 'Clears Chest', 'Fever Support'], details: { ingredients: ['Mishri', 'Vanshalochan', 'Pippali', 'Cardamom', 'Cinnamon'], dosage: '1/2 to 1 teaspoon with honey.', indication: 'Cough, cold, fever, burning sensation.', safety: 'Safe for children.' } },
+    { id: '6', name: 'Brahmi Ghrita', name_hi: 'ब्रह्मी घृत', slug: 'brahmi-ghrita', category: 'Ghrita', image: '/images/product-generic.png', description: 'Medicated ghee for memory and mental clarity.', description_hi: 'याददाश्त और मानसिक स्पष्टता के लिए औषधीय घी।', benefits: ['Memory Boost', 'Mental Calm', 'Sleep Aid'], details: { ingredients: ['Ghee', 'Brahmi', 'Shankhpushpi', 'Vacha'], dosage: '1 teaspoon with warm milk on empty stomach.', indication: 'Memory loss, anxiety, insomnia.', safety: 'Monitor cholesterol if taken in excess.' } },
 ];
 
 export const products = [
     {
         id: '1',
         name: 'Organic Ashwagandha Powder',
+        name_hi: 'ऑर्गेनिक अश्वगंधा पाउडर',
         slug: 'organic-ashwagandha',
         brand: 'Organic India',
         price: '$20',
@@ -137,27 +368,12 @@ export const products = [
             ]
         }
     },
-    {
-        id: '2',
-        name: 'Kumkumadi Tailam',
-        slug: 'kumkumadi-tailam',
-        brand: 'Kama Ayurveda',
-        price: '$55',
-        rating: 4.9,
-        image: '/images/product-generic.png',
-        category: 'Skincare',
-        details: {
-            description: 'Miraculous beauty fluid. An Ayurvedic night serum made with rare Saffron to brighten skin and reduce pigmentation.',
-            reviews: [
-                { user: 'Priya K.', comment: 'Expensive but worth every penny. My skin glows!', rating: 5 },
-                { user: 'Emily R.', comment: 'Smells amazing and feels luxurious.', rating: 5 }
-            ]
-        }
-    },
-    { id: '3', name: 'Triphala Juice', slug: 'triphala-juice', brand: 'Kapiva', price: '$15', rating: 4.5, image: '/images/product-generic.png', category: 'Juices', details: { description: 'Cold-pressed Triphala juice for digestive health.', reviews: [] } },
-    { id: '4', name: 'Chyawanprash', slug: 'products-chyawanprash', brand: 'Dabur', price: '$12', rating: 4.7, image: '/images/product-generic.png', category: 'Supplements', details: { description: 'Traditional recipe for daily immunity.', reviews: [] } },
-    { id: '5', name: 'Kesini Hair Oil', slug: 'kesini-hair-oil', brand: 'Kottakkal', price: '$18', rating: 4.6, image: '/images/product-generic.png', category: 'Hair Care', details: { description: 'Herbal oil for hair fall control.', reviews: [] } },
-    { id: '6', name: 'Ayurvedic Toothpaste', slug: 'ayurveda-toothpaste', brand: 'Himalaya', price: '$5', rating: 4.4, image: '/images/product-generic.png', category: 'Personal Care', details: { description: 'Fluoride-free herbal toothpaste.', reviews: [] } },
+    // We can update other products similarly when needed
+    { id: '2', name: 'Kumkumadi Tailam', name_hi: 'कुंकुमादि तेलम', slug: 'kumkumadi-tailam', brand: 'Kama Ayurveda', price: '$55', rating: 4.9, image: '/images/product-generic.png', category: 'Skincare', details: { description: 'Miraculous beauty fluid. An Ayurvedic night serum made with rare Saffron to brighten skin and reduce pigmentation.', reviews: [] } },
+    { id: '3', name: 'Triphala Juice', name_hi: 'त्रिफला रस', slug: 'triphala-juice', brand: 'Kapiva', price: '$15', rating: 4.5, image: '/images/product-generic.png', category: 'Juices', details: { description: 'Cold-pressed Triphala juice for digestive health.', reviews: [] } },
+    { id: '4', name: 'Chyawanprash', name_hi: 'च्यवनप्राश', slug: 'products-chyawanprash', brand: 'Dabur', price: '$12', rating: 4.7, image: '/images/product-generic.png', category: 'Supplements', details: { description: 'Traditional recipe for daily immunity.', reviews: [] } },
+    { id: '5', name: 'Kesini Hair Oil', name_hi: 'केसिनी हेयर ऑयल', slug: 'kesini-hair-oil', brand: 'Kottakkal', price: '$18', rating: 4.6, image: '/images/product-generic.png', category: 'Hair Care', details: { description: 'Herbal oil for hair fall control.', reviews: [] } },
+    { id: '6', name: 'Ayurvedic Toothpaste', name_hi: 'आयुर्वेदिक टूथपेस्ट', slug: 'ayurveda-toothpaste', brand: 'Himalaya', price: '$5', rating: 4.4, image: '/images/product-generic.png', category: 'Personal Care', details: { description: 'Fluoride-free herbal toothpaste.', reviews: [] } },
 ];
 
 export const doctors = [
