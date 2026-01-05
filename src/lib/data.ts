@@ -91,28 +91,56 @@ export const popularHerbs = [
         image: '/images/tulsi.png',
         details: {
             overview: 'Tulsi is revered as "The Queen of Herbs" and is an adaptogen that helps the body cope with stress and infections. In Sanskrit, Tulsi means "The Incomparable One". It is not merely a plant but revered as an earthly manifestation of Goddess Lakshmi.',
-            benefits: ['Boosts immunity & fights infections', 'Relieves cough, cold & respiratory issues', 'Reduces stress & anxiety (Adaptogen)', 'Promotes heart health & lowers blood pressure', 'Improves digestion & gut health', 'Enhances skin glow & treats acne'],
-            usage: 'Chew fresh leaves, drink as tea (decoction) with ginger/honey, or use essential oil for inhalation.',
-            precautions: 'May lower blood sugar (monitor if diabetic). Avoid high medicinal doses 2 weeks before surgery (mild blood thinner). Excess raw chewing may affect tooth enamel.',
+            benefits: [
+                'Boosts immunity & fights infections (Increases T-helper cells)',
+                'Relieves cough, cold & respiratory issues (Liquefies phlegm)',
+                'Reduces stress & anxiety (Lowers Cortisol levels)',
+                'Promotes heart health (Lowers BP & Cholesterol)',
+                'Improves digestion & gut health (Agni Deepana)',
+                'Enhances skin glow & treats acne (Blood Purifier)',
+                'Oral Health: Fights bacteria & bad breath'
+            ],
+            usage: 'Chew fresh leaves, drink as tea (decoction), or as juice (swaras).',
+            precautions: 'May lower blood sugar (monitor if diabetic). Avoid high medicinal doses 2 weeks before surgery (mild blood thinner). Excess raw chewing may affect tooth enamel due to mercury content.',
             scientific_name: 'Ocimum tenuiflorum (formerly Ocimum sanctum)',
             family: 'Lamiaceae (Mint family)',
             chemical_compounds: [
                 { name: 'Eugenol', effect: 'Analgesic, anti-inflammatory, anti-bacterial' },
                 { name: 'Ursolic Acid', effect: 'Anti-tumor, skin-healing, collagen protection' },
                 { name: 'Rosmarinic Acid', effect: 'Potent antioxidant, fights free radicals' },
-                { name: 'Caryophyllene', effect: 'Reduces anxiety & stress (interacts with endocannabinoid system)' }
+                { name: 'Caryophyllene', effect: 'Reduces anxiety & stress (interacts with endocannabinoid system)' },
+                { name: 'Ocimumosides A & B', effect: 'Anti-stress (adaptogenic) activity' }
             ],
-            spiritual_significance: 'Tulsi symbolizes purity and devotion. It is grown in the central courtyard (Tulsi Vrindavan) to protect the home from negative energy. It is essential in the worship of Lord Vishnu and Krishna.',
+            spiritual_significance: 'Tulsi symbolizes purity and devotion. It is believed to be the earthly manifestation of Goddess Lakshmi. Every traditional Indian home has a "Tulsi Vrindavan" to protect the home from negative energy (Vastu Dosh). The "Tulsi Vivah" festival marks the ceremonial marriage of Tulsi to Lord Vishnu.',
+            mythology: 'According to legend, Tulsi was originally Vrinda, a devotee of Vishnu. Due to a curse, she became a plant, but Vishnu promised to always be with her in the form of the Shaligram stone. Thus, Vishnu worship is incomplete without Tulsi leaves.',
+            varieties: [
+                { name: 'Rama Tulsi', description: 'Green leaves. Cooling taste. Most common for immunity.', image: '/images/herbs/rama-tulsi.jpg' },
+                { name: 'Krishna Tulsi', description: 'Purple leaves. Peppery, crisp taste. Potent for respiratory & skin issues.', image: '/images/herbs/krishna-tulsi.jpg' },
+                { name: 'Vana Tulsi', description: 'Wild leaf variety. Lemony aroma. Native to Himalayas.', image: '/images/herbs/vana-tulsi.jpg' }
+            ],
             preparation_methods: [
-                { title: 'Tulsi Tea (Immunity)', steps: ['Boil 1 cup water.', 'Add 5-7 fresh Tulsi leaves.', 'Steep for 5-7 mins.', 'Add honey/lemon. Drink daily.'] },
+                { title: 'Tulsi Tea (Daily Immunity)', steps: ['Boil 1 cup water.', 'Add 5-7 fresh Tulsi leaves.', 'Steep for 5-7 mins.', 'Add honey/lemon. Drink daily.'] },
                 { title: 'Tulsi Kadha (Cold/Flu)', steps: ['Boil 2 cups water with ginger, peppercorns, cinnamon.', 'Add 10-15 Tulsi leaves.', 'Simmer till reduced to half.', 'Add jaggery, strain & drink warm.'] },
+                { title: 'Tulsi Swaras (Juice)', steps: ['Crush handful of clean leaves.', 'Extract fresh juice.', 'Mix 1 tsp juice with 1 tsp honey.', 'Great for removing phlegm.'] },
                 { title: 'Face Steam (Skin/Sinus)', steps: ['Add handful of leaves to hot steaming water.', 'Lean over with towel for 5 mins.', 'Clears pores & relieves congestion.'] }
+            ],
+            faqs: [
+                { question: 'Can I drink Tulsi tea with milk?', answer: 'Traditionally, Tulsi is best taken with water (decoction). Mixing with milk is sometimes avoided in Ayurveda for respiratory issues, but Tulsi-infused milk is used for calming nerves.' },
+                { question: 'When is the best time to take Tulsi?', answer: 'Morning empty stomach for immunity, or evening for stress relief.' }
             ]
         },
         details_hi: {
             overview: 'तुलसी को "जड़ी-बूटियों की रानी" (The Queen of Herbs) माना जाता है और यह एक एडाप्टोजेन है जो शरीर को तनाव और संक्रमण से लड़ने में मदद करता है। संस्कृत में तुलसी का अर्थ है "जिसकी तुलना न की जा सके"। यह केवल एक पौधा नहीं है, बल्कि देवी लक्ष्मी का पार्थिव रूप माना जाता है।',
-            benefits: ['इम्युनिटी बढ़ाती है और संक्रमण से लड़ती है', 'खांसी, सर्दी और सांस की समस्याओं से राहत', 'तनाव और चिंता कम करती है', 'हृदय स्वास्थ्य को बढ़ावा और बीपी कम करना', 'पाचन और पेट के स्वास्थ्य में सुधार', 'त्वचा की चमक बढ़ाना और मुँहासे का इलाज'],
-            usage: 'ताजी पत्तियां चबाएं, अदरक/शहद के साथ चाय (काढ़ा) पिएं, या इनहेलेशन के लिए तेल का उपयोग करें।',
+            benefits: [
+                'इम्युनिटी बढ़ाती है और संक्रमण, वायरल से लड़ती है',
+                'खांसी, सर्दी और सांस की समस्याओं से राहत (कफ नाशक)',
+                'तनाव और चिंता कम करती है (कोर्टिसोल कम करती है)',
+                'हृदय स्वास्थ्य को बढ़ावा और बीपी/कोलेस्ट्रॉल कम करना',
+                'पाचन और पेट के स्वास्थ्य में सुधार (अग्नि दीपन)',
+                'त्वचा की चमक बढ़ाना और मुँहासे का इलाज (रक्त शोधक)',
+                'मुख स्वास्थ्य: बैक्टीरिया और सांस की दुर्गंध से लड़ती है'
+            ],
+            usage: 'ताजी पत्तियां चबाएं, अदरक/शहद के साथ चाय (काढ़ा) पिएं, या रस (स्वरस) लें।',
             precautions: 'रक्त शर्करा कम कर सकती है (मधुमेह में निगरानी रखें)। सर्जरी से 2 सप्ताह पहले उच्च खुराक से बचें (हल्का रक्त पतला करने वाला)। अत्यधिक कच्चा चबाने से दांतों की परत पर असर पड़ सकता है।',
             scientific_name: 'ओसिमम टेनुइफ्लोरम (पूर्व में ओसिमम सैंक्टम)',
             family: 'लैमिएसी (पुदीना परिवार)',
@@ -120,13 +148,25 @@ export const popularHerbs = [
                 { name: 'यूजेनॉल (Eugenol)', effect: 'दर्द निवारक, सूजन रोधी, जीवाणुरोधी' },
                 { name: 'उर्सोलिक एसिड (Ursolic Acid)', effect: 'ट्यूमर विरोधी, त्वचा उपचार, कोलेजन सुरक्षा' },
                 { name: 'रोज़मारिनिक एसिड (Rosmarinic Acid)', effect: 'शक्तिशाली एंटीऑक्सिडेंट, मुक्त कणों से लड़ता है' },
-                { name: 'कैरीओफाइलीन (Caryophyllene)', effect: 'चिंता और तनाव कम करता है' }
+                { name: 'कैरीओफाइलीन (Caryophyllene)', effect: 'चिंता और तनाव कम करता है' },
+                { name: 'ओसिमुमोसाइड्स', effect: 'तनाव रोधी गतिविधि' }
             ],
-            spiritual_significance: 'तुलसी पवित्रता और भक्ति का प्रतीक है। इसे घर को नकारात्मक ऊर्जा से बचाने के लिए आंगन (तुलसी वृंदावन) में उगाया जाता है। भगवान विष्णु और कृष्ण की पूजा में यह अनिवार्य है।',
+            spiritual_significance: 'तुलसी पवित्रता और भक्ति का प्रतीक है। यह देवी लक्ष्मी का रूप मानी जाती है। हर पारंपरिक भारतीय घर में नकारात्मक ऊर्जा (वास्तु दोष) से बचाने के लिए "तुलसी वृंदावन" होता है। "तुलसी विवाह" भगवान विष्णु के साथ तुलसी के औपचारिक विवाह का प्रतीक है।',
+            mythology: 'किंवदंती के अनुसार, तुलसी मूल रूप से वृंदा थीं, जो विष्णु की भक्त थीं। एक श्राप के कारण वे एक पौधा बन गईं, लेकिन विष्णु ने शालिग्राम पत्थर के रूप में हमेशा उनके साथ रहने का वादा किया। इस प्रकार, तुलसी दल के बिना विष्णु पूजा अधूरी है।',
+            varieties: [
+                { name: 'राम तुलसी', description: 'हरी पत्तियां। ठंडी तासीर। इम्युनिटी के लिए सबसे आम।', image: '/images/herbs/rama-tulsi.jpg' },
+                { name: 'कृष्ण तुलसी', description: 'बैंगनी (Purple) पत्तियां। तीखा स्वाद। श्वसन और त्वचा के लिए शक्तिशाली।', image: '/images/herbs/krishna-tulsi.jpg' },
+                { name: 'वन तुलसी', description: 'जंगली किस्म। नींबू जैसी सुगंध। हिमालय और मैदानों में पाई जाती है।', image: '/images/herbs/vana-tulsi.jpg' }
+            ],
             preparation_methods: [
-                { title: 'तुलसी चाय (इम्युनिटी)', steps: ['1 कप पानी उबालें।', '5-7 ताजी तुलसी की पत्तियां डालें।', '5-7 मिनट तक ढक कर रखें।', 'शहद/नींबू डालें। रोजाना पिएं।'] },
+                { title: 'तुलसी चाय (दैनिक इम्युनिटी)', steps: ['1 कप पानी उबालें।', '5-7 ताजी तुलसी की पत्तियां डालें।', '5-7 मिनट तक ढक कर रखें।', 'शहद/नींबू डालें। रोजाना पिएं।'] },
                 { title: 'तुलसी काढ़ा (सर्दी/जुकाम)', steps: ['2 कप पानी में अदरक, काली मिर्च, दालचीनी उबालें।', '10-15 तुलसी की पत्तियां डालें।', 'आधा होने तक उबालें।', 'गुड़ डालें, छानें और गर्म पिएं।'] },
+                { title: 'तुलसी स्वरस (ताजा रस)', steps: ['मुट्ठी भर साफ पत्तियों को पीस लें।', 'ताजा रस निचोड़ें।', '1 चम्मच रस को 1 चम्मच शहद के साथ मिलाएं।', 'कफ निकालने के लिए उत्तम।'] },
                 { title: 'चेहरे की भाप (त्वचा/ साइनस)', steps: ['गर्म पानी में मुट्ठी भर पत्तियां डालें।', 'तौलिये से ढककर 5 मिनट तक भाप लें।', 'रोमछिद्र साफ करता है और जकड़न दूर करता है।'] }
+            ],
+            faqs: [
+                { question: 'क्या मैं दूध के साथ तुलसी चाय पी सकता हूँ?', answer: 'परंपरागत रूप से, तुलसी को पानी (काढ़ा) के साथ लेना सबसे अच्छा है। श्वसन समस्याओं के लिए दूध के साथ मिलाने से कभी-कभी बचा जाता है, लेकिन नसों को शांत करने के लिए तुलसी युक्त दूध का उपयोग किया जाता है।' },
+                { question: 'तुलसी लेने का सबसे अच्छा समय कब है?', answer: 'इम्युनिटी के लिए सुबह खाली पेट, या तनाव से राहत के लिए शाम को।' }
             ]
         }
     },
