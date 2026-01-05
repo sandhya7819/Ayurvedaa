@@ -90,16 +90,44 @@ export const popularHerbs = [
         description_hi: 'पवित्र तुलसी, अपने दिव्य उपचार गुणों और श्वसन समर्थन के लिए जानी जाती है।',
         image: '/images/tulsi.png',
         details: {
-            overview: 'Tulsi is revered as "The Queen of Herbs" and is an adaptogen that helps the body cope with stress and infections.',
-            benefits: ['Boosts immunity', 'Relieves cough & cold', 'Reduces stress', 'Anti-bacterial'],
-            usage: 'Chew fresh leaves or drink as tea (decoction) with ginger and honey.',
-            precautions: 'May lower blood sugar levels. Monitor if diabetic.'
+            overview: 'Tulsi is revered as "The Queen of Herbs" and is an adaptogen that helps the body cope with stress and infections. In Sanskrit, Tulsi means "The Incomparable One". It is not merely a plant but revered as an earthly manifestation of Goddess Lakshmi.',
+            benefits: ['Boosts immunity & fights infections', 'Relieves cough, cold & respiratory issues', 'Reduces stress & anxiety (Adaptogen)', 'Promotes heart health & lowers blood pressure', 'Improves digestion & gut health', 'Enhances skin glow & treats acne'],
+            usage: 'Chew fresh leaves, drink as tea (decoction) with ginger/honey, or use essential oil for inhalation.',
+            precautions: 'May lower blood sugar (monitor if diabetic). Avoid high medicinal doses 2 weeks before surgery (mild blood thinner). Excess raw chewing may affect tooth enamel.',
+            scientific_name: 'Ocimum tenuiflorum (formerly Ocimum sanctum)',
+            family: 'Lamiaceae (Mint family)',
+            chemical_compounds: [
+                { name: 'Eugenol', effect: 'Analgesic, anti-inflammatory, anti-bacterial' },
+                { name: 'Ursolic Acid', effect: 'Anti-tumor, skin-healing, collagen protection' },
+                { name: 'Rosmarinic Acid', effect: 'Potent antioxidant, fights free radicals' },
+                { name: 'Caryophyllene', effect: 'Reduces anxiety & stress (interacts with endocannabinoid system)' }
+            ],
+            spiritual_significance: 'Tulsi symbolizes purity and devotion. It is grown in the central courtyard (Tulsi Vrindavan) to protect the home from negative energy. It is essential in the worship of Lord Vishnu and Krishna.',
+            preparation_methods: [
+                { title: 'Tulsi Tea (Immunity)', steps: ['Boil 1 cup water.', 'Add 5-7 fresh Tulsi leaves.', 'Steep for 5-7 mins.', 'Add honey/lemon. Drink daily.'] },
+                { title: 'Tulsi Kadha (Cold/Flu)', steps: ['Boil 2 cups water with ginger, peppercorns, cinnamon.', 'Add 10-15 Tulsi leaves.', 'Simmer till reduced to half.', 'Add jaggery, strain & drink warm.'] },
+                { title: 'Face Steam (Skin/Sinus)', steps: ['Add handful of leaves to hot steaming water.', 'Lean over with towel for 5 mins.', 'Clears pores & relieves congestion.'] }
+            ]
         },
         details_hi: {
-            overview: 'तुलसी को "जड़ी-बूटियों की रानी" के रूप में पूजा जाता है और यह एक एडाप्टोजेन है जो शरीर को तनाव और संक्रमण से निपटने में मदद करता है।',
-            benefits: ['इम्युनिटी बढ़ाता है', 'खांसी और सर्दी से राहत देता है', 'तनाव कम करता है', 'बैक्टीरिया-रोधी'],
-            usage: 'ताजी पत्तियां चबाएं या अदरक और शहद के साथ चाय (काढ़ा) के रूप में पिएं।',
-            precautions: 'रक्त शर्करा के स्तर को कम कर सकता है। मधुमेह रोगियों को निगरानी रखनी चाहिए।'
+            overview: 'तुलसी को "जड़ी-बूटियों की रानी" (The Queen of Herbs) माना जाता है और यह एक एडाप्टोजेन है जो शरीर को तनाव और संक्रमण से लड़ने में मदद करता है। संस्कृत में तुलसी का अर्थ है "जिसकी तुलना न की जा सके"। यह केवल एक पौधा नहीं है, बल्कि देवी लक्ष्मी का पार्थिव रूप माना जाता है।',
+            benefits: ['इम्युनिटी बढ़ाती है और संक्रमण से लड़ती है', 'खांसी, सर्दी और सांस की समस्याओं से राहत', 'तनाव और चिंता कम करती है', 'हृदय स्वास्थ्य को बढ़ावा और बीपी कम करना', 'पाचन और पेट के स्वास्थ्य में सुधार', 'त्वचा की चमक बढ़ाना और मुँहासे का इलाज'],
+            usage: 'ताजी पत्तियां चबाएं, अदरक/शहद के साथ चाय (काढ़ा) पिएं, या इनहेलेशन के लिए तेल का उपयोग करें।',
+            precautions: 'रक्त शर्करा कम कर सकती है (मधुमेह में निगरानी रखें)। सर्जरी से 2 सप्ताह पहले उच्च खुराक से बचें (हल्का रक्त पतला करने वाला)। अत्यधिक कच्चा चबाने से दांतों की परत पर असर पड़ सकता है।',
+            scientific_name: 'ओसिमम टेनुइफ्लोरम (पूर्व में ओसिमम सैंक्टम)',
+            family: 'लैमिएसी (पुदीना परिवार)',
+            chemical_compounds: [
+                { name: 'यूजेनॉल (Eugenol)', effect: 'दर्द निवारक, सूजन रोधी, जीवाणुरोधी' },
+                { name: 'उर्सोलिक एसिड (Ursolic Acid)', effect: 'ट्यूमर विरोधी, त्वचा उपचार, कोलेजन सुरक्षा' },
+                { name: 'रोज़मारिनिक एसिड (Rosmarinic Acid)', effect: 'शक्तिशाली एंटीऑक्सिडेंट, मुक्त कणों से लड़ता है' },
+                { name: 'कैरीओफाइलीन (Caryophyllene)', effect: 'चिंता और तनाव कम करता है' }
+            ],
+            spiritual_significance: 'तुलसी पवित्रता और भक्ति का प्रतीक है। इसे घर को नकारात्मक ऊर्जा से बचाने के लिए आंगन (तुलसी वृंदावन) में उगाया जाता है। भगवान विष्णु और कृष्ण की पूजा में यह अनिवार्य है।',
+            preparation_methods: [
+                { title: 'तुलसी चाय (इम्युनिटी)', steps: ['1 कप पानी उबालें।', '5-7 ताजी तुलसी की पत्तियां डालें।', '5-7 मिनट तक ढक कर रखें।', 'शहद/नींबू डालें। रोजाना पिएं।'] },
+                { title: 'तुलसी काढ़ा (सर्दी/जुकाम)', steps: ['2 कप पानी में अदरक, काली मिर्च, दालचीनी उबालें।', '10-15 तुलसी की पत्तियां डालें।', 'आधा होने तक उबालें।', 'गुड़ डालें, छानें और गर्म पिएं।'] },
+                { title: 'चेहरे की भाप (त्वचा/ साइनस)', steps: ['गर्म पानी में मुट्ठी भर पत्तियां डालें।', 'तौलिये से ढककर 5 मिनट तक भाप लें।', 'रोमछिद्र साफ करता है और जकड़न दूर करता है।'] }
+            ]
         }
     },
     {
