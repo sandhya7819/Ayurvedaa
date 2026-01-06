@@ -12,9 +12,9 @@ import { popularHerbs, healthConditions, medicines } from '@/lib/data';
 // Combine real data for search
 const getAllItems = (lang: string) => {
     const items: any[] = [];
-    popularHerbs.forEach(h => items.push({ title: lang === 'hi' ? (h.name_hi || h.name) : h.name, type: 'Herb', slug: `/herbs/${h.slug}` }));
-    healthConditions.forEach(c => items.push({ title: lang === 'hi' ? (c.name_hi || c.name) : c.name, type: 'Condition', slug: `/health-conditions/${c.slug}` }));
-    medicines.forEach(m => items.push({ title: lang === 'hi' ? (m.name_hi || m.name) : m.name, type: 'Medicine', slug: `/medicines/${m.slug}` }));
+    popularHerbs.forEach(h => items.push({ title: lang === 'hi' ? (h.name_hi || h.name) : h.name, type: 'Herb', slug: `/${lang}/herbs/${h.slug}` }));
+    healthConditions.forEach(c => items.push({ title: lang === 'hi' ? (c.name_hi || c.name) : c.name, type: 'Condition', slug: `/${lang}/health-conditions/${c.slug}` }));
+    medicines.forEach(m => items.push({ title: lang === 'hi' ? (m.name_hi || m.name) : m.name, type: 'Medicine', slug: `/${lang}/medicines/${m.slug}` }));
     return items;
 };
 
@@ -153,9 +153,9 @@ export default function Hero() {
                     {/* Popular Tags */}
                     <div className={styles.tags}>
                         <span>{t('popular')}</span>
-                        <Link href="/herbs/ashwagandha" className={styles.tag}>Ashwagandha</Link>
-                        <Link href="/health-conditions/diabetes" className={styles.tag}>Diabetes</Link>
-                        <Link href="/medicines/triphala" className={styles.tag}>Triphala</Link>
+                        <Link href={`/${lang}/herbs/ashwagandha`} className={styles.tag}>Ashwagandha</Link>
+                        <Link href={`/${lang}/health-conditions/diabetes`} className={styles.tag}>Diabetes</Link>
+                        <Link href={`/${lang}/medicines/triphala`} className={styles.tag}>Triphala</Link>
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@ export default function ProductsPage() {
             <div className={styles.container}>
                 <div className={styles.grid}>
                     {products.map((product) => (
-                        <Link href={`/products/${product.id}`} key={product.id} className={styles.card}>
+                        <Link href={`/${language}/products/${product.id}`} key={product.id} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
                                     src={product.image}

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 type Language = 'en' | 'hi';
 
@@ -13,7 +14,28 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-    const [language, setLanguage] = useState<Language>('en');
+    const pathname = usePathname();
+    const router = useRouter();
+    const [language, setInternalLanguage] = useState<Language>('en');
+
+    useEffect(() => {
+        // Extract language from URL (e.g., /en/herbs -> 'en')
+        const segments = pathname.split('/');
+        const langSegment = segments[1] as Language;
+        if (langSegment === 'hi' || langSegment === 'en') {
+            setInternalLanguage(langSegment);
+        }
+    }, [pathname]);
+
+    const setLanguage = (lang: Language) => {
+        if (lang === language) return;
+
+        // Replace current lang segment with new lang
+        const segments = pathname.split('/');
+        segments[1] = lang;
+        const newPath = segments.join('/');
+        router.push(newPath);
+    };
 
     // Simple translation dictionary (expand as needed or move to separate file)
     const translations: Record<string, Record<Language, string>> = {

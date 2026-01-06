@@ -24,13 +24,18 @@ export const metadata: Metadata = {
   description: "Comprehensive guide to Ayurvedic herbs, conditions, and medicines.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ lang: string }>;
 }>) {
+  const { lang } = await params;
+  const language = lang || 'en';
+
   return (
-    <html lang="en">
+    <html lang={language}>
       <body className={`${playfair.variable} ${lato.variable}`}>
         <LanguageProvider>
           <Header />

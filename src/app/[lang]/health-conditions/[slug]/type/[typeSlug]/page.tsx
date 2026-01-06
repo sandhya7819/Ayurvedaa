@@ -5,13 +5,14 @@ import { healthConditions } from '@/lib/data';
 
 interface Params {
     params: Promise<{
+        lang: string;
         slug: string;
         typeSlug: string;
     }>
 }
 
 export default async function ConditionTypePage({ params }: Params) {
-    const { slug, typeSlug } = await params;
+    const { lang, slug, typeSlug } = await params;
 
     // 1. Find the Condition (e.g., Diabetes)
     const condition = healthConditions.find(c => c.slug === slug);
@@ -24,7 +25,7 @@ export default async function ConditionTypePage({ params }: Params) {
             <div className={styles.page} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{ textAlign: 'center' }}>
                     <h1>Type Not Found</h1>
-                    <Link href={`/health-conditions/${slug}`} style={{ color: 'blue', textDecoration: 'underline' }}>
+                    <Link href={`/${lang}/health-conditions/${slug}`} style={{ color: 'blue', textDecoration: 'underline' }}>
                         Back to Main Condition
                     </Link>
                 </div>
@@ -38,7 +39,7 @@ export default async function ConditionTypePage({ params }: Params) {
     return (
         <div className={styles.page}>
             <div className={styles.container}>
-                <Link href={`/health-conditions/${slug}`} className={styles.backLink}>
+                <Link href={`/${lang}/health-conditions/${slug}`} className={styles.backLink}>
                     <ArrowLeft size={18} /> Back to {condition.name}
                 </Link>
 

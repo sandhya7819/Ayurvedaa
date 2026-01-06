@@ -7,7 +7,7 @@ import styles from './ConditionCategories.module.css';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function ConditionCategories() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <section className={styles.section}>
@@ -19,7 +19,7 @@ export default function ConditionCategories() {
 
                 <div className={styles.grid}>
                     {healthConditions.map((condition) => (
-                        <Link key={condition.id} href={`/health-conditions/${condition.slug}`} className={styles.card}>
+                        <Link key={condition.id} href={`/${language}/health-conditions/${condition.slug}`} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
                                     src={condition.image}

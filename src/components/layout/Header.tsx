@@ -6,25 +6,33 @@ import { Menu, Languages, User } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import UniversalSearch from '../search/UniversalSearch';
 
+import Image from 'next/image';
+
 export default function Header() {
     const { t, language, setLanguage } = useLanguage();
 
     return (
         <header className={styles.header}>
             <div className={`container ${styles.container}`}>
-                <Link href="/" className={styles.logo}>
-                    <span className={styles.logoIcon}>🌿</span>
-                    <span className={styles.logoText}>Ayurveda Guide</span>
+                <Link href={`/${language}`} className={styles.logo}>
+                    <Image
+                        src="/logo.png"
+                        alt="Ayurveda Guide"
+                        width={180}
+                        height={40}
+                        priority
+                        style={{ objectFit: 'contain' }}
+                    />
                 </Link>
 
                 <nav className={styles.nav}>
                     <ul className={styles.navList}>
-                        <li><Link href="/herbs" className={styles.navLink}>{t('herbs')}</Link></li>
-                        <li><Link href="/health-conditions" className={styles.navLink}>{t('conditions')}</Link></li>
-                        <li><Link href="/medicines" className={styles.navLink}>{t('medicines')}</Link></li>
-                        <li><Link href="/products" className={styles.navLink}>{t('products')}</Link></li>
-                        <li><Link href="/doctors" className={styles.navLink}>{t('consult')}</Link></li>
-                        <li><Link href="/guides" className={styles.navLink}>{language === 'hi' ? 'गाइड्स' : 'Guides'}</Link></li>
+                        <li><Link href={`/${language}/herbs`} className={styles.navLink}>{t('herbs')}</Link></li>
+                        <li><Link href={`/${language}/health-conditions`} className={styles.navLink}>{t('conditions')}</Link></li>
+                        <li><Link href={`/${language}/medicines`} className={styles.navLink}>{t('medicines')}</Link></li>
+                        <li><Link href={`/${language}/products`} className={styles.navLink}>{t('products')}</Link></li>
+                        <li><Link href={`/${language}/doctors`} className={styles.navLink}>{t('consult')}</Link></li>
+                        <li><Link href={`/${language}/guides`} className={styles.navLink}>{language === 'hi' ? 'गाइड्स' : 'Guides'}</Link></li>
                     </ul>
                 </nav>
 
@@ -42,11 +50,11 @@ export default function Header() {
                         <UniversalSearch />
                     </div>
 
-                    <Link href="/auth/login" className={styles.iconBtn} title={language === 'hi' ? 'लॉगिन' : 'Login'}>
+                    <Link href={`/${language}/auth/login`} className={styles.iconBtn} title={language === 'hi' ? 'लॉगिन' : 'Login'}>
                         <User size={22} />
                     </Link>
 
-                    <Link href="/consult" className="btn btn-primary" style={{ display: 'none' }}>
+                    <Link href={`/${language}/consult`} className="btn btn-primary" style={{ display: 'none' }}>
                         {/* Hidden on desktop as Doctors link exists, kept for logic if needed */}
                         {t('consult')}
                     </Link>

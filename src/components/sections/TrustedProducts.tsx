@@ -13,19 +13,19 @@ const products = [
 ];
 
 export default function TrustedProducts() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <section className={styles.section}>
             <div className="container">
                 <div className={styles.header}>
                     <h2 className={styles.title}>{t('trusted_products')}</h2>
-                    <Link href="/products" className={styles.link}>{t('view_all_products')} &rarr;</Link>
+                    <Link href={`/${language}/products`} className={styles.link}>{t('view_all_products')} &rarr;</Link>
                 </div>
 
                 <div className={styles.grid}>
                     {products.map((product) => (
-                        <div key={product.id} className={styles.card}>
+                        <Link href={`/${language}/products/${product.id}`} key={product.id} className={styles.card} style={{ textDecoration: 'none', color: 'inherit' }}>
                             <div className={styles.imagePlaceholder}>
                                 <span>Product Image</span>
                             </div>
@@ -42,7 +42,7 @@ export default function TrustedProducts() {
                                     <button className={styles.buyBtn}>{t('view_details')}</button>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

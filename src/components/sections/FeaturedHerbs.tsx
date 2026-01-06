@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function FeaturedHerbs() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <section className={styles.section}>
@@ -33,7 +33,7 @@ export default function FeaturedHerbs() {
                                 <span className={styles.benefitBadge}>{herb.benefit}</span>
                                 <h3 className={styles.herbName}>{herb.name}</h3>
                                 <p className={styles.description}>{herb.description}</p>
-                                <Link href={`/herbs/${herb.slug}`} className={styles.link}>
+                                <Link href={`/${language}/herbs/${herb.slug}`} className={styles.link}>
                                     {t('learn_more')} <ArrowRight size={16} />
                                 </Link>
                             </div>

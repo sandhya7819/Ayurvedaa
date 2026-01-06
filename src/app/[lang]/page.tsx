@@ -5,7 +5,7 @@ import FeaturedHerbs from "@/components/sections/FeaturedHerbs";
 import TrustedProducts from "@/components/sections/TrustedProducts";
 import ConsultCTA from "@/components/sections/ConsultCTA";
 import TrustSection from "@/components/sections/TrustSection";
-import ChatCTA from "@/components/sections/ChatCTA";
+
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <FeaturedHerbs />
       <TrustedProducts />
       <ConsultCTA />
-      <ChatCTA />
+
       <TrustSection />
     </>
   );

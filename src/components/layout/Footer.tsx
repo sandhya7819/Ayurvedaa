@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './Footer.module.css';
 import { Facebook, Twitter, Instagram, Mail } from 'lucide-react';
@@ -30,8 +31,13 @@ export default function Footer() {
             <div className={`container ${styles.container}`}>
                 <div className={styles.column}>
                     <div className={styles.logo}>
-                        <span className={styles.logoIcon}>🌿</span>
-                        <span className={styles.logoText}>Ayurveda Guide</span>
+                        <Image
+                            src="/logo.png"
+                            alt="Ayurveda Guide"
+                            width={150}
+                            height={40}
+                            style={{ objectFit: 'contain', filter: 'brightness(0) invert(1)' }}
+                        />
                     </div>
                     <p className={styles.description}>{t.desc}</p>
                     <div className={styles.social}>
@@ -45,20 +51,20 @@ export default function Footer() {
                 <div className={styles.column}>
                     <h3>{t.quickLinks}</h3>
                     <ul>
-                        <li><Link href="/herbs">{language === 'hi' ? 'जड़ी-बूटियाँ' : 'Herbs'}</Link></li>
-                        <li><Link href="/health-conditions">{language === 'hi' ? 'स्वास्थ्य स्थितियां' : 'Health Conditions'}</Link></li>
-                        <li><Link href="/doctors">{language === 'hi' ? 'डॉक्टर' : 'Doctors'}</Link></li>
-                        <li><Link href="/dosha-test">{language === 'hi' ? 'दोष टेस्ट' : 'Dosha Test'}</Link></li>
+                        <li><Link href={`/${language}/herbs`}>{language === 'hi' ? 'जड़ी-बूटियाँ' : 'Herbs'}</Link></li>
+                        <li><Link href={`/${language}/health-conditions`}>{language === 'hi' ? 'स्वास्थ्य स्थितियां' : 'Health Conditions'}</Link></li>
+                        <li><Link href={`/${language}/doctors`}>{language === 'hi' ? 'डॉक्टर' : 'Doctors'}</Link></li>
+                        <li><Link href={`/${language}/dosha-test`}>{language === 'hi' ? 'दोष टेस्ट' : 'Dosha Test'}</Link></li>
                     </ul>
                 </div>
 
                 <div className={styles.column}>
                     <h3>{t.legal}</h3>
                     <ul>
-                        <li><Link href="/legal/disclaimer">{t.disclaimer}</Link></li>
-                        <li><Link href="/legal/affiliate-disclosure">{t.affiliate}</Link></li>
-                        <li><Link href="/legal/content-policy">{t.contentPolicy}</Link></li>
-                        <li><Link href="/privacy">{t.privacy}</Link></li>
+                        <li><Link href={`/${language}/legal/disclaimer`}>{t.disclaimer}</Link></li>
+                        <li><Link href={`/${language}/legal/affiliate-disclosure`}>{t.affiliate}</Link></li>
+                        <li><Link href={`/${language}/legal/content-policy`}>{t.contentPolicy}</Link></li>
+                        <li><Link href={`/${language}/privacy`}>{t.privacy}</Link></li>
                     </ul>
                 </div>
 

@@ -5,10 +5,10 @@ import Image from 'next/image';
 import {
     ArrowLeft, Stethoscope, Activity, Utensils, Check, X, Pill, Leaf, HeartPulse, Brain,
     PersonStanding, Droplets, Clock, Candy, Scale, Battery, Eye, Bandage, Info,
-    Sprout, Disc, Eraser, GlassWater, ArrowDownCircle, RotateCw, Sun, Wind
+    Sprout, Disc, Eraser, GlassWater, ArrowDownCircle, RotateCw, Sun, Wind, ArrowRight
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import styles from '@/app/health-conditions/[slug]/page.module.css';
+import styles from '@/app/[lang]/health-conditions/[slug]/page.module.css';
 
 import { medicines as allMedicines } from '@/lib/data';
 
@@ -106,7 +106,7 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                 )}
                 <div className={styles.headerOverlay}></div>
                 <div className={styles.headerContent}>
-                    <Link href="/health-conditions" className={styles.backLink}>
+                    <Link href={`/${language}/health-conditions`} className={styles.backLink}>
                         <ArrowLeft size={16} /> {t.back}
                     </Link>
                     <h1 className={styles.title}>{name}</h1>
@@ -153,7 +153,7 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                                     {types.map((type: any, i: number) => (
                                         <Link
                                             key={i}
-                                            href={`/health-conditions/${condition.slug}/type/${type.slug || i}`}
+                                            href={`/${language}/health-conditions/${condition.slug}/type/${type.slug || i}`}
                                             className={styles.typeCard}
                                             style={{
                                                 display: 'block',
@@ -226,6 +226,10 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                                             }}>
                                                 {type.description}
                                             </p>
+
+                                            <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#166534', fontWeight: 600, fontSize: '0.95rem' }}>
+                                                {language === 'hi' ? 'विवरण देखें' : 'View Details'} <ArrowRight size={16} />
+                                            </div>
                                         </Link>
                                     ))}
                                 </div>
@@ -409,7 +413,7 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                             {recommendedHerbs.length > 0 ? (
                                 <div className={styles.herbList}>
                                     {recommendedHerbs.map(herb => (
-                                        <Link key={herb.id} href={`/herbs/${herb.slug}`} className={styles.herbItem}>
+                                        <Link key={herb.id} href={`/${language}/herbs/${herb.slug}`} className={styles.herbItem}>
                                             <div className={styles.herbIcon}>
                                                 {(language === 'hi' ? (herb.name_hi || herb.name) : herb.name).slice(0, 2)}
                                             </div>
@@ -439,7 +443,7 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                                                 m.name === medName || m.name_hi === medName ||
                                                 (language === 'hi' && m.name_hi === medName)
                                             );
-                                            const linkHref = medObj ? `/medicines/${medObj.slug}` : '#';
+                                            const linkHref = medObj ? `/${language}/medicines/${medObj.slug}` : '#';
 
                                             return (
                                                 <Link
@@ -473,7 +477,7 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                                         ? 'अपनी स्थिति के लिए व्यक्तिगत आयुर्वेदिक उपचार योजना प्राप्त करें।'
                                         : 'Get a personalized Ayurvedic treatment plan for your condition.'}
                                 </p>
-                                <Link href="/doctors" className="btn btn-primary" style={{ width: '100%' }}>
+                                <Link href={`/${language}/doctors`} className="btn btn-primary" style={{ width: '100%' }}>
                                     {t.consultBtn}
                                 </Link>
                             </div>

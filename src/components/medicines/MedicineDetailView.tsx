@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, CheckCircle, Info, ShieldCheck, Clock, FileText, Scroll, AlertTriangle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import styles from '@/app/medicines/[slug]/page.module.css';
+import styles from '@/app/[lang]/medicines/[slug]/page.module.css';
 
 interface MedicineDetailViewProps {
     medicine: any;
@@ -43,7 +43,7 @@ export default function MedicineDetailView({ medicine }: MedicineDetailViewProps
             <div className={styles.hero}>
                 <div className={`container ${styles.heroContainer}`}>
                     <div className={styles.heroContent}>
-                        <Link href="/medicines" className={styles.backLink}>
+                        <Link href={`/${language}/medicines`} className={styles.backLink}>
                             <ArrowLeft size={16} /> {t.back}
                         </Link>
                         <span className={styles.badge}>{medicine.category}</span>
@@ -133,7 +133,7 @@ export default function MedicineDetailView({ medicine }: MedicineDetailViewProps
                         <div className={styles.stickyCard}>
                             <h3>{t.consultTitle}</h3>
                             <p>{t.consultDesc}</p>
-                            <Link href="/doctors" className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
+                            <Link href={`/${language}/doctors`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
                                 {t.bookConsult}
                             </Link>
 

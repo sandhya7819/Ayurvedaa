@@ -77,7 +77,7 @@ export default function QuickConditions() {
 
                 <div className={styles.grid}>
                     {conditions.map((item) => (
-                        <Link href={`/health-conditions/${item.slug}`} key={item.id} className={styles.card}>
+                        <Link href={`/${language}/health-conditions/${item.slug}`} key={item.id} className={styles.card}>
                             <div className={styles.iconBox} style={{ color: item.color, backgroundColor: `${item.color}15` }}>
                                 <item.icon size={22} strokeWidth={1.8} />
                             </div>

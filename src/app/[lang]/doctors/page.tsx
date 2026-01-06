@@ -106,7 +106,7 @@ export default function DoctorsPage() {
                             </div>
 
                             <div className={styles.actions}>
-                                <Link href={`/doctors/${doctor.id}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
+                                <Link href={`/${language}/doctors/${doctor.id}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
                                     {language === 'hi' ? 'परामर्श बुक करें' : 'Book Consultation'}
                                 </Link>
                             </div>

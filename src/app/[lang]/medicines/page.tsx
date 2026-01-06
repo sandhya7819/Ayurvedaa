@@ -55,7 +55,7 @@ export default function MedicinesPage() {
                                 </div>
 
                                 <div className={styles.footer}>
-                                    <Link href={`/medicines/${med.slug}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
+                                    <Link href={`/${language}/medicines/${med.slug}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
                                         {t.readMore}
                                     </Link>
                                 </div>

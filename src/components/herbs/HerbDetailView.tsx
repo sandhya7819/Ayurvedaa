@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle, AlertTriangle, Leaf, Flame, Activity, Beaker, Heart, Flower2, Coffee, BookOpen, Scroll, HelpCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import styles from '@/app/herbs/[slug]/page.module.css';
+import styles from '@/app/[lang]/herbs/[slug]/page.module.css';
 
 import { healthConditions } from '@/lib/data';
 
@@ -71,7 +71,7 @@ export default function HerbDetailView({ herb }: HerbDetailViewProps) {
             <div className={styles.hero}>
                 <div className={`container ${styles.heroContainer} `}>
                     <div className={styles.heroContent}>
-                        <Link href="/herbs" className={styles.backLink}>
+                        <Link href={`/${language}/herbs`} className={styles.backLink}>
                             <ArrowLeft size={16} /> {t.back}
                         </Link>
                         <span className={styles.doshaTag}>
@@ -128,7 +128,7 @@ export default function HerbDetailView({ herb }: HerbDetailViewProps) {
                                 </h2>
                                 <div className={styles.conditionsGrid} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
                                     {relatedConditions.map((cond) => (
-                                        <Link key={cond.id} href={`/health-conditions/${cond.slug}`} className={styles.conditionCard} style={{
+                                        <Link key={cond.id} href={`/${language}/health-conditions/${cond.slug}`} className={styles.conditionCard} style={{
                                             padding: '1rem',
                                             border: '1px solid var(--border-color)',
                                             borderRadius: 'var(--radius-md)',
@@ -276,7 +276,7 @@ export default function HerbDetailView({ herb }: HerbDetailViewProps) {
                         <div className={styles.stickyCard}>
                             <h3>{t.interested}</h3>
                             <p>{t.productDesc}</p>
-                            <Link href={`/ products ? search = ${herb.slug} `} className="btn btn-outline" style={{ width: '100%', marginBottom: '1rem', textAlign: 'center' }}>
+                            <Link href={`/${language}/products?search=${herb.slug}`} className="btn btn-outline" style={{ width: '100%', marginBottom: '1rem', textAlign: 'center' }}>
                                 {t.findProducts}
                             </Link>
 
@@ -284,7 +284,7 @@ export default function HerbDetailView({ herb }: HerbDetailViewProps) {
 
                             <h3>{t.consultTitle}</h3>
                             <p>{t.consultDesc}</p>
-                            <Link href="/consult" className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
+                            <Link href={`/${language}/consult`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
                                 {t.bookConsult}
                             </Link>
                         </div>

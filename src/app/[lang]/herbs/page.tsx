@@ -87,7 +87,7 @@ export default function HerbsPage() {
                 <div className={styles.grid}>
                     {filteredHerbs.length > 0 ? (
                         filteredHerbs.map((herb) => (
-                            <Link key={herb.id} href={`/herbs/${herb.slug}`} className={styles.card}>
+                            <Link key={herb.id} href={`/${language}/herbs/${herb.slug}`} className={styles.card}>
                                 <div className={styles.imagePlaceholder}>
                                     <Image
                                         src={herb.image}

@@ -47,7 +47,7 @@ export default function ConditionsPage() {
 
                 <div className={styles.grid}>
                     {filteredConditions.map((condition) => (
-                        <Link key={condition.id} href={`/health-conditions/${condition.slug}`} className={styles.card}>
+                        <Link key={condition.id} href={`/${language}/health-conditions/${condition.slug}`} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
                                     src={condition.image}
