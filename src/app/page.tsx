@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import QuickConditions from "@/components/sections/QuickConditions";
 import ConditionCategories from "@/components/sections/ConditionCategories";
 import FeaturedHerbs from "@/components/sections/FeaturedHerbs";
 import TrustedProducts from "@/components/sections/TrustedProducts";
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <QuickConditions />
       <ConditionCategories />
       <FeaturedHerbs />
       <TrustedProducts />
