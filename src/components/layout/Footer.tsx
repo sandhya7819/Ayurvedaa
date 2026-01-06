@@ -1,66 +1,77 @@
 'use client';
 
 import Link from 'next/link';
-import styles from './Footer.module.css';
 import { useLanguage } from '@/context/LanguageContext';
+import styles from './Footer.module.css';
+import { Facebook, Twitter, Instagram, Mail } from 'lucide-react';
 
 export default function Footer() {
-    const { t } = useLanguage();
+    const { language } = useLanguage();
+
+    const t = {
+        about: language === 'hi' ? 'हमारे बारे में' : 'About Us',
+        legal: language === 'hi' ? 'कानूनी' : 'Legal',
+        contact: language === 'hi' ? 'संपर्क करें' : 'Contact Us',
+        quickLinks: language === 'hi' ? 'त्वरित लिंक' : 'Quick Links',
+        disclaimer: language === 'hi' ? 'अस्वीकरण' : 'Disclaimer',
+        privacy: language === 'hi' ? 'गोपनीयता नीति' : 'Privacy Policy',
+        affiliate: language === 'hi' ? 'एफिलिएट डिस्क्लोजर' : 'Affiliate Disclosure',
+        contentPolicy: language === 'hi' ? 'सामग्री नीति' : 'Content Policy',
+        desc: language === 'hi'
+            ? 'आयुर्वेद गाइड: प्राचीन ज्ञान के माध्यम से आधुनिक कल्याण। प्रामाणिक आयुर्वेदिक जानकारी के लिए आपका विश्वसनीय स्रोत।'
+            : 'Ayurveda Guide: Modern wellness through ancient wisdom. Your trusted source for authentic Ayurvedic information.',
+        copyright: language === 'hi'
+            ? '© 2026 आयुर्वेद गाइड। सर्वाधिकार सुरक्षित।'
+            : '© 2026 Ayurveda Guide. All rights reserved.'
+    };
 
     return (
         <footer className={styles.footer}>
             <div className={`container ${styles.container}`}>
-                <div className={styles.grid}>
-                    {/* Brand Column */}
-                    <div className={styles.column}>
-                        <Link href="/" className={styles.logo}>
-                            <span className={styles.logoIcon}>🌿</span>
-                            <span className={styles.logoText}>Ayurveda Guide</span>
-                        </Link>
-                        <p className={styles.description}>
-                            {t('footer_desc')}
-                        </p>
+                <div className={styles.column}>
+                    <div className={styles.logo}>
+                        <span className={styles.logoIcon}>🌿</span>
+                        <span className={styles.logoText}>Ayurveda Guide</span>
                     </div>
-
-                    {/* Quick Links */}
-                    <div className={styles.column}>
-                        <h3 className={styles.heading}>{t('discover')}</h3>
-                        <ul className={styles.links}>
-                            <li><Link href="/herbs">{t('herbs_az')}</Link></li>
-                            <li><Link href="/health-conditions">{t('conditions')}</Link></li>
-                            <li><Link href="/medicines">{t('medicines')}</Link></li>
-                            <li><Link href="/products">{t('curated_products')}</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Support */}
-                    <div className={styles.column}>
-                        <h3 className={styles.heading}>{t('support')}</h3>
-                        <ul className={styles.links}>
-                            <li><Link href="/doctors">{t('find_doctor')}</Link></li>
-                            <li><Link href="/contact">{t('contact_us')}</Link></li>
-                            <li><Link href="/privacy">{t('privacy_policy')}</Link></li>
-                            <li><Link href="/disclaimer">{t('medical_disclaimer')}</Link></li>
-                        </ul>
-                    </div>
-
-                    {/* Connect */}
-                    <div className={styles.column}>
-                        <h3 className={styles.heading}>{t('stay_connected')}</h3>
-                        <p className={styles.text}>{t('subscribe_text')}</p>
-                        <form className={styles.newsletter}>
-                            <input
-                                type="email"
-                                placeholder={t('your_email')}
-                                className={styles.input}
-                            />
-                            <button type="submit" className={styles.subscribeBtn}>→</button>
-                        </form>
+                    <p className={styles.description}>{t.desc}</p>
+                    <div className={styles.social}>
+                        <a href="#" aria-label="Facebook"><Facebook size={20} /></a>
+                        <a href="#" aria-label="Twitter"><Twitter size={20} /></a>
+                        <a href="#" aria-label="Instagram"><Instagram size={20} /></a>
+                        <a href="mailto:contact@ayurvedaguide.com" aria-label="Email"><Mail size={20} /></a>
                     </div>
                 </div>
 
-                <div className={styles.bottom}>
-                    <p>&copy; {new Date().getFullYear()} Ayurveda Guide. {t('rights_reserved')}</p>
+                <div className={styles.column}>
+                    <h3>{t.quickLinks}</h3>
+                    <ul>
+                        <li><Link href="/herbs">{language === 'hi' ? 'जड़ी-बूटियाँ' : 'Herbs'}</Link></li>
+                        <li><Link href="/health-conditions">{language === 'hi' ? 'स्वास्थ्य स्थितियां' : 'Health Conditions'}</Link></li>
+                        <li><Link href="/doctors">{language === 'hi' ? 'डॉक्टर' : 'Doctors'}</Link></li>
+                        <li><Link href="/dosha-test">{language === 'hi' ? 'दोष टेस्ट' : 'Dosha Test'}</Link></li>
+                    </ul>
+                </div>
+
+                <div className={styles.column}>
+                    <h3>{t.legal}</h3>
+                    <ul>
+                        <li><Link href="/legal/disclaimer">{t.disclaimer}</Link></li>
+                        <li><Link href="/legal/affiliate-disclosure">{t.affiliate}</Link></li>
+                        <li><Link href="/legal/content-policy">{t.contentPolicy}</Link></li>
+                        <li><Link href="/privacy">{t.privacy}</Link></li>
+                    </ul>
+                </div>
+
+                <div className={styles.column}>
+                    <h3>{t.contact}</h3>
+                    <p>Email: namaste@ayurvedaguide.com</p>
+                    <p>{language === 'hi' ? 'नई दिल्ली, भारत' : 'New Delhi, India'}</p>
+                </div>
+            </div>
+
+            <div className={styles.bottomBar}>
+                <div className="container">
+                    <p>{t.copyright}</p>
                 </div>
             </div>
         </footer>

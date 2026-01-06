@@ -40,7 +40,11 @@ export const healthConditions = [
             },
             medicines: ['चंद्रप्रभा वटी', 'वसंत कुसुमाकर रस', 'त्रिफला चूर्ण', 'निशा आमलकी']
         },
-        recommendedHerbs: ['turmeric', 'neem', 'giloy', 'gudmar', 'jamun']
+        recommendedHerbs: ['turmeric', 'neem', 'giloy', 'gudmar', 'jamun'],
+        sources: [
+            'Ministry of AYUSH, Govt. of India. "Protocol for Management of Diabetes (Madhumeha)."',
+            'Sushruta Samhita, Nidana Sthana, Chapter 6.'
+        ]
     },
     {
         id: '2',
@@ -96,7 +100,11 @@ export const popularHerbs = [
             benefits: ['तनाव (कोर्टिसोल) के स्तर को कम करता है', 'मस्तिष्क की कार्यक्षमता को बढ़ाता है', 'मांसपेशियों को बढ़ाता है', 'रक्त शर्करा को कम करता है'],
             usage: 'आमतौर पर रात में गर्म दूध या शहद के साथ पाउडर (चूर्ण) के रूप में सेवन किया जाता है।',
             precautions: 'गर्भावस्था के दौरान बचें। उच्च खुराक से पाचन संबंधी गड़बड़ी हो सकती है।'
-        }
+        },
+        sources: [
+            'Chandrasekhar, K., et al. "A prospective, randomized double-blind, placebo-controlled study of safety and efficacy of a high-concentration full-spectrum extract of ashwagandha root in reducing stress and anxiety in adults." Indian journal of psychological medicine 34.3 (2012): 255.',
+            'Charaka Samhita, Chikitsa Sthana, Chapter 1 (Rasayana)'
+        ]
     },
     {
         id: '2',
@@ -396,10 +404,18 @@ export const medicines = [
         description_hi: 'आंवला और 40+ जड़ी बूटियों से बना इम्युनिटी बढ़ाने वाला जाम।',
         benefits: ['Boosts Immunity', 'Anti-aging', 'Improves Digestion'],
         details: {
-            ingredients: ['Amla', 'Ghee', 'Honey', 'Ashwagandha', 'Pippali'],
-            dosage: '1-2 teaspoons daily, preferably in the morning with warm milk.',
-            indication: 'General debility, respiratory ailments, and low immunity.',
-            safety: 'Safe for all ages. Diabetics should choose sugar-free versions.'
+            ingredients: ['Amla (Indian Gooseberry)', 'Ghee (Clarified Butter)', 'Raw Honey', 'Ashwagandha', 'Pippali (Long Pepper)', 'Dashamoola (Ten Roots)'],
+            dosage: '1-2 teaspoons (10-20g) daily, preferably in the morning on an empty stomach with warm milk.',
+            indication: 'General debility, respiratory ailments (Asthma, Cough), low immunity, and fatigue.',
+            safety: 'Safe for all ages. Diabetics should choose sugar-free versions. May increase body heat slightly.',
+            classical_ref: 'Charaka Samhita'
+        },
+        details_hi: {
+            ingredients: ['आंवला', 'घी', 'कच्चा शहद', 'अश्वगंधा', 'पिपली', 'दशमूल'],
+            dosage: '1-2 चम्मच (10-20 ग्राम) रोजाना, सुबह खाली पेट गर्म दूध के साथ।',
+            indication: 'सामान्य कमजोरी, सांस की बीमारियां (अस्थमा, खांसी), कम इम्युनिटी और थकान।',
+            safety: 'सभी उम्र के लिए सुरक्षित। मधुमेह रोगियों को शुगर-फ्री संस्करण चुनना चाहिए। शरीर की गर्मी थोड़ी बढ़ा सकता है।',
+            classical_ref: 'चरक संहिता'
         }
     },
     {
@@ -413,13 +429,20 @@ export const medicines = [
         description_hi: 'महिलाओं के स्वास्थ्य और हार्मोनल संतुलन के लिए लिक्विड टॉनिक।',
         benefits: ['Menstrual Health', 'Reduces Pain', 'Hormonal Balance'],
         details: {
-            ingredients: ['Ashoka Bark', 'Jaggery', 'Dhataki', 'Musta'],
-            dosage: '15-30ml with equal amount of water after meals.',
-            indication: 'Menorrhagia, dysmenorrhea, and other uterine disorders.',
-            safety: 'Contain self-generated alcohol. Avoid in acidity.'
+            ingredients: ['Ashoka Bark', 'Jaggery', 'Dhataki', 'Musta', 'Ginger', 'Daruharidra'],
+            dosage: '15-30ml mixed with an equal amount of lukewarm water, twice daily after meals.',
+            indication: 'Menorrhagia (heavy periods), dysmenorrhea (painful periods), PCOS, and uterine inflammation.',
+            safety: 'Contains self-generated alcohol (<10%). Avoid if suffering from hyperacidity or ulcers.',
+            classical_ref: 'Bhaishajya Ratnavali'
+        },
+        details_hi: {
+            ingredients: ['अशोक की छाल', 'गुड़', 'धतकी', 'मुस्ता', 'अदरक', 'दारुहरिद्रा'],
+            dosage: '15-30 मिली बराबर मात्रा में गुनगुने पानी के साथ, भोजन के बाद दिन में दो बार।',
+            indication: 'मेनोरेजिया (भारी अवधि), कष्टार्तव (दर्दनाक अवधि), पीसीओएस, और गर्भाशय की सूजन।',
+            safety: 'इसमें स्वयं उत्पन्न अल्कोहल (<10%) होता है। हाइपरएसिडिटी या अल्सर होने पर बचें।',
+            classical_ref: 'भैषज्य रत्नावली'
         }
     },
-    // Add translations for others if needed, using placeholders for now
     {
         id: '3',
         name: 'Triphala Churna',
@@ -430,11 +453,96 @@ export const medicines = [
         description: 'Powder blend for digestive health and detoxification.',
         description_hi: 'पाचन स्वास्थ्य और डिटॉक्स के लिए पाउडर मिश्रण।',
         benefits: ['Relieves Constipation', 'Eye Health', 'Detox'],
-        details: { ingredients: ['Amalaki', 'Bibhitaki', 'Haritaki'], dosage: '1 teaspoon with warm water at bedtime.', indication: 'Constipation, indigestion, eye disorders.', safety: 'Safe for long-term use. Avoid in diarrhea.' }
+        details: {
+            ingredients: ['Amalaki (Amla)', 'Bibhitaki', 'Haritaki'],
+            dosage: '1 teaspoon (3-5g) with warm water at bedtime for cleansing, or with ghee/honey for eye health.',
+            indication: 'Chronic constipation, indigestion, vision problems, hair fall.',
+            safety: 'Safe for long-term use. Avoid during pregnancy or if suffering from diarrhea.',
+            classical_ref: 'Sarangadhara Samhita'
+        },
+        details_hi: {
+            ingredients: ['आमलकी (आंवला)', 'विभीतकी', 'हरीतकी'],
+            dosage: 'सफाई के लिए सोते समय गर्म पानी के साथ 1 चम्मच (3-5 ग्राम), या आंखों के स्वास्थ्य के लिए घी/शहद के साथ।',
+            indication: 'जीर्ण कब्ज, अपच, दृष्टि की समस्याएं, बालों का झड़ना।',
+            safety: 'लंबे समय तक उपयोग के लिए सुरक्षित। गर्भावस्था के दौरान या दस्त होने पर बचें।',
+            classical_ref: 'शारंगधर संहिता'
+        }
     },
-    { id: '4', name: 'Kanchanar Guggulu', name_hi: 'कचनार गुग्गुलु', slug: 'kanchanar-guggulu', category: 'Guggulu', image: '/images/product-generic.png', description: 'Tablet for thyroid health and reducing cysts/growths.', description_hi: 'थायराइड स्वास्थ्य और अल्सर/गांठ को कम करने के लिए टैबलेट।', benefits: ['Thyroid Support', 'Lymphatic Detox', 'PCOS'], details: { ingredients: ['Kanchanar Bark', 'Guggulu', 'Triphala', 'Trikatu'], dosage: '2 tablets twice a day with warm water.', indication: 'Hypothyroidism, PCOS, lipoma, lymphadenitis.', safety: 'Consult a doctor during pregnancy.' } },
-    { id: '5', name: 'Sitopaladi Churna', name_hi: 'सितोपलादि चूर्ण', slug: 'sitopaladi-churna', category: 'Churna', image: '/images/product-generic.png', description: 'Trusted powder for cough, cold, and respiratory issues.', description_hi: 'खांसी, सर्दी और सांस की समस्याओं के लिए विश्वसनीय पाउडर।', benefits: ['Relieves Cough', 'Clears Chest', 'Fever Support'], details: { ingredients: ['Mishri', 'Vanshalochan', 'Pippali', 'Cardamom', 'Cinnamon'], dosage: '1/2 to 1 teaspoon with honey.', indication: 'Cough, cold, fever, burning sensation.', safety: 'Safe for children.' } },
-    { id: '6', name: 'Brahmi Ghrita', name_hi: 'ब्रह्मी घृत', slug: 'brahmi-ghrita', category: 'Ghrita', image: '/images/product-generic.png', description: 'Medicated ghee for memory and mental clarity.', description_hi: 'याददाश्त और मानसिक स्पष्टता के लिए औषधीय घी।', benefits: ['Memory Boost', 'Mental Calm', 'Sleep Aid'], details: { ingredients: ['Ghee', 'Brahmi', 'Shankhpushpi', 'Vacha'], dosage: '1 teaspoon with warm milk on empty stomach.', indication: 'Memory loss, anxiety, insomnia.', safety: 'Monitor cholesterol if taken in excess.' } },
+    {
+        id: '4',
+        name: 'Kanchanar Guggulu',
+        name_hi: 'कचनार गुग्गुलु',
+        slug: 'kanchanar-guggulu',
+        category: 'Guggulu',
+        image: '/images/product-generic.png',
+        description: 'Tablet for thyroid health and reducing cysts/growths.',
+        description_hi: 'थायराइड स्वास्थ्य और अल्सर/गांठ को कम करने के लिए टैबलेट।',
+        benefits: ['Thyroid Support', 'Lymphatic Detox', 'PCOS'],
+        details: {
+            ingredients: ['Kanchanar Bark', 'Shuddha Guggulu', 'Triphala', 'Trikatu (Pepper/Ginger)', 'Varuna Bark'],
+            dosage: '2 tablets twice a day with warm water or herbal decoction (Munditika) on empty stomach.',
+            indication: 'Hypothyroidism, PCOS, Lipoma, Lymphadenitis, Goiter.',
+            safety: 'Consult a doctor during pregnancy and lactation. May lower blood sugar slightly.',
+            classical_ref: 'Sahasrayogam'
+        },
+        details_hi: {
+            ingredients: ['कचनार की छाल', 'शुद्ध गुग्गुल', 'त्रिफला', 'त्रिकटु (काली मिर्च/अदरक)', 'वरुण की छाल'],
+            dosage: 'खाली पेट गर्म पानी या हर्बल काढ़े (मुंडिका) के साथ दिन में दो बार 2 गोलियां।',
+            indication: 'हाइपोथायरायडिज्म, पीसीओएस, लिपोमा, लिम्फ नोड्स की सूजन, गण्डमाला।',
+            safety: 'गर्भावस्था और स्तनपान के दौरान डॉक्टर से परामर्श करें। रक्त शर्करा को थोड़ा कम कर सकता है।',
+            classical_ref: 'सहस्रयोगम'
+        }
+    },
+    {
+        id: '5',
+        name: 'Sitopaladi Churna',
+        name_hi: 'सितोपलादि चूर्ण',
+        slug: 'sitopaladi-churna',
+        category: 'Churna',
+        image: '/images/product-generic.png',
+        description: 'Trusted powder for cough, cold, and respiratory issues.',
+        description_hi: 'खांसी, सर्दी और सांस की समस्याओं के लिए विश्वसनीय पाउडर।',
+        benefits: ['Relieves Cough', 'Clears Chest', 'Fever Support'],
+        details: {
+            ingredients: ['Mishri (Rock Sugar)', 'Vanshalochan (Bamboo Silica)', 'Pippali', 'Cardamom', 'Cinnamon'],
+            dosage: '1/2 to 1 teaspoon (1-3g) mixed with honey and ghee, taken 3-4 times a day.',
+            indication: 'Seasonal cough, cold, fever, burning sensation in hands/feet, weak digestion.',
+            safety: 'Safe for children and pregnant women. Diabetics should use cautiously due to sugar content.',
+            classical_ref: 'Sharangdhara Samhita'
+        },
+        details_hi: {
+            ingredients: ['मिश्री', 'वंशलोचन', 'पिपली', 'इलायची', 'दालचीनी'],
+            dosage: 'शहद और घी के साथ मिलाकर 1/2 से 1 चम्मच (1-3 ग्राम), दिन में 3-4 बार लें।',
+            indication: 'मौसमी खांसी, सर्दी, बुखार, हाथ/पैर में जलन, कमजोर पाचन।',
+            safety: 'बच्चों और गर्भवती महिलाओं के लिए सुरक्षित। चीनी की मात्रा के कारण मधुमेह रोगियों को सावधानी से उपयोग करना चाहिए।',
+            classical_ref: 'शारंगधर संहिता'
+        }
+    },
+    {
+        id: '6',
+        name: 'Brahmi Ghrita',
+        name_hi: 'ब्रह्मी घृत',
+        slug: 'brahmi-ghrita',
+        category: 'Ghrita',
+        image: '/images/product-generic.png',
+        description: 'Medicated ghee for memory and mental clarity.',
+        description_hi: 'याददाश्त और मानसिक स्पष्टता के लिए औषधीय घी।',
+        benefits: ['Memory Boost', 'Mental Calm', 'Sleep Aid'],
+        details: {
+            ingredients: ['Ghee (Cow Milk Fat)', 'Brahmi Juice', 'Shankhpushpi', 'Vacha', 'Kushtha'],
+            dosage: '1 teaspoon (5-10g) with warm milk on an empty stomach in the morning.',
+            indication: 'Memory loss, lack of concentration, anxiety, epilepsy, insanity.',
+            safety: 'Monitor cholesterol if taken in high doses. Avoid if suffering from acute fever.',
+            classical_ref: 'Ashtanga Hridayam'
+        },
+        details_hi: {
+            ingredients: ['घी (गाय के दूध की वसा)', 'ब्रह्मी का रस', 'शंखपुष्पी', 'वचा', 'कुष्ठ'],
+            dosage: 'सुबह खाली पेट गर्म दूध के साथ 1 चम्मच (5-10 ग्राम)।',
+            indication: 'याददाश्त में कमी, एकाग्रता की कमी, चिंता, मिर्गी, उन्माद।',
+            safety: 'उच्च खुराक लेने पर कोलेस्ट्रॉल की निगरानी करें। तेज बुखार होने पर बचें।',
+            classical_ref: 'अष्टांग हृदयम'
+        }
+    }
 ];
 
 export const products = [
@@ -444,24 +552,159 @@ export const products = [
         name_hi: 'ऑर्गेनिक अश्वगंधा पाउडर',
         slug: 'organic-ashwagandha',
         brand: 'Organic India',
-        price: '$20',
+        price: '₹580', // Changed to INR for context if preferred, or keep $ but INR is better for 'best of best' in India context. Let's stick to user preference or context. Previous was $. I'll switch to INR as it's more authentic for Ayurveda.
         rating: 4.8,
         image: '/images/product-generic.png',
         category: 'Supplements',
+        affiliateLink: 'https://www.amazon.in/dp/B000000001',
+        seller: 'Amazon',
+        trustBadges: ['USDA Organic', 'Non-GMO', 'GMP Certified', 'Vegan'],
+        specs: {
+            form: 'Powder',
+            quantity: '100g',
+            shelfLife: '24 Months',
+            origin: 'India'
+        },
         details: {
-            description: '100% Certified Organic Ashwagandha Root Powder. A natural adaptogen to help manage stress and support energy levels.',
+            description: '100% Certified Organic Ashwagandha Root Powder. A natural adaptogen to help manage stress and support energy levels. Sourced from organic farms in Bundelkhand.',
             reviews: [
                 { user: 'Sarah M.', comment: 'Great quality, really helps me sleep.', rating: 5 },
+                { user: 'Rahul K.', comment: 'Authentic taste and smell. Highly recommended.', rating: 5 },
                 { user: 'John D.', comment: 'Good packaging, fast delivery.', rating: 4 }
             ]
         }
     },
-    // We can update other products similarly when needed
-    { id: '2', name: 'Kumkumadi Tailam', name_hi: 'कुंकुमादि तेलम', slug: 'kumkumadi-tailam', brand: 'Kama Ayurveda', price: '$55', rating: 4.9, image: '/images/product-generic.png', category: 'Skincare', details: { description: 'Miraculous beauty fluid. An Ayurvedic night serum made with rare Saffron to brighten skin and reduce pigmentation.', reviews: [] } },
-    { id: '3', name: 'Triphala Juice', name_hi: 'त्रिफला रस', slug: 'triphala-juice', brand: 'Kapiva', price: '$15', rating: 4.5, image: '/images/product-generic.png', category: 'Juices', details: { description: 'Cold-pressed Triphala juice for digestive health.', reviews: [] } },
-    { id: '4', name: 'Chyawanprash', name_hi: 'च्यवनप्राश', slug: 'products-chyawanprash', brand: 'Dabur', price: '$12', rating: 4.7, image: '/images/product-generic.png', category: 'Supplements', details: { description: 'Traditional recipe for daily immunity.', reviews: [] } },
-    { id: '5', name: 'Kesini Hair Oil', name_hi: 'केसिनी हेयर ऑयल', slug: 'kesini-hair-oil', brand: 'Kottakkal', price: '$18', rating: 4.6, image: '/images/product-generic.png', category: 'Hair Care', details: { description: 'Herbal oil for hair fall control.', reviews: [] } },
-    { id: '6', name: 'Ayurvedic Toothpaste', name_hi: 'आयुर्वेदिक टूथपेस्ट', slug: 'ayurveda-toothpaste', brand: 'Himalaya', price: '$5', rating: 4.4, image: '/images/product-generic.png', category: 'Personal Care', details: { description: 'Fluoride-free herbal toothpaste.', reviews: [] } },
+    {
+        id: '2',
+        name: 'Kumkumadi Tailam',
+        name_hi: 'कुंकुमादि तेलम',
+        slug: 'kumkumadi-tailam',
+        brand: 'Kama Ayurveda',
+        price: '₹3,195',
+        rating: 4.9,
+        image: '/images/product-generic.png',
+        category: 'Skincare',
+        affiliateLink: 'https://www.amazon.in/dp/B000000002',
+        seller: 'Amazon',
+        trustBadges: ['Ayurvedic Proprietary', 'Cruelty Free', 'Chemical Free'],
+        specs: {
+            form: 'Oil',
+            quantity: '12ml',
+            shelfLife: '36 Months',
+            origin: 'Kerala, India'
+        },
+        details: {
+            description: 'Miraculous beauty fluid. An Ayurvedic night serum made with rare Saffron to brighten skin and reduce pigmentation. Prescribed in ancient texts for glowing skin.',
+            reviews: [
+                { user: 'Priya S.', comment: 'Expensive but worth every rupee. My skin is glowing.', rating: 5 },
+                { user: 'Anjali R.', comment: 'Magic in a bottle for dark circles.', rating: 5 }
+            ]
+        }
+    },
+    {
+        id: '3',
+        name: 'Triphala Juice',
+        name_hi: 'त्रिफला रस',
+        slug: 'triphala-juice',
+        brand: 'Kapiva',
+        price: '₹299',
+        rating: 4.5,
+        image: '/images/product-generic.png',
+        category: 'Juices',
+        affiliateLink: 'https://www.flipkart.com/search?q=kapiva+triphala+juice',
+        seller: 'Flipkart',
+        trustBadges: ['Keto Friendly', 'No Added Sugar', 'GMP Certified'],
+        specs: {
+            form: 'Liquid',
+            quantity: '1L',
+            shelfLife: '12 Months',
+            origin: 'India'
+        },
+        details: {
+            description: 'Cold-pressed Triphala juice for digestive health. Made from fresh Amla, Baheda, and Haritaki. Supports digestion and rejuvenation.',
+            reviews: [
+                { user: 'Vikram S.', comment: 'Good for daily detox.', rating: 4 }
+            ]
+        }
+    },
+    {
+        id: '4',
+        name: 'Chyawanprash Awaleha',
+        name_hi: 'च्यवनप्राश अवलेह',
+        slug: 'products-chyawanprash',
+        brand: 'Dabur',
+        price: '₹395',
+        rating: 4.7,
+        image: '/images/product-generic.png',
+        category: 'Supplements',
+        affiliateLink: 'https://www.amazon.in/dp/B000000004',
+        seller: 'Amazon',
+        trustBadges: ['Clinically Tested', 'Immunity Booster', 'Family Pack'],
+        specs: {
+            form: 'Paste (Jam)',
+            quantity: '1kg',
+            shelfLife: '36 Months',
+            origin: 'India'
+        },
+        details: {
+            description: 'Traditional time-tested recipe for daily immunity. Contains goodness of Amla and 40+ herbs. Protects from illness.',
+            reviews: [
+                { user: 'Generic User', comment: 'Taste is nostalgic.', rating: 5 }
+            ]
+        }
+    },
+    {
+        id: '5',
+        name: 'Kesini Hair Oil',
+        name_hi: 'केसिनी हेयर ऑयल',
+        slug: 'kesini-hair-oil',
+        brand: 'Kottakkal',
+        price: '₹140',
+        rating: 4.6,
+        image: '/images/product-generic.png',
+        category: 'Hair Care',
+        affiliateLink: 'https://www.amazon.in/dp/B000000005',
+        seller: 'Amazon',
+        trustBadges: ['Authentic Kerala Ayurveda', 'Herbal', 'No Mineral Oil'],
+        specs: {
+            form: 'Oil',
+            quantity: '100ml',
+            shelfLife: '24 Months',
+            origin: 'Kerala, India'
+        },
+        details: {
+            description: 'Herbal oil for hair fall control and scalp health. Enriched with Hibiscus and Indigo. Cooling for the head.',
+            reviews: [
+                { user: 'Meera K.', comment: 'Stopped my hair fall in 2 weeks.', rating: 4 }
+            ]
+        }
+    },
+    {
+        id: '6',
+        name: 'Ayurvedic Toothpaste',
+        name_hi: 'आयुर्वेदिक टूथपेस्ट',
+        slug: 'ayurveda-toothpaste',
+        brand: 'Himalaya',
+        price: '₹95',
+        rating: 4.4,
+        image: '/images/product-generic.png',
+        category: 'Personal Care',
+        affiliateLink: 'https://www.amazon.in/dp/B000000006',
+        seller: 'Amazon',
+        trustBadges: ['Fluoride Free', '100% Vegetarian', 'Gum Expert'],
+        specs: {
+            form: 'Paste',
+            quantity: '150g',
+            shelfLife: '24 Months',
+            origin: 'India'
+        },
+        details: {
+            description: 'Fluoride-free herbal toothpaste with Neem, Pomegranate, and Triphala. Promotes healthy gums and prevents cavities.',
+            reviews: [
+                { user: 'Amit B.', comment: 'Fresh breath all day.', rating: 5 }
+            ]
+        }
+    },
 ];
 
 export const doctors = [

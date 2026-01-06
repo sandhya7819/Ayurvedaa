@@ -6,6 +6,8 @@ import { ArrowLeft, Stethoscope, Activity, Utensils, Check, X, Pill, Leaf, Heart
 import { useLanguage } from '@/context/LanguageContext';
 import styles from '@/app/health-conditions/[slug]/page.module.css';
 
+import { medicines as allMedicines } from '@/lib/data';
+
 interface ConditionDetailViewProps {
     condition: any;
     recommendedHerbs: any[];
@@ -13,6 +15,9 @@ interface ConditionDetailViewProps {
 
 export default function ConditionDetailView({ condition, recommendedHerbs }: ConditionDetailViewProps) {
     const { language } = useLanguage();
+
+    // ... (rest of logic)
+    const medicinesList = language === 'hi' && condition.details_hi ? condition.details_hi.medicines : condition.details.medicines;
 
     const name = language === 'hi' ? (condition.name_hi || condition.name) : condition.name;
     const description = language === 'hi' ? (condition.description_hi || condition.description) : condition.description;
@@ -171,6 +176,17 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                                 </ul>
                             </section>
                         )}
+
+
+                        {/* Sources */}
+                        {condition.sources && (
+                            <section className={styles.section} style={{ marginTop: '3rem', fontSize: '0.85rem', color: '#6b7280', borderTop: '1px solid #e5e7eb', paddingTop: '1.5rem' }}>
+                                <h3 style={{ fontSize: '1rem', color: '#374151', marginBottom: '0.5rem' }}>📚 Scientific & Classical References</h3>
+                                <ul style={{ paddingLeft: '1.5rem' }}>
+                                    {condition.sources.map((s: string, i: number) => <li key={i} style={{ marginBottom: '0.25rem' }}>{s}</li>)}
+                                </ul>
+                            </section>
+                        )}
                     </div>
 
                     {/* Right: Recommended Herbs & Medicines */}
@@ -200,26 +216,51 @@ export default function ConditionDetailView({ condition, recommendedHerbs }: Con
                             )}
 
                             {/* Medicines Section */}
-                            {medicines && (
+                            {medicinesList && (
                                 <div style={{ marginTop: '2rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
                                     <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
                                         <Pill size={20} /> {t.medicines}
                                     </h3>
                                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                                        {medicines.map((med: string, i: number) => (
-                                            <span key={i} style={{ background: '#e0e7ff', color: '#3730a3', padding: '0.25rem 0.75rem', borderRadius: 'full', fontSize: '0.9rem', fontWeight: 500, border: '1px solid #c7d2fe' }}>
-                                                {med}
-                                            </span>
-                                        ))}
+                                        {medicinesList.map((medName: string, i: number) => {
+                                            // Find medicine slug by name (simplified exact match for now)
+                                            const medObj = allMedicines.find(m =>
+                                                m.name === medName || m.name_hi === medName ||
+                                                (language === 'hi' && m.name_hi === medName)
+                                            );
+                                            const linkHref = medObj ? `/medicines/${medObj.slug}` : '#';
+
+                                            return (
+                                                <Link
+                                                    key={i}
+                                                    href={linkHref}
+                                                    style={{
+                                                        background: '#e0e7ff',
+                                                        color: '#3730a3',
+                                                        padding: '0.25rem 0.75rem',
+                                                        borderRadius: '9999px',
+                                                        fontSize: '0.9rem',
+                                                        fontWeight: 500,
+                                                        border: '1px solid #c7d2fe',
+                                                        textDecoration: 'none',
+                                                        cursor: medObj ? 'pointer' : 'default'
+                                                    }}
+                                                >
+                                                    {medName}
+                                                </Link>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             )}
 
-                            <div className={styles.ctaBox} style={{ marginTop: '2rem', background: '#f8fafc', padding: '1.5rem', borderRadius: '12px', textAlign: 'center', border: '1px solid #e2e8f0' }}>
-                                <Stethoscope size={32} style={{ margin: '0 auto 1rem', color: 'var(--primary-color)' }} />
-                                <h4 style={{ marginBottom: '0.5rem' }}>Custom Ayurvedic Plan?</h4>
-                                <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-                                    Get a personalized diet and treatment plan from expert Vaidyas.
+                            {/* CTA */}
+                            <div style={{ marginTop: '3rem', background: '#f0fdf4', padding: '2rem', borderRadius: '1rem', textAlign: 'center', border: '1px solid #bbf7d0' }}>
+                                <h3 style={{ color: '#166534', marginBottom: '0.5rem' }}>{language === 'hi' ? 'विशेषज्ञ की सलाह चाहिए?' : 'Need Expert Advice?'}</h3>
+                                <p style={{ color: '#15803d', marginBottom: '1.5rem' }}>
+                                    {language === 'hi'
+                                        ? 'अपनी स्थिति के लिए व्यक्तिगत आयुर्वेदिक उपचार योजना प्राप्त करें।'
+                                        : 'Get a personalized Ayurvedic treatment plan for your condition.'}
                                 </p>
                                 <Link href="/doctors" className="btn btn-primary" style={{ width: '100%' }}>
                                     {t.consultBtn}

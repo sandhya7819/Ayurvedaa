@@ -6,12 +6,19 @@ import { ArrowLeft, CheckCircle, AlertTriangle, Leaf, Flame, Activity, Beaker, H
 import { useLanguage } from '@/context/LanguageContext';
 import styles from '@/app/herbs/[slug]/page.module.css';
 
+import { healthConditions } from '@/lib/data';
+
 interface HerbDetailViewProps {
     herb: any;
 }
 
 export default function HerbDetailView({ herb }: HerbDetailViewProps) {
     const { language } = useLanguage();
+
+    // Find conditions that recommend this herb
+    const relatedConditions = healthConditions.filter(condition =>
+        condition.recommendedHerbs.includes(herb.slug)
+    );
 
     const name = language === 'hi' ? (herb.name_hi || herb.name) : herb.name;
     const benefit = language === 'hi' ? (herb.benefit_hi || herb.benefit) : herb.benefit;
@@ -112,6 +119,32 @@ export default function HerbDetailView({ herb }: HerbDetailViewProps) {
                                 </div>
                             )}
                         </section>
+
+                        {/* Disease Mapping (Treats Conditions) */}
+                        {relatedConditions.length > 0 && (
+                            <section className={styles.section}>
+                                <h2 className={styles.sectionTitle}>
+                                    <Activity className={styles.titleIcon} /> {language === 'hi' ? 'इन बीमारियों में लाभकारी' : 'Treats Conditions'}
+                                </h2>
+                                <div className={styles.conditionsGrid} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+                                    {relatedConditions.map((cond) => (
+                                        <Link key={cond.id} href={`/health-conditions/${cond.slug}`} className={styles.conditionCard} style={{
+                                            padding: '1rem',
+                                            border: '1px solid var(--border-color)',
+                                            borderRadius: 'var(--radius-md)',
+                                            textAlign: 'center',
+                                            textDecoration: 'none',
+                                            color: 'inherit',
+                                            transition: 'all 0.2s',
+                                            background: 'white'
+                                        }}>
+                                            <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{language === 'hi' ? (cond.name_hi || cond.name) : cond.name}</div>
+                                            <span style={{ fontSize: '0.8rem', color: 'var(--primary-color)' }}>{language === 'hi' ? 'और जानें →' : 'Learn more →'}</span>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </section>
+                        )}
 
                         {/* Mythology (If Exists) */}
                         {mythology && (
@@ -256,6 +289,17 @@ export default function HerbDetailView({ herb }: HerbDetailViewProps) {
                             </Link>
                         </div>
                     </aside>
+                    {/* Sources / References */}
+                    {herb.sources && (
+                        <div className={`${styles.card} ${styles.references}`}>
+                            <h3>📚 References & Sources</h3>
+                            <ul style={{ fontSize: '0.85rem', color: '#666', paddingLeft: '1.5rem', marginTop: '1rem' }}>
+                                {herb.sources.map((source: string, i: number) => (
+                                    <li key={i} style={{ marginBottom: '0.5rem' }}>{source}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </article>

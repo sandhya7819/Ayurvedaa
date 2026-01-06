@@ -6,6 +6,7 @@ import { Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import TrustSection from '@/components/sections/TrustSection';
 
 export default function ProductsPage() {
     const { language } = useLanguage();
@@ -73,6 +74,11 @@ export default function ProductsPage() {
                         </Link>
                     ))}
                 </div>
+            </div>
+
+            {/* Trust Section */}
+            <div style={{ marginTop: '4rem' }}>
+                <TrustSection />
             </div>
         </div>
     );

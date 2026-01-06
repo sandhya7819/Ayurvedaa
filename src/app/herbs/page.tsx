@@ -12,6 +12,7 @@ export default function HerbsPage() {
     const { language, t } = useLanguage();
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedDosha, setSelectedDosha] = useState('All');
+    const [selectedLetter, setSelectedLetter] = useState('All');
 
     const filteredHerbs = popularHerbs.filter(herb => {
         const name = language === 'hi' ? (herb.name_hi || herb.name) : herb.name;
@@ -20,7 +21,9 @@ export default function HerbsPage() {
         const matchesSearch = name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             benefit.toLowerCase().includes(searchTerm.toLowerCase());
         const matchesDosha = selectedDosha === 'All' || herb.dosha.includes(selectedDosha);
-        return matchesSearch && matchesDosha;
+        const matchesLetter = selectedLetter === 'All' || name.startsWith(selectedLetter);
+
+        return matchesSearch && matchesDosha && matchesLetter;
     });
 
     return (
@@ -65,6 +68,19 @@ export default function HerbsPage() {
                             <option value="Tridosha">{language === 'hi' ? 'त्रिदोष (तीनों)' : 'Tridosha (All 3)'}</option>
                         </select>
                     </div>
+                </div>
+
+                {/* Alphabet Filter */}
+                <div className={styles.alphabetFilter}>
+                    {['All', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')].map((char) => (
+                        <button
+                            key={char}
+                            className={`${styles.alphaBtn} ${selectedLetter === char ? styles.activeAlpha : ''}`}
+                            onClick={() => setSelectedLetter(char)}
+                        >
+                            {char}
+                        </button>
+                    ))}
                 </div>
 
                 {/* Grid */}

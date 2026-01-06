@@ -69,6 +69,62 @@
     }
 }
 
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+    }
+
+    .searchWrapper {
+        width: 100%;
+    }
+
+    .filterWrapper {
+        width: 100%;
+    }
+}
+
+.alphabetFilter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.alphaBtn {
+    border: 1px solid var(--border-color);
+    background: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+}
+
+.alphaBtn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.activeAlpha {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.alphaBtn:first-child {
+    width: auto;
+    padding: 0 1rem;
+    border-radius: 16px;
+}
+
 .searchWrapper {
     position: relative;
     flex: 1;

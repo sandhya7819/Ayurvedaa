@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import styles from './Header.module.css';
-import { Search, Menu, Languages } from 'lucide-react';
+import { Menu, Languages, User } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import UniversalSearch from '../search/UniversalSearch';
 
 export default function Header() {
     const { t, language, setLanguage } = useLanguage();
@@ -23,6 +24,7 @@ export default function Header() {
                         <li><Link href="/medicines" className={styles.navLink}>{t('medicines')}</Link></li>
                         <li><Link href="/products" className={styles.navLink}>{t('products')}</Link></li>
                         <li><Link href="/doctors" className={styles.navLink}>{t('consult')}</Link></li>
+                        <li><Link href="/guides" className={styles.navLink}>{language === 'hi' ? 'गाइड्स' : 'Guides'}</Link></li>
                     </ul>
                 </nav>
 
@@ -32,14 +34,20 @@ export default function Header() {
                         onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
                         title="Switch Language / भाषा बदलें"
                     >
-                        <Languages size={16} />
+                        <Languages size={18} />
                         <span>{language === 'en' ? 'EN' : 'HI'}</span>
                     </button>
 
-                    <button className={styles.searchBtn} aria-label="Search">
-                        <Search size={20} />
-                    </button>
-                    <Link href="/consult" className="btn btn-primary">
+                    <div className={styles.searchWrapper}>
+                        <UniversalSearch />
+                    </div>
+
+                    <Link href="/auth/login" className={styles.iconBtn} title={language === 'hi' ? 'लॉगिन' : 'Login'}>
+                        <User size={22} />
+                    </Link>
+
+                    <Link href="/consult" className="btn btn-primary" style={{ display: 'none' }}>
+                        {/* Hidden on desktop as Doctors link exists, kept for logic if needed */}
                         {t('consult')}
                     </Link>
                     <button className={styles.mobileMenuBtn} aria-label="Menu">

@@ -7,22 +7,22 @@ import { useLanguage } from '@/context/LanguageContext';
 import { useVoiceSearch } from '@/hooks/useVoiceSearch';
 import styles from './Hero.module.css';
 
-// Mock Suggestions Data
-const SUGGESTIONS = [
-    { title: 'Ashwagandha', type: 'Herb', slug: '/herbs/ashwagandha' },
-    { title: 'Diabetes Care', type: 'Condition', slug: '/health-conditions/diabetes' },
-    { title: 'Triphala Churna', type: 'Medicine', slug: '/medicines/triphala' },
-    { title: 'Immunity Booster', type: 'Condition', slug: '/health-conditions/immunity' },
-    { title: 'Arthritis Relief', type: 'Condition', slug: '/health-conditions/arthritis' },
-    { title: 'Tulsi (Holy Basil)', type: 'Herb', slug: '/herbs/tulsi' },
-    { title: 'Digestive Health', type: 'Issue', slug: '/health-conditions/digestion' },
-    { title: 'Brahmi', type: 'Herb', slug: '/herbs/brahmi' },
-];
+import { popularHerbs, healthConditions, medicines } from '@/lib/data';
+
+// Combine real data for search
+const getAllItems = (lang: string) => {
+    const items: any[] = [];
+    popularHerbs.forEach(h => items.push({ title: lang === 'hi' ? (h.name_hi || h.name) : h.name, type: 'Herb', slug: `/herbs/${h.slug}` }));
+    healthConditions.forEach(c => items.push({ title: lang === 'hi' ? (c.name_hi || c.name) : c.name, type: 'Condition', slug: `/health-conditions/${c.slug}` }));
+    medicines.forEach(m => items.push({ title: lang === 'hi' ? (m.name_hi || m.name) : m.name, type: 'Medicine', slug: `/medicines/${m.slug}` }));
+    return items;
+};
 
 export default function Hero() {
     const { language: lang, t } = useLanguage();
     const [searchTerm, setSearchTerm] = useState('');
     const [showSuggestions, setShowSuggestions] = useState(false);
+    const [activeTab, setActiveTab] = useState<'All' | 'Herb' | 'Condition' | 'Medicine'>('All');
     const searchRef = useRef<HTMLDivElement>(null);
 
     const { isListening, isSupported, toggleListening, error } = useVoiceSearch({
@@ -33,7 +33,7 @@ export default function Hero() {
         lang
     });
 
-    // Handle clicking outside to close suggestions
+    // Handle clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
@@ -44,8 +44,12 @@ export default function Hero() {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const allItems = getAllItems(lang);
     const filteredSuggestions = searchTerm.length > 0
-        ? SUGGESTIONS.filter(s => s.title.toLowerCase().includes(searchTerm.toLowerCase()))
+        ? allItems.filter(s =>
+            s.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            (activeTab === 'All' || s.type === activeTab)
+        ).slice(0, 6)
         : [];
 
     return (
@@ -62,6 +66,32 @@ export default function Hero() {
                     <p className={styles.subtitle}>
                         {t('hero_subtitle')}
                     </p>
+
+                    {/* Search Tabs */}
+                    <div className={styles.searchTabs} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', justifyContent: 'center' }}>
+                        {['All', 'Herb', 'Condition', 'Medicine'].map(tab => (
+                            <button
+                                key={tab}
+                                onClick={() => setActiveTab(tab as any)}
+                                style={{
+                                    background: activeTab === tab ? '#10b981' : 'rgba(255,255,255,0.2)',
+                                    color: 'white',
+                                    border: 'none',
+                                    padding: '0.5rem 1rem',
+                                    borderRadius: '20px',
+                                    cursor: 'pointer',
+                                    fontSize: '0.9rem',
+                                    backdropFilter: 'blur(5px)',
+                                    transition: 'all 0.2s'
+                                }}
+                            >
+                                {tab === 'All' ? (lang === 'hi' ? 'सभी' : 'All') : tab}
+                                {tab === 'Herb' && (lang === 'hi' ? '(जड़ी-बूटियाँ)' : '')}
+                                {tab === 'Condition' && (lang === 'hi' ? '(बीमारियाँ)' : '')}
+                                {tab === 'Medicine' && (lang === 'hi' ? '(दवाइयाँ)' : '')}
+                            </button>
+                        ))}
+                    </div>
 
                     {/* Search Container */}
                     <div className={styles.searchContainer} ref={searchRef}>
