@@ -31,7 +31,7 @@ export default function HerbsPage() {
             {/* Header */}
             <div className={styles.header}>
                 <div className="container">
-                    <h1 className={styles.title}>{language === 'hi' ? 'जड़ी-बूटी ज्ञान प्रणाली' : 'Herbs Knowledge System'}</h1>
+                    <h1 className={styles.title}>{language === 'hi' ? 'A-Z जड़ी-बूटी निर्देशिका' : 'A-Z Herbs Directory'}</h1>
                     <p className={styles.subtitle}>
                         {language === 'hi'
                             ? 'प्रकृति के सबसे शक्तिशाली उपचार पौधों की A-Z मार्गदर्शिका।'
