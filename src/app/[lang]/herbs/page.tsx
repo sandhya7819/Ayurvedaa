@@ -52,7 +52,10 @@ export default function HerbsPage() {
                             value={searchTerm}
                             onChange={(e) => {
                                 setSearchTerm(e.target.value);
-                                if (e.target.value) setSelectedLetter('All');
+                                if (e.target.value) {
+                                    setSelectedLetter('All');
+                                    setSelectedDosha('All');
+                                }
                             }}
                         />
                     </div>
