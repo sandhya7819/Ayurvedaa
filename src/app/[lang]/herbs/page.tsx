@@ -50,7 +50,10 @@ export default function HerbsPage() {
                             placeholder={language === 'hi' ? "जड़ी-बूटी के नाम या लाभ से खोजें..." : "Search herbs by name or benefit..."}
                             className={styles.searchInput}
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onChange={(e) => {
+                                setSearchTerm(e.target.value);
+                                if (e.target.value) setSelectedLetter('All');
+                            }}
                         />
                     </div>
 
