@@ -1,68 +1,84 @@
 'use client';
 
-import { medicines } from '@/lib/data';
+import { products } from '@/lib/data';
 import styles from './page.module.css';
+import { Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import TrustSection from '@/components/sections/TrustSection';
 
-export default function MedicinesPage() {
+export default function ProductsPage() {
     const { language } = useLanguage();
 
     const t = {
-        title: language === 'hi' ? 'शास्त्रीय औषधियाँ' : 'Classical Medicines',
+        title: language === 'hi' ? 'आयुर्वेदिक वेलनेस स्टोर' : 'Ayurvedic Wellness Store',
         subtitle: language === 'hi'
-            ? 'समग्र उपचार के लिए समय-परीक्षित आयुर्वेदिक फॉर्मूलेशन।'
-            : 'Time-tested Ayurvedic formulations for holistic healing.',
-        readMore: language === 'hi' ? 'और पढ़ें' : 'Read More'
+            ? 'अपने समग्र कल्याण के लिए हमारे प्रामाणिक, जैविक और समय-परीक्षित आयुर्वेदिक उत्पादों के संग्रह की खोज करें।'
+            : 'Discover our curated collection of authentic, organic, and time-tested Ayurvedic products for your holistic well-being.',
+        viewDetails: language === 'hi' ? 'विवरण देखें' : 'View Details'
     };
 
     return (
         <div className={styles.page}>
-            <header className={styles.header}>
-                <div className="container">
+            {/* Hero Section */}
+            <div className={styles.hero}>
+                <div className={styles.heroContent}>
                     <h1 className={styles.title}>{t.title}</h1>
                     <p className={styles.subtitle}>{t.subtitle}</p>
                 </div>
-            </header>
+            </div>
 
-            <div className={`container ${styles.content}`}>
+            <div className={styles.container}>
                 <div className={styles.grid}>
-                    {medicines.map((med) => (
-                        <div key={med.id} className={styles.card}>
+                    {products.map((product) => (
+                        <Link href={`/${language}/medicines/${product.id}`} key={product.id} className={styles.card}>
                             <div className={styles.imageWrapper}>
                                 <Image
-                                    src={med.image || '/images/product-generic.png'}
-                                    alt={med.name}
+                                    src={product.image}
+                                    alt={product.name}
                                     fill
                                     className={styles.cardImage}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
-                                <span className={styles.category}>{med.category}</span>
                             </div>
 
                             <div className={styles.cardContent}>
-                                <h2 className={styles.name}>
-                                    {language === 'hi' ? (med.name_hi || med.name) : med.name}
-                                </h2>
-                                <p className={styles.description}>
-                                    {language === 'hi' ? (med.description_hi || med.description) : med.description}
-                                </p>
-
-                                <div className={styles.benefits}>
-                                    {med.benefits.slice(0, 3).map((benefit, index) => (
-                                        <span key={index} className={styles.badge}>{benefit}</span>
-                                    ))}
+                                <div className={styles.cardHeader}>
+                                    <span className={styles.brand}>{product.brand}</span>
+                                    <h3 className={styles.productName}>
+                                        {language === 'hi' ? (product.name_hi || product.name) : product.name}
+                                    </h3>
                                 </div>
 
-                                <div className={styles.footer}>
-                                    <Link href={`/${language}/medicines/${med.slug}`} className="btn btn-primary" style={{ width: '100%', textAlign: 'center' }}>
-                                        {t.readMore}
-                                    </Link>
+                                <div className={styles.rating}>
+                                    {[...Array(5)].map((_, i) => (
+                                        <Star
+                                            key={i}
+                                            size={14}
+                                            className={styles.star}
+                                            fill={i < Math.floor(product.rating) ? "currentColor" : "none"}
+                                            stroke={i < Math.floor(product.rating) ? "none" : "currentColor"}
+                                        />
+                                    ))}
+                                    <span className={styles.ratingValue}>({product.rating})</span>
+                                </div>
+
+                                <div className={styles.cardFooter}>
+                                    <span className={styles.price}>{product.price}</span>
+                                    <span className={styles.actionButton}>
+                                        {t.viewDetails} <ArrowRight size={14} />
+                                    </span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
+            </div>
+
+            {/* Trust Section */}
+            <div style={{ marginTop: '4rem' }}>
+                <TrustSection />
             </div>
         </div>
     );

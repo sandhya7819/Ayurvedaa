@@ -36,7 +36,7 @@ const getAllSearchItems = (lang: string) => {
     products.forEach(p => items.push({
         type: 'Product',
         name: lang === 'hi' ? (p.name_hi || p.name) : p.name,
-        slug: `/products/${p.id}`,
+        slug: `/medicines/${p.id}`,
         original: p
     }));
 

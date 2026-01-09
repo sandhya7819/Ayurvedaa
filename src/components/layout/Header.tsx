@@ -30,7 +30,6 @@ export default function Header() {
                         <li><Link href={`/${language}/herbs`} className={styles.navLink}>{t('herbs')}</Link></li>
                         <li><Link href={`/${language}/health-conditions`} className={styles.navLink}>{t('conditions')}</Link></li>
                         <li><Link href={`/${language}/medicines`} className={styles.navLink}>{t('medicines')}</Link></li>
-                        <li><Link href={`/${language}/products`} className={styles.navLink}>{t('products')}</Link></li>
                         <li><Link href={`/${language}/doctors`} className={styles.navLink}>{t('consult')}</Link></li>
                         <li><Link href={`/${language}/guides`} className={styles.navLink}>{language === 'hi' ? 'गाइड्स' : 'Guides'}</Link></li>
                     </ul>

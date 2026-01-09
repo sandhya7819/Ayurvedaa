@@ -1,20 +1,49 @@
 .page {
-    background-color: var(--color-background);
+    background-color: #f8f9fa;
+    /* Light, clean background */
     min-height: 100vh;
+    font-family: var(--font-sans);
 }
 
-.header {
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
-    padding: 6rem 0;
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #1a4d2e 0%, #2f855a 100%);
+    /* Deep Ayurvedic Green gradient */
+    color: white;
+    padding: 6rem 0 4rem;
     text-align: center;
-    background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/pattern-overlay.png') opacity 0.1;
+    /* Optional pattern if available, else subtle texture */
+    pointer-events: none;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
 .title {
-    font-family: var(--font-playfair);
     font-size: 3.5rem;
+    font-weight: 800;
     margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    font-family: var(--font-serif);
+    /* If available, or standard serif */
 }
 
 .subtitle {
@@ -22,105 +51,146 @@
     opacity: 0.9;
     max-width: 600px;
     margin: 0 auto;
-    font-weight: 300;
+    line-height: 1.6;
 }
 
-.content {
-    padding: 4rem 1rem;
+/* Product Grid */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2.5rem;
 }
 
+/* Product Card */
 .card {
     background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
+    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
-    transform: translateY(-5px);
-    border-color: rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #2f855a;
 }
 
 .imageWrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/10;
-    background: #f9fafb;
+    aspect-ratio: 1;
+    /* Square image */
+    background-color: #f7f7f7;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cardImage {
-    object-fit: cover;
-    transition: transform 0.5s;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+    padding: 1.5rem;
 }
 
 .card:hover .cardImage {
-    transform: scale(1.05);
-}
-
-.category {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(4px);
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
 }
 
 .cardContent {
     padding: 1.5rem;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
-.name {
-    font-size: 1.5rem;
+.cardHeader {
     margin-bottom: 0.75rem;
-    color: var(--color-primary);
-    font-family: var(--font-playfair);
 }
 
-.description {
-    color: var(--color-text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-    flex-grow: 1;
+.brand {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    display: block;
 }
 
-.benefits {
+.productName {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.2s;
+}
+
+.card:hover .productName {
+    color: #2f855a;
+    /* Green on hover */
+}
+
+.rating {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
 }
 
-.badge {
-    background: var(--color-background-alt);
-    padding: 0.35rem 0.75rem;
-    border-radius: var(--radius-md);
-    font-size: 0.8rem;
-    color: var(--color-text-main);
-    font-weight: 500;
+.star {
+    fill: #fbbf24;
+    color: #fbbf24;
 }
 
-.footer {
+.ratingValue {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-left: 0.25rem;
+}
+
+.cardFooter {
     margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.actionButton {
+    background-color: #1a4d2e;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 9999px;
+    /* Pill shape */
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.actionButton:hover {
+    background-color: #2f855a;
 }

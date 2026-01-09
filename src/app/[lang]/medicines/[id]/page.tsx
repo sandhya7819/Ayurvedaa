@@ -1,6 +1,6 @@
 import { products } from '@/lib/data';
 import { notFound } from 'next/navigation';
-import ProductDetailView from '@/components/products/ProductDetailView';
+import ProductDetailView from '@/components/medicines/ProductDetailView';
 
 export async function generateStaticParams() {
     return products.map((prod) => ({

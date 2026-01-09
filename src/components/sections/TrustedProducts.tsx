@@ -20,12 +20,12 @@ export default function TrustedProducts() {
             <div className="container">
                 <div className={styles.header}>
                     <h2 className={styles.title}>{t('trusted_products')}</h2>
-                    <Link href={`/${language}/products`} className={styles.link}>{t('view_all_products')} &rarr;</Link>
+                    <Link href={`/${language}/medicines`} className={styles.link}>{t('view_all_products')} &rarr;</Link>
                 </div>
 
                 <div className={styles.grid}>
                     {products.map((product) => (
-                        <Link href={`/${language}/products/${product.id}`} key={product.id} className={styles.card} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <Link href={`/${language}/medicines/${product.id}`} key={product.id} className={styles.card} style={{ textDecoration: 'none', color: 'inherit' }}>
                             <div className={styles.imagePlaceholder}>
                                 <span>Product Image</span>
                             </div>

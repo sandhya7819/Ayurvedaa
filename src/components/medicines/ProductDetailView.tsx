@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, Star, ShoppingCart, Truck, ShieldCheck, Leaf, Heart, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import styles from '@/app/[lang]/products/[id]/page.module.css';
+import styles from '@/app/[lang]/medicines/[id]/page.module.css';
 
 interface ProductDetailViewProps {
     product: any;
@@ -43,7 +43,7 @@ export default function ProductDetailView({ product, similarProducts }: ProductD
             <div className="container">
                 {/* Breadcrumb */}
                 <div className={styles.breadcrumb}>
-                    <Link href={`/${language}/products`} className={styles.backLink}>
+                    <Link href={`/${language}/medicines`} className={styles.backLink}>
                         <ArrowLeft size={16} /> {t.back}
                     </Link>
                     <span>/</span>
@@ -160,7 +160,7 @@ export default function ProductDetailView({ product, similarProducts }: ProductD
                                         <th style={{ padding: '1rem', width: '25%', background: '#f0fdf4' }}>{name} (Current)</th>
                                         {similarProducts.map(p => (
                                             <th key={p.id} style={{ padding: '1rem', width: '25%' }}>
-                                                <Link href={`/${language}/products/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                                <Link href={`/${language}/medicines/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                                                     {language === 'hi' ? (p.name_hi || p.name) : p.name}
                                                 </Link>
                                             </th>
