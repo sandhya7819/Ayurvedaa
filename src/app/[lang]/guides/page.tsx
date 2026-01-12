@@ -544,20 +544,30 @@ export default function LearnPage() {
                     </div>
 
                     <div className={styles.lifestyleGrid}>
-                        {lifestylePosts[activeFilter as keyof typeof lifestylePosts]?.map((item, idx) => (
-                            <div key={idx} className={styles.lifestyleCard}>
-                                <div className={styles.lifestyleImageContainer}>
-                                    <Image src={item.i} alt={item.t} fill style={{ objectFit: 'cover' }} />
-                                </div>
-                                <div className={styles.lifestyleContent}>
-                                    <span className={styles.lifestyleCat}>{item.c}</span>
-                                    <h3 className={styles.lifestyleCardTitle}>{item.t}</h3>
-                                    <div className={styles.metaRowLifestyle}>
-                                        <span>Shane Doe</span><span>•</span><span>{item.d}</span>
+                        {lifestylePosts[activeFilter as keyof typeof lifestylePosts]?.map((item, idx) => {
+                            // Simple slugify for demo: "My Title" -> "my-title"
+                            const slug = item.t
+                                .toLowerCase()
+                                .replace(/[^a-z0-9]+/g, '-')
+                                .replace(/(^-|-$)+/g, '');
+
+                            return (
+                                <Link href={`/guides/${slug}`} key={idx} className={styles.lifestyleCardLink}>
+                                    <div className={styles.lifestyleCard}>
+                                        <div className={styles.lifestyleImageContainer}>
+                                            <Image src={item.i} alt={item.t} fill style={{ objectFit: 'cover' }} />
+                                        </div>
+                                        <div className={styles.lifestyleContent}>
+                                            <span className={styles.lifestyleCat}>{item.c}</span>
+                                            <h3 className={styles.lifestyleCardTitle}>{item.t}</h3>
+                                            <div className={styles.metaRowLifestyle}>
+                                                <span>Shane Doe</span><span>•</span><span>{item.d}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        ))}
+                                </Link>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
