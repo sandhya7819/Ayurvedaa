@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import React from 'react';
 import Image from 'next/image';
 import { BookOpen, Sun, Moon, Calendar, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -36,6 +37,20 @@ export default function LearnPage() {
         }
     ];
 
+    const carouselRef = React.useRef<HTMLDivElement>(null);
+
+    const scrollLeft = () => {
+        if (carouselRef.current) {
+            carouselRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+        }
+    };
+
+    const scrollRight = () => {
+        if (carouselRef.current) {
+            carouselRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className={styles.pageWrapper}>
             {/* Hero Section */}
@@ -63,28 +78,56 @@ export default function LearnPage() {
             <section className={styles.storiesSection}>
                 <div className="container">
                     <div className={styles.storiesContainer}>
-                        {[
-                            { t: 'Dota 2 Ro...', i: '/images/hero-bg.png' },
-                            { t: 'FF World ...', i: '/images/ashwagandha.png' },
-                            { t: 'Game Ch...', i: '/images/product-generic.png' },
-                            { t: 'Mobile Le...', i: '/images/tulsi.png' },
-                            { t: 'PMGC 20...', i: '/images/triphala.png' },
-                            { t: 'Valorant ...', i: '/images/hero-bg.png' },
-                            { t: 'Valorant ...', i: '/images/ashwagandha.png' },
-                            { t: 'Wild Rift ...', i: '/images/product-generic.png' },
-                            { t: 'Valorant ...', i: '/images/tulsi.png' },
-                            { t: 'World Es...', i: '/images/triphala.png' },
-                            { t: 'Dota 2 M...', i: '/images/hero-bg.png' },
-                        ].map((story, idx) => (
-                            <div key={idx} className={styles.storyItem}>
-                                <div className={styles.storyCircleWrapper}>
-                                    <div className={styles.storyInnerCircle}>
-                                        <Image src={story.i} alt={story.t} fill style={{ objectFit: 'cover' }} />
+                        <div className={styles.storiesTrack}>
+                            {[
+                                { t: 'Dota 2 Ro...', i: '/images/hero-bg.png' },
+                                { t: 'FF World ...', i: '/images/ashwagandha.png' },
+                                { t: 'Game Ch...', i: '/images/product-generic.png' },
+                                { t: 'Natural Remedies', i: '/images/tulsi.png' },
+                                { t: 'Yoga Tips', i: '/images/triphala.png' },
+                                { t: 'Healthy Diet', i: '/images/hero-bg.png' },
+                                { t: 'Meditation', i: '/images/ashwagandha.png' },
+                                { t: 'Sleep Better', i: '/images/product-generic.png' },
+                                { t: 'Immunity Boost', i: '/images/tulsi.png' },
+                                { t: 'Stress Relief', i: '/images/triphala.png' },
+                                { t: 'Daily Habits', i: '/images/hero-bg.png' },
+                                { t: 'Skin Care', i: '/images/ashwagandha.png' },
+                                { t: 'Hair Growth', i: '/images/product-generic.png' },
+                                { t: 'Detox Plan', i: '/images/tulsi.png' },
+                                { t: 'Weight Loss', i: '/images/triphala.png' },
+                                { t: 'Mindfulness', i: '/images/hero-bg.png' },
+                                { t: 'Ayurveda 101', i: '/images/ashwagandha.png' },
+                                { t: 'Herbal Tea', i: '/images/product-generic.png' },
+                                /* Duplicated for Infinite Loop */
+                                { t: 'Dota 2 Ro...', i: '/images/hero-bg.png' },
+                                { t: 'FF World ...', i: '/images/ashwagandha.png' },
+                                { t: 'Game Ch...', i: '/images/product-generic.png' },
+                                { t: 'Natural Remedies', i: '/images/tulsi.png' },
+                                { t: 'Yoga Tips', i: '/images/triphala.png' },
+                                { t: 'Healthy Diet', i: '/images/hero-bg.png' },
+                                { t: 'Meditation', i: '/images/ashwagandha.png' },
+                                { t: 'Sleep Better', i: '/images/product-generic.png' },
+                                { t: 'Immunity Boost', i: '/images/tulsi.png' },
+                                { t: 'Stress Relief', i: '/images/triphala.png' },
+                                { t: 'Daily Habits', i: '/images/hero-bg.png' },
+                                { t: 'Skin Care', i: '/images/ashwagandha.png' },
+                                { t: 'Hair Growth', i: '/images/product-generic.png' },
+                                { t: 'Detox Plan', i: '/images/tulsi.png' },
+                                { t: 'Weight Loss', i: '/images/triphala.png' },
+                                { t: 'Mindfulness', i: '/images/hero-bg.png' },
+                                { t: 'Ayurveda 101', i: '/images/ashwagandha.png' },
+                                { t: 'Herbal Tea', i: '/images/product-generic.png' },
+                            ].map((story, idx) => (
+                                <div key={idx} className={styles.storyItem}>
+                                    <div className={styles.storyCircleWrapper}>
+                                        <div className={styles.storyInnerCircle}>
+                                            <Image src={story.i} alt={story.t} fill style={{ objectFit: 'cover' }} />
+                                        </div>
                                     </div>
+                                    <span className={styles.storyTitle}>{story.t}</span>
                                 </div>
-                                <span className={styles.storyTitle}>{story.t}</span>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -105,17 +148,21 @@ export default function LearnPage() {
 
                     <div className={styles.carouselWrapper}>
                         {/* Navigation Buttons */}
-                        <button className={`${styles.navBtn} ${styles.prevBtn}`} aria-label="Previous">
+                        <button onClick={scrollLeft} className={`${styles.navBtn} ${styles.prevBtn}`} aria-label="Previous">
                             <ArrowRight size={20} style={{ transform: 'rotate(180deg)' }} />
                         </button>
 
-                        <div className={styles.carouselTrack}>
+                        <div ref={carouselRef} className={styles.carouselTrack}>
                             {/* Mock Cards - Using real images now */}
                             {[
                                 { title: 'The Ancient Art of Pulse Diagnosis: What Your Body Says', image: '/images/hero-bg.png' },
                                 { title: '5 Essential Herbs Every Home Should Have', image: '/images/ashwagandha.png' },
                                 { title: 'Understanding Your Dosha: A Guide to Balance', image: '/images/tulsi.png' },
-                                { title: 'Morning Rituals for Endless Energy', image: '/images/triphala.png' }
+                                { title: 'Morning Rituals for Endless Energy', image: '/images/triphala.png' },
+                                { title: 'Ayurvedic Diet: Eating for Your Body Type', image: '/images/product-generic.png' },
+                                { title: 'The Power of Meditation in Healing', image: '/images/hero-bg.png' },
+                                { title: 'Top 10 Immunity Boosting Herbs', image: '/images/ashwagandha.png' },
+                                { title: 'Yoga Poses for Stress Relief', image: '/images/tulsi.png' },
                             ].map((post, idx) => (
                                 <div key={idx} className={styles.postCard}>
                                     <div className={styles.cardImageContainer}>
@@ -135,7 +182,7 @@ export default function LearnPage() {
                             ))}
                         </div>
 
-                        <button className={`${styles.navBtn} ${styles.nextBtn}`} aria-label="Next">
+                        <button onClick={scrollRight} className={`${styles.navBtn} ${styles.nextBtn}`} aria-label="Next">
                             <ArrowRight size={20} />
                         </button>
                     </div>
@@ -165,7 +212,13 @@ export default function LearnPage() {
                         <div className={styles.mainColumn}>
                             <div className={styles.columnHeader}>
                                 <div className={styles.headerLeft}>
-                                    <div className={styles.headerBar}></div>
+                                    <div className={styles.sectionTitleIcon}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 6H20" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 12H14" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 18H10" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                        </svg>
+                                    </div>
                                     <h3 className={styles.columnTitle}>LATEST POSTS</h3>
                                 </div>
                                 <button className={styles.viewMoreBtn}>View More</button>
@@ -218,7 +271,13 @@ export default function LearnPage() {
                         <aside className={styles.sidebar}>
                             <div className={styles.columnHeader}>
                                 <div className={styles.headerLeft}>
-                                    <div className={[styles.headerBar, styles.barOrange].join(' ')}></div>
+                                    <div className={styles.sectionTitleIcon}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 6H20" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 12H14" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 18H10" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                        </svg>
+                                    </div>
                                     <h3 className={styles.columnTitle}>MOST READ</h3>
                                 </div>
                             </div>
@@ -264,43 +323,44 @@ export default function LearnPage() {
                 <div className="container">
                     <h2 className={styles.darkSectionTitle}>Physical Fitness</h2>
 
-                    <div className={styles.fitnessGridTop}>
-                        {/* Featured Dark Card (Full Width in this design or Top Large) */}
-                        <div className={styles.darkFeaturedCard}>
-                            <Image src="/images/product-generic.png" alt="Fitness Tips" fill style={{ objectFit: 'cover' }} />
-                            <div className={styles.darkOverlayGradient}></div>
-                            <div className={styles.darkOverlayContent}>
-                                <span className={styles.catPill}>Food & Diet</span>
-                                <h3 className={styles.featuredTitle}>Boost Your Health and Fitness This Weekend with These Tips</h3>
-                                <div className={styles.metaRowOverlay}>
-                                    <span>Shane Doe</span><span>•</span><span>Jan 19, 2021</span>
+                    <div className={styles.fitnessFocusGrid}>
+                        {/* Left Column: Featured Card */}
+                        <div className={styles.fitnessLeftCol}>
+                            <div className={styles.darkFeaturedCard}>
+                                <Image src="/images/product-generic.png" alt="Fitness Tips" fill style={{ objectFit: 'cover' }} />
+                                <div className={styles.darkOverlayGradient}></div>
+                                <div className={styles.darkOverlayContent}>
+                                    <span className={styles.catPill}>Food & Diet</span>
+                                    <h3 className={styles.featuredTitle}>Boost Your Health and Fitness This Weekend with These Tips</h3>
+                                    <div className={styles.metaRowOverlay}>
+                                        <span>Shane Doe</span><span>•</span><span>Jan 19, 2021</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Side Cards for Top Grid in Dark Section (if needed based on design) - or just the 2x2 grid below */}
-                    </div>
-
-                    <div className={styles.fitnessGridBottom}>
-                        {[
-                            { t: 'Core Strength Benefits and Exercises to Improve You...', c: 'Workout', i: '/images/hero-bg.png' },
-                            { t: '10 Best Foods To Increase Your Physical Fitness as...', c: 'Supplements', i: '/images/ashwagandha.png' },
-                            { t: 'Nutritionist Suggests a Healthy Way to Eat Your...', c: 'Food & Diet', i: '/images/tulsi.png' },
-                            { t: 'People are Already Using ChatGPT to Create...', c: 'Workout', i: '/images/triphala.png' }
-                        ].map((item, idx) => (
-                            <div key={idx} className={styles.darkCardBottom}>
-                                <div className={styles.darkImageBottom}>
-                                    <Image src={item.i} alt={item.t} fill style={{ objectFit: 'cover' }} />
-                                    <span className={styles.catPillSmall}>{item.c}</span>
-                                </div>
-                                <div className={styles.darkContentBottom}>
-                                    <h4 className={styles.darkTitleSmall}>{item.t}</h4>
-                                    <div className={styles.metaRowDarkSmall}>
-                                        <span>Shane Doe</span><span>•</span><span>Jan 16, 2021</span>
+                        {/* Right Column: 2x2 Grid */}
+                        <div className={styles.fitnessRightCol}>
+                            {[
+                                { t: 'Core Strength Benefits and Exercises to Improve You...', c: 'Workout', i: '/images/hero-bg.png' },
+                                { t: '10 Best Foods To Increase Your Physical Fitness as...', c: 'Supplements', i: '/images/ashwagandha.png' },
+                                { t: 'Nutritionist Suggests a Healthy Way to Eat Your...', c: 'Food & Diet', i: '/images/tulsi.png' },
+                                { t: 'People are Already Using ChatGPT to Create...', c: 'Workout', i: '/images/triphala.png' }
+                            ].map((item, idx) => (
+                                <div key={idx} className={styles.darkCardBottom}>
+                                    <div className={styles.darkImageBottom}>
+                                        <Image src={item.i} alt={item.t} fill style={{ objectFit: 'cover' }} />
+                                        <span className={styles.catPillSmall}>{item.c}</span>
+                                    </div>
+                                    <div className={styles.darkContentBottom}>
+                                        <h4 className={styles.darkTitleSmall}>{item.t}</h4>
+                                        <div className={styles.metaRowDarkSmall}>
+                                            <span>Shane Doe</span><span>•</span><span>Jan 16, 2021</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -312,8 +372,16 @@ export default function LearnPage() {
                         {/* Left Column */}
                         <div className={styles.mainColumn}>
                             <div className={styles.columnHeader}>
-                                <div className={styles.headerBar}></div>
-                                <h3 className={styles.columnTitle}>HEALTH & WELL-BEING</h3>
+                                <div className={styles.headerLeft}>
+                                    <div className={styles.sectionTitleIcon}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 6H20" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 12H14" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 18H10" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 className={styles.columnTitle}>HEALTH & WELL-BEING</h3>
+                                </div>
                             </div>
 
                             <div className={styles.healthTopGrid}>
@@ -376,8 +444,16 @@ export default function LearnPage() {
                             </div>
 
                             <div className={styles.columnHeader} style={{ marginTop: '2rem' }}>
-                                <div className={styles.headerBar}></div>
-                                <h3 className={styles.columnTitle}>FEATURED</h3>
+                                <div className={styles.headerLeft}>
+                                    <div className={styles.sectionTitleIcon}>
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 6H20" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 12H14" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                            <path d="M4 18H10" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 className={styles.columnTitle}>FEATURED</h3>
+                                </div>
                             </div>
 
                             <div className={styles.mostReadList}>
@@ -405,7 +481,13 @@ export default function LearnPage() {
                 <div className="container">
                     <div className={styles.lifestyleHeader}>
                         <div className={styles.lifestyleTitleWrapper}>
-                            <div className={styles.headerTitleBarOrange}></div>
+                            <div className={styles.sectionTitleIcon}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 6H20" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                    <path d="M4 12H14" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                    <path d="M4 18H10" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                </svg>
+                            </div>
                             <h2 className={styles.lifestyleTitle}>FROM LIFESTYLE</h2>
                         </div>
                         <div className={styles.lifestyleFilters}>
@@ -449,8 +531,16 @@ export default function LearnPage() {
             <section className={styles.sectionTrending}>
                 <div className="container">
                     <div className={styles.columnHeader} style={{ marginBottom: '2rem' }}>
-                        <div className={[styles.headerBar, styles.barOrange].join(' ')}></div>
-                        <h3 className={styles.columnTitle}>TRENDING NOW</h3>
+                        <div className={styles.headerLeft}>
+                            <div className={styles.sectionTitleIcon}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 6H20" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                    <path d="M4 12H14" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                    <path d="M4 18H10" stroke="#E11D48" strokeWidth="3" strokeLinecap="round"></path>
+                                </svg>
+                            </div>
+                            <h3 className={styles.columnTitle}>TRENDING NOW</h3>
+                        </div>
                     </div>
 
                     <div className={styles.trendingGrid}>

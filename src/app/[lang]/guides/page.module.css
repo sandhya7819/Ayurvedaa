@@ -11,7 +11,7 @@
 }
 
 .heroContent {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -19,7 +19,8 @@
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.2;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
 }
@@ -27,7 +28,7 @@
 .highlight {
     color: #4f46e5;
     /* Modern Indigo/Purple to match image vibe */
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #1A4731 0%, #2D6A4F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -35,7 +36,8 @@
 
 .heroSubtitle {
     font-size: 1.15rem;
-    color: #6b7280;
+    color: #6B7280;
+    /* Neutral text - keeping readable */
     line-height: 1.7;
     max-width: 700px;
     margin: 0 auto 4rem;
@@ -84,7 +86,8 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     border-color: #d1d5db;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
 }
 
 .topicIcon {
@@ -113,7 +116,8 @@
 .sectionTitle {
     font-size: 1.75rem;
     font-weight: 800;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     margin: 0;
 }
 
@@ -148,7 +152,7 @@
     flex: 1;
     background: white;
     /* border-radius: 12px; No border radius on card itself in image, but let's add slightly */
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);  Image looks flat or minimal shadow */
     transition: transform 0.2s;
@@ -163,7 +167,7 @@
     width: 100%;
     position: relative;
     background-color: #f3f4f6;
-    border-radius: 0.75rem;
+    border-radius: 0.25rem;
     /* Rounded image as per screenshot */
     margin-bottom: 1rem;
     overflow: hidden;
@@ -178,7 +182,8 @@
     font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.4;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -204,7 +209,7 @@
 }
 
 .navBtn:hover {
-    background: #111827;
+    background: #1A4731;
 }
 
 .prevBtn {
@@ -228,16 +233,32 @@
 }
 
 .bannerContent {
-    background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    background: linear-gradient(135deg, #1A4731 0%, #143625 100%);
+    /* Deep Forest Green Gradient */
     padding: 3rem 4rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
     color: white;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Add a gold accent glow */
+.bannerContent::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .bannerText {
@@ -245,7 +266,7 @@
 }
 
 .bannerSubtitle {
-    color: #f97316;
+    color: #D4AF37;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -259,20 +280,24 @@
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 1rem;
+    color: #FFFFFF;
+    /* Force White for visibility on Green BG */
 }
 
 .bannerDesc {
-    color: #d1d5db;
+    color: #E5E7EB;
+    /* Light Gray for high contrast */
     font-size: 1.05rem;
     line-height: 1.6;
 }
 
 .bannerBtn {
     background: white;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     border: none;
     padding: 1rem 2rem;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
@@ -295,28 +320,52 @@
 
 .columnHeader {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 0.75rem;
+}
+
+.headerLeft {
+    display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 2rem;
 }
 
-.headerBar {
-    width: 4px;
-    height: 20px;
-    background: #fbbf24;
-    /* Yellow bar as seen in image */
-    border-radius: 2px;
-}
-
-.barOrange {
-    background: #f97316;
+.sectionTitleIcon {
+    display: flex;
+    align-items: center;
 }
 
 .columnTitle {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 800;
-    color: #111827;
-    letter-spacing: 0.05em;
+    color: #1A4731;
+    /* Brand Primary */
+    letter-spacing: -0.01em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.viewMoreBtn {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #ef4444;
+    /* Match red icon color */
+    background: transparent;
+    border: 1px solid #fecaca;
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.viewMoreBtn:hover {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
 }
 
 /* Horizontal Card (Latest Posts) */
@@ -337,9 +386,10 @@
     height: 180px;
     flex-shrink: 0;
     position: relative;
-    border-radius: 0.75rem;
+    border-radius: 0.25rem;
     overflow: hidden;
-    background: #f3f4f6;
+    background: #FDFBF7;
+    /* Brand Background */
 }
 
 .horizContent {
@@ -360,7 +410,7 @@
 }
 
 .catBadge {
-    color: #d97706;
+    color: #C5A02F;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -374,13 +424,15 @@
 .horizTitle {
     font-size: 1.35rem;
     font-weight: 800;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     line-height: 1.3;
     margin-bottom: 0.75rem;
 }
 
 .horizDesc {
-    color: #6b7280;
+    color: #6B7280;
+    /* Neutral text - keeping readable */
     font-size: 0.95rem;
     line-height: 1.6;
     display: -webkit-box;
@@ -394,7 +446,7 @@
     position: relative;
     width: 100%;
     height: 350px;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -426,8 +478,10 @@
 }
 
 .catBadgeOverlay {
-    background: #fbbf24;
-    color: #111827;
+    background: #D4AF37;
+    /* Brand Gold */
+    color: #1A4731;
+    /* Brand Primary */
     padding: 0.25rem 0.75rem;
     font-size: 0.7rem;
     font-weight: 800;
@@ -457,7 +511,7 @@
     background: #f9fafb;
     /* Light grey styling */
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     height: fit-content;
 }
 
@@ -478,7 +532,7 @@
     height: 80px;
     flex-shrink: 0;
     position: relative;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     overflow: hidden;
     background: #ebebeb;
 }
@@ -511,7 +565,8 @@
 .sidebarTitle {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -541,11 +596,13 @@
 }
 
 .loadMoreBtn {
-    background: #fbbf24;
-    color: #111827;
+    background: #D4AF37;
+    /* Brand Gold */
+    color: #1A4731;
+    /* Brand Primary */
     border: none;
     padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: 0.05em;
@@ -565,10 +622,24 @@
 }
 
 /* --- Section 4: Physical Fitness (Dark) --- */
+/* --- Section 4: Physical Fitness (Dark) --- */
 .sectionFour {
-    background: #111827;
+    background: #1A4731;
+    /* Brand Primary Green */
     padding: 6rem 0;
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle pattern overlay to add texture like the Hero if needed */
+.sectionFour::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.08) 0%, transparent 20%);
+    pointer-events: none;
 }
 
 .darkSectionTitle {
@@ -579,22 +650,41 @@
     letter-spacing: -0.02em;
 }
 
-.fitnessGridTop {
+/* New Grid Layout: Focus Block */
+.fitnessFocusGrid {
     display: grid;
-    grid-template-columns: 1fr;
-    /* Changed to single column for the large featured card */
+    grid-template-columns: 1.4fr 1fr;
     gap: 2rem;
-    margin-bottom: 3rem;
+    align-items: stretch;
+}
+
+.fitnessLeftCol {
+    display: flex;
+    flex-direction: column;
+}
+
+.fitnessRightCol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    .fitnessFocusGrid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .darkCard {
-    background: #1f2937;
-    border-radius: 1rem;
+    background: #245942;
+    /* Lighter Green for card contrast */
+    border-radius: 0.5rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .darkImageContainer {
@@ -634,8 +724,10 @@
     position: absolute;
     bottom: 1rem;
     left: 1rem;
-    background: #fbbf24;
-    color: #111827;
+    background: #D4AF37;
+    /* Brand Gold */
+    color: #1A4731;
+    /* Brand Primary */
     padding: 0.25rem 0.75rem;
     font-size: 0.7rem;
     font-weight: 800;
@@ -647,7 +739,7 @@
 /* Featured Dark Card */
 .darkFeaturedCard {
     position: relative;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -659,7 +751,7 @@
 .darkOverlayGradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 10%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.1) 100%);
+    background: linear-gradient(to top, #1A4731 10%, rgba(26, 71, 49, 0.8) 40%, rgba(26, 71, 49, 0.1) 80%, transparent 100%);
     z-index: 1;
 }
 
@@ -680,17 +772,15 @@
 }
 
 /* Bottom Grid */
-.fitnessGridBottom {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-}
+
 
 .darkCardBottom {
-    background: #1f2937;
-    border-radius: 0.75rem;
+    background: #245942;
+    /* Lighter Green */
+    border-radius: 0.5rem;
     overflow: hidden;
     transition: transform 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .darkCardBottom:hover {
@@ -707,8 +797,10 @@
     position: absolute;
     bottom: 0.5rem;
     left: 0.5rem;
-    background: #fbbf24;
-    color: #111827;
+    background: #D4AF37;
+    /* Brand Gold */
+    color: #1A4731;
+    /* Brand Primary */
     padding: 0.15rem 0.5rem;
     font-size: 0.6rem;
     font-weight: 800;
@@ -764,15 +856,16 @@
 .healthImageBig {
     position: relative;
     height: 240px;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     margin-bottom: 1.25rem;
-    background: #f3f4f6;
+    background: #FDFBF7;
+    /* Brand Background */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .catText {
-    color: #f97316;
+    color: #D4AF37;
     font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -785,7 +878,8 @@
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.35;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
 }
 
 .healthList {
@@ -806,10 +900,11 @@
     width: 110px;
     height: 80px;
     position: relative;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     overflow: hidden;
     flex-shrink: 0;
-    background: #f3f4f6;
+    background: #FDFBF7;
+    /* Brand Background */
 }
 
 .horizContentSmall {
@@ -817,7 +912,7 @@
 }
 
 .catTextSmall {
-    color: #f97316;
+    color: #D4AF37;
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -829,7 +924,8 @@
     font-size: 1.05rem;
     font-weight: 700;
     line-height: 1.4;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
 }
 
 /* Sticky Sidebar */
@@ -838,7 +934,7 @@
     top: 2rem;
     background: #f9fafb;
     padding: 2.5rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     height: fit-content;
     border: 1px solid #edf2f7;
 }
@@ -847,7 +943,7 @@
 .subscribeWidget {
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     padding: 2.5rem 2rem;
     text-align: center;
     display: flex;
@@ -860,7 +956,8 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: #fbbf24;
+    background: #D4AF37;
+    /* Brand Gold */
     color: white;
     display: flex;
     align-items: center;
@@ -873,12 +970,14 @@
     font-size: 1.35rem;
     font-weight: 800;
     margin-bottom: 0.75rem;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
 }
 
 .widgetDesc {
     font-size: 0.95rem;
-    color: #6b7280;
+    color: #6B7280;
+    /* Neutral text - keeping readable */
     margin-bottom: 1.5rem;
     line-height: 1.6;
 }
@@ -887,7 +986,7 @@
     width: 100%;
     padding: 0.85rem 1rem;
     border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     margin-bottom: 1rem;
     font-size: 0.95rem;
     background: #f9fafb;
@@ -904,10 +1003,10 @@
 .newsletterBtn {
     width: 100%;
     padding: 0.85rem;
-    background: #111827;
+    background: #1A4731;
     color: white;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 4px;
     font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
@@ -992,7 +1091,8 @@
 .lifestyleTitle {
     font-size: 1.5rem;
     font-weight: 800;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     margin: 0;
     letter-spacing: -0.01em;
 }
@@ -1000,7 +1100,8 @@
 .headerTitleBarOrange {
     width: 6px;
     height: 28px;
-    background: #f97316;
+    background: #D4AF37;
+    /* Brand Gold */
     border-radius: 3px;
 }
 
@@ -1019,7 +1120,8 @@
 }
 
 .filterLink.active {
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     border-bottom: 2px solid #111827;
     /* Simulating active state border */
     padding-bottom: 1.6rem;
@@ -1044,10 +1146,11 @@
     width: 220px;
     height: 140px;
     position: relative;
-    border-radius: 0.75rem;
+    border-radius: 0.25rem;
     overflow: hidden;
     flex-shrink: 0;
-    background: #f3f4f6;
+    background: #FDFBF7;
+    /* Brand Background */
 }
 
 .lifestyleContent {
@@ -1068,7 +1171,8 @@
     font-weight: 700;
     line-height: 1.35;
     margin-bottom: 0.75rem;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     transition: color 0.2s;
 }
 
@@ -1107,10 +1211,11 @@
     position: relative;
     height: 180px;
     width: 100%;
-    border-radius: 0.75rem;
+    border-radius: 0.25rem;
     overflow: hidden;
     margin-bottom: 1rem;
-    background: #f3f4f6;
+    background: #FDFBF7;
+    /* Brand Background */
 }
 
 .trendingNumberContent {
@@ -1138,7 +1243,8 @@
     font-weight: 700;
     line-height: 1.4;
     margin-bottom: 0.5rem;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -1178,7 +1284,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #111827;
+    color: #1A4731;
+    /* Brand Primary */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
@@ -1230,18 +1337,41 @@
 }
 
 .storiesContainer {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
+    /* IE/Edge */
 }
 
 .storiesContainer::-webkit-scrollbar {
     display: none;
+    /* Chrome/Safari/Opera */
+}
+
+.storiesTrack {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+    /* Adjust speed as needed */
+}
+
+/* Pause on hover for interaction */
+.storiesTrack:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .storyItem {

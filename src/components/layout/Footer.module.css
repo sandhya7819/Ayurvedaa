@@ -6,7 +6,7 @@
 /* --- SEO Links Section (Light) --- */
 /* --- SEO Links Section (Light) --- */
 .seoSection {
-    background-color: #f4f1ea;
+    background-color: #FDFBF7;
     padding: 5rem 0;
     font-family: 'Inter', sans-serif;
     border-top: 1px solid #e6e2d5;
@@ -104,11 +104,13 @@
 
 /* --- Main Footer (Dark) --- */
 .mainFooter {
-    background-color: #111111;
-    /* Very dark grey/black */
-    color: #d1d5db;
+    background-color: #1A4731;
+    /* Brand Green */
+    color: #e5e7eb;
     padding-top: 4rem;
     font-family: 'Inter', sans-serif;
+    border-top: 4px solid #D4AF37;
+    /* Gold accent top border */
 }
 
 .container {
@@ -156,23 +158,24 @@
 }
 
 .subscribeInput:focus {
-    border-color: #f97316;
-    /* Orange hover */
+    border-color: #D4AF37;
+    /* Gold hover */
 }
 
 .subscribeBtn {
-    background: #f97316;
-    color: white;
+    background: #D4AF37;
+    color: #1A4731;
     border: none;
     padding: 0.75rem 2rem;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: all 0.2s;
 }
 
 .subscribeBtn:hover {
-    background: #ea580c;
+    background: #FDFBF7;
+    color: #1A4731;
 }
 
 /* Footer Grid */
@@ -181,7 +184,7 @@
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     gap: 3rem;
     padding-bottom: 4rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .brandColumn {
@@ -243,11 +246,13 @@
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: #1f2937;
+    background: rgba(255, 255, 255, 0.1);
+    /* Transparent white */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #9ca3af;
+    color: #a7f3d0;
+    /* Light green text for icons */
     transition: all 0.2s;
 }
 
