@@ -21,6 +21,7 @@ export default function Header() {
                         width={180}
                         height={40}
                         priority
+                        unoptimized
                         style={{ objectFit: 'contain' }}
                     />
                 </Link>

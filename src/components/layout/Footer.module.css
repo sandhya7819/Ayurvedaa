@@ -22,8 +22,15 @@
 
 .seoCategory {
     margin-bottom: 2rem;
-    display: block;
-    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px dashed #e5e7eb;
+    padding-bottom: 1rem;
+}
+
+.seoCategory:last-child {
+    border-bottom: none;
 }
 
 .seoTitle {
@@ -32,22 +39,27 @@
     color: #1A4731;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-right: 0.5rem;
-    display: inline;
-    /* Inline with links */
-    white-space: nowrap;
+    display: block;
+    margin-bottom: 0.25rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    /* Increases readability */
+    text-decoration-color: #D4AF37;
+    /* Gold underline for premium feel */
 }
 
 .seoTitle::after {
-    content: none;
+    content: '';
 }
 
 .seoLinks {
-    display: inline;
-    /* Inline with title */
+    display: block;
+    /* Standard flow for text + inline elements */
     font-size: 0.95rem;
     color: #4b5563;
-    max-width: 100%;
+    width: 100%;
+    line-height: 1.8;
+    /* Good spacing for multiple lines */
 }
 
 .seoLinks a {
@@ -55,7 +67,8 @@
     text-decoration: none;
     transition: all 0.2s;
     font-weight: 500;
-    margin: 0 4px;
+    white-space: nowrap;
+    /* Keep link text together */
 }
 
 .seoLinks a:hover {
@@ -64,9 +77,10 @@
 }
 
 .seoDivider {
+    display: inline-block;
     color: #D4AF37;
-    /* Gold separators */
     margin: 0 0.5rem;
+    /* Space around the pipe */
     font-weight: 400;
     opacity: 0.6;
 }

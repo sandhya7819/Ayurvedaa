@@ -17,6 +17,7 @@ export function middleware(request: NextRequest) {
         pathname.includes('/_next/') ||
         pathname.includes('/images/') ||
         pathname.includes('/favicon.ico') ||
+        pathname.includes('/logo.png') ||
         pathname.includes('/header-bg.jpg') ||
         pathname.includes('/hero-bg.jpg') ||
         pathname.includes('/api/')
