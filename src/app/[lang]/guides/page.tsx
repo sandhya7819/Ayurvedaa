@@ -51,6 +51,45 @@ export default function LearnPage() {
         }
     };
 
+    const [activeFilter, setActiveFilter] = React.useState('All');
+
+    const lifestylePosts = {
+        'All': [
+            { t: 'Here\'s Why a Pet\'s Love can Lengthen Your Life: Expert Analysis', c: 'Pets', d: 'Jan 14, 2021', i: '/images/hero-bg.png' },
+            { t: 'Tourists are Traveling Again in Europe — But Not the Way they Used to', c: 'Travel', d: 'Jan 14, 2021', i: '/images/ashwagandha.png' },
+            { t: 'Get a Glimpse Behind the Scenes of BC\'s Biggest Movie Screen', c: 'Relations', d: 'Jan 14, 2021', i: '/images/product-generic.png' },
+            { t: 'Study Reveals that Reusable Bottles Carry More Germs than Toilet Seat', c: 'Health', d: 'Jan 13, 2021', i: '/images/tulsi.png' },
+            { t: '10 Stunning Home Colors | Best Interior House Colors 2023', c: 'Decor', d: 'Jan 13, 2021', i: '/images/triphala.png' },
+            { t: '7 Décor Trends You Need to Know Now – 2023 Spring Décor', c: 'Decor', d: 'Jan 13, 2021', i: '/images/hero-bg.png' },
+            { t: 'Trends in Hospitality – New Tourist Flows and How to Navigate', c: 'Travel', d: 'Jan 13, 2021', i: '/images/ashwagandha.png' },
+            { t: 'French Philosopher Urges People to Rebel – by Making Friends', c: 'Relations', d: 'Jan 13, 2021', i: '/images/product-generic.png' }
+        ],
+        'Technology': [
+            { t: 'The Future of AI in Healthcare: Tranding Diagnosis', c: 'Tech', d: 'Feb 10, 2023', i: '/images/triphala.png' },
+            { t: 'Smart Home Devices That Actually Save You Money', c: 'Gadgets', d: 'Feb 09, 2023', i: '/images/hero-bg.png' },
+            { t: 'How 5G Will Revolutionize Remote Work Forever', c: 'Tech', d: 'Feb 08, 2023', i: '/images/product-generic.png' },
+            { t: 'Top 5 Wearable Fitness Trackers of 2023 Reviewed', c: 'Gadgets', d: 'Feb 07, 2023', i: '/images/tulsi.png' }
+        ],
+        'Lifestyle': [
+            { t: 'Minimalism: How Decluttering Can Reduce Stress', c: 'Lifestyle', d: 'Mar 15, 2023', i: '/images/ashwagandha.png' },
+            { t: 'The Art of Slow Living in a Fast-Paced World', c: 'Wellness', d: 'Mar 14, 2023', i: '/images/hero-bg.png' },
+            { t: 'Creating a Morning Routine That Sticks', c: 'Habits', d: 'Mar 13, 2023', i: '/images/product-generic.png' },
+            { t: 'Sustainable Fashion: Why It Matters More Than Ever', c: 'Fashion', d: 'Mar 12, 2023', i: '/images/triphala.png' }
+        ],
+        'Travel': [
+            { t: 'Hidden Gems in Southeast Asia You Must Visit', c: 'Travel', d: 'Apr 20, 2023', i: '/images/tulsi.png' },
+            { t: 'Solo Travel Guide: Tips for Your First Transformation', c: 'Adventure', d: 'Apr 19, 2023', i: '/images/hero-bg.png' },
+            { t: 'Best Eco-Friendly Resorts for a Green Vacation', c: 'Travel', d: 'Apr 18, 2023', i: '/images/product-generic.png' },
+            { t: 'Packing Light: Essentials for a Month Abroad', c: 'Tips', d: 'Apr 17, 2023', i: '/images/ashwagandha.png' }
+        ],
+        'Fashion': [
+            { t: 'Summer trends: What to wear this beach season', c: 'Fashion', d: 'May 05, 2023', i: '/images/triphala.png' },
+            { t: 'Classic Wardrobe Staples That Never Go Out of Style', c: 'Style', d: 'May 04, 2023', i: '/images/hero-bg.png' },
+            { t: 'How to Accessorize Like a Pro: A Complete Guide', c: 'Tips', d: 'May 03, 2023', i: '/images/tulsi.png' },
+            { t: 'Sustainable Fabrics: The Future of Responsible Fashion', c: 'Eco', d: 'May 02, 2023', i: '/images/product-generic.png' }
+        ]
+    };
+
     return (
         <div className={styles.pageWrapper}>
             {/* Hero Section */}
@@ -477,6 +516,7 @@ export default function LearnPage() {
                 </div>
             </section>
             {/* Section 6: From Lifestyle */}
+
             <section className={styles.sectionLifestyle}>
                 <div className="container">
                     <div className={styles.lifestyleHeader}>
@@ -491,25 +531,20 @@ export default function LearnPage() {
                             <h2 className={styles.lifestyleTitle}>FROM LIFESTYLE</h2>
                         </div>
                         <div className={styles.lifestyleFilters}>
-                            <span className={`${styles.filterLink} ${styles.active}`}>All</span>
-                            <span className={styles.filterLink}>Technology</span>
-                            <span className={styles.filterLink}>Lifestyle</span>
-                            <span className={styles.filterLink}>Travel</span>
-                            <span className={styles.filterLink}>Fashion</span>
+                            {['All', 'Technology', 'Lifestyle', 'Travel', 'Fashion'].map((filter) => (
+                                <span
+                                    key={filter}
+                                    onClick={() => setActiveFilter(filter)}
+                                    className={`${styles.filterLink} ${activeFilter === filter ? styles.active : ''}`}
+                                >
+                                    {filter}
+                                </span>
+                            ))}
                         </div>
                     </div>
 
                     <div className={styles.lifestyleGrid}>
-                        {[
-                            { t: 'Here\'s Why a Pet\'s Love can Lengthen Your Life: Expert Analysis', c: 'Pets', d: 'Jan 14, 2021', i: '/images/hero-bg.png' },
-                            { t: 'Tourists are Traveling Again in Europe — But Not the Way they Used to', c: 'Travel', d: 'Jan 14, 2021', i: '/images/ashwagandha.png' },
-                            { t: 'Get a Glimpse Behind the Scenes of BC\'s Biggest Movie Screen', c: 'Relations', d: 'Jan 14, 2021', i: '/images/product-generic.png' },
-                            { t: 'Study Reveals that Reusable Bottles Carry More Germs than Toilet Seat', c: 'Health', d: 'Jan 13, 2021', i: '/images/tulsi.png' },
-                            { t: '10 Stunning Home Colors | Best Interior House Colors 2023', c: 'Decor', d: 'Jan 13, 2021', i: '/images/triphala.png' },
-                            { t: '7 Décor Trends You Need to Know Now – 2023 Spring Décor', c: 'Decor', d: 'Jan 13, 2021', i: '/images/hero-bg.png' },
-                            { t: 'Trends in Hospitality – New Tourist Flows and How to Navigate', c: 'Travel', d: 'Jan 13, 2021', i: '/images/ashwagandha.png' },
-                            { t: 'French Philosopher Urges People to Rebel – by Making Friends', c: 'Relations', d: 'Jan 13, 2021', i: '/images/product-generic.png' }
-                        ].map((item, idx) => (
+                        {lifestylePosts[activeFilter as keyof typeof lifestylePosts]?.map((item, idx) => (
                             <div key={idx} className={styles.lifestyleCard}>
                                 <div className={styles.lifestyleImageContainer}>
                                     <Image src={item.i} alt={item.t} fill style={{ objectFit: 'cover' }} />
