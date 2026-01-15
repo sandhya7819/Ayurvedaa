@@ -77,23 +77,27 @@ export default function ProductsPage() {
                                     color={isBookmarked(product.id) ? "#ef4444" : "#666"}
                                 />
                             </button>
-                            <Link href={`/${language}/medicines/${product.id}`} className={styles.card}>
+                            <div className={styles.card}>
                                 <div className={styles.imageWrapper}>
-                                    <Image
-                                        src={product.image}
-                                        alt={product.name}
-                                        fill
-                                        className={styles.cardImage}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    />
+                                    <Link href={`/${language}/medicines/${product.id}`} style={{ display: 'block', width: '100%', height: '100%' }}>
+                                        <Image
+                                            src={product.image}
+                                            alt={product.name}
+                                            fill
+                                            className={styles.cardImage}
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                    </Link>
                                 </div>
 
                                 <div className={styles.cardContent}>
                                     <div className={styles.cardHeader}>
                                         <span className={styles.brand}>{product.brand}</span>
-                                        <h3 className={styles.productName}>
-                                            {language === 'hi' ? (product.name_hi || product.name) : product.name}
-                                        </h3>
+                                        <Link href={`/${language}/medicines/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                            <h3 className={styles.productName}>
+                                                {language === 'hi' ? (product.name_hi || product.name) : product.name}
+                                            </h3>
+                                        </Link>
                                     </div>
 
                                     {/* Trust Badges */}
@@ -132,13 +136,13 @@ export default function ProductsPage() {
                                                     {t.buyOn} {product.seller || 'Amazon'}
                                                 </a>
                                             )}
-                                            <span className={styles.actionButton}>
+                                            <Link href={`/${language}/medicines/${product.id}`} className={styles.actionButton}>
                                                 <ArrowRight size={14} />
-                                            </span>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
-                            </Link>
+                            </div>
                         </div>
                     ))}
                 </div>

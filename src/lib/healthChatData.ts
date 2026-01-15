@@ -26,7 +26,10 @@ export type chatNodeId =
 
     // General / Common
     | 'SYMPTOM_SEVERITY'
+    | 'OTHER_ISSUE_DETAILS'
     | 'MEDICAL_HISTORY'
+    | 'CONTINUE'
+    | 'GOODBYE'
     | 'END';
 
 export interface ChatOption {
@@ -81,8 +84,18 @@ export const healthChatFlow: Record<chatNodeId, ChatNode> = {
             { label: "Sleep Issues / Insomnia", nextId: 'SLEEP_TYPE' },
             { label: "Joint Pain / Body Ache", nextId: 'PAIN_AREA' },
             { label: "Weakness / Low Energy", nextId: 'DIGESTION_HABIT' }, // Often digestion related
-            { label: "Other", nextId: 'SYMPTOM_SEVERITY', isOther: true }
+            { label: "Other", nextId: 'OTHER_ISSUE_DETAILS', isOther: true }
         ]
+    },
+
+    // --- BRANCH: OTHER / SPECIFIC ---
+    'OTHER_ISSUE_DETAILS': {
+        id: 'OTHER_ISSUE_DETAILS',
+        message: "Could you please describe your issue in a bit more detail? (e.g., Symptoms, how long you've had it)",
+        options: [
+            { label: "Type your details here...", nextId: 'SYMPTOM_SEVERITY', isOther: true }
+        ],
+
     },
 
     // --- BRANCH: STRESS ---
@@ -208,6 +221,22 @@ export const healthChatFlow: Record<chatNodeId, ChatNode> = {
         id: 'END',
         message: "Thank you for sharing. I'm analyzing your responses to create a personalized Ayurvedic suggestion...",
         options: []
+    },
+    'CONTINUE': {
+        id: 'CONTINUE',
+        message: "I hope that information was helpful! \n\nWould you like to evaluate another symptom or start over?",
+        options: [
+            { label: "Check another symptom", nextId: 'MAIN_ISSUE' },
+            { label: "Start fresh", nextId: 'START' },
+            { label: "No, I'm good", nextId: 'GOODBYE' }
+        ]
+    },
+    'GOODBYE': {
+        id: 'GOODBYE',
+        message: "Wishing you good health and happiness! \nFeel free to restart whenever you need to check another symptom.",
+        options: [
+            { label: "Start Over", nextId: 'START' }
+        ]
     }
 };
 

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './HealthEvaluatorChat.module.css';
 import { Bot, RefreshCcw, ArrowRight, User, Send, CheckCircle2 } from 'lucide-react';
-import { healthChatFlow, chatNodeId, ChatNode } from '@/lib/healthChatData';
+import { healthChatFlow, chatNodeId, ChatNode, getAyurvedicSuggestion } from '@/lib/healthChatData';
 import Link from 'next/link';
 
 interface Message {
@@ -81,6 +81,19 @@ export default function HealthEvaluatorChat() {
         addMessage(answerText, 'user');
 
         // 2. Save History
+        if (nextId === 'START') {
+            setMessages([]);
+            setHistory({});
+            setCurrentNodeId('START');
+            setIsTyping(true);
+            setTimeout(() => {
+                const node = healthChatFlow['START'];
+                addMessage(node.message, 'bot');
+                setIsTyping(false);
+            }, 1000);
+            return;
+        }
+
         if (currentNodeId) {
             setHistory(prev => ({ ...prev, [currentNodeId]: answerText }));
         }
@@ -122,6 +135,15 @@ export default function HealthEvaluatorChat() {
 
         setTimeout(() => {
             addMessage("", 'bot', 'result', { ...finalHistory });
+
+            // After showing summary, loop back options
+            setTimeout(() => {
+                setCurrentNodeId('CONTINUE');
+                const continueNode = healthChatFlow['CONTINUE'];
+                if (continueNode) {
+                    addMessage(continueNode.message, 'bot');
+                }
+            }, 2000);
         }, 600);
     };
 
@@ -139,6 +161,17 @@ export default function HealthEvaluatorChat() {
 
     const currentNode = currentNodeId ? healthChatFlow[currentNodeId] : null;
     const isBotLast = messages.length > 0 && messages[messages.length - 1].sender === 'bot';
+
+    // Auto-open input if the ONLY option is "Other" (e.g., OTHER_ISSUE_DETAILS)
+    useEffect(() => {
+        if (!isTyping && currentNode && isBotLast) {
+            const onlyOption = currentNode.options.length === 1 ? currentNode.options[0] : null;
+            if (onlyOption && onlyOption.isOther) {
+                setShowCustomInput(true);
+            }
+        }
+    }, [currentNode, isTyping, isBotLast]);
+
     // Show options only if:
     // 1. Not typing
     // 2. We have a current node
@@ -242,7 +275,7 @@ export default function HealthEvaluatorChat() {
     );
 }
 
-import { healthChatFlow, chatNodeId, ChatNode, getAyurvedicSuggestion } from '@/lib/healthChatData';
+
 
 function SummaryCard({ data }: any) {
     const issue = data['MAIN_ISSUE'] || "General Checkup";
