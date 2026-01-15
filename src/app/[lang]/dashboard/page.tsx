@@ -5,15 +5,36 @@ import { User, Heart, Calendar, Settings, LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './page.module.css';
+import { products } from '@/lib/data';
+import { useBookmarks } from '@/hooks/useBookmarks';
 
 export default function DashboardPage() {
     const { language } = useLanguage();
     const [dosha, setDosha] = useState<string | null>(null);
+    const { bookmarks } = useBookmarks();
+    const [bookmarkedItems, setBookmarkedItems] = useState<any[]>([]);
 
     useEffect(() => {
         const savedDosha = localStorage.getItem('userDosha');
         if (savedDosha) setDosha(savedDosha);
     }, []);
+
+    // Filter products based on bookmarks
+    useEffect(() => {
+        if (bookmarks.length > 0) {
+            // Find products that match the bookmarked IDs
+            const items = products.filter(p => bookmarks.includes(p.id)).map(p => ({
+                id: p.id,
+                title: p.name,
+                type: 'Product', // Or Herb if we had separate types
+                image: p.image,
+                date: 'Saved'
+            }));
+            setBookmarkedItems(items);
+        } else {
+            setBookmarkedItems([]);
+        }
+    }, [bookmarks]);
 
     const menuItems = [
         { icon: <User size={20} />, label: language === 'hi' ? 'प्रोफ़ाइल' : 'Profile', active: true },
@@ -22,11 +43,10 @@ export default function DashboardPage() {
         { icon: <Settings size={20} />, label: language === 'hi' ? 'सेटिंग्स' : 'Settings', active: false },
     ];
 
-    const savedItems = [
-        { title: 'Ashwagandha', type: 'Herb', date: '2 days ago' },
-        { title: 'Diabetes Management', type: 'Condition', date: '1 week ago' },
-        { title: 'Triphala Powder', type: 'Product', date: '2 weeks ago' },
-    ];
+    // Simple recommendation logic based on Dosha
+    const recommendedProducts = dosha
+        ? products.filter(p => !bookmarks.includes(p.id)).slice(0, 3) // Just show 3 random products as recommendation for now, strictly filtering by dosha would need data tagging
+        : [];
 
     return (
         <div className={styles.container}>
@@ -75,22 +95,51 @@ export default function DashboardPage() {
                             </div>
                         </div>
 
-                        {/* Recent Activity */}
+                        {/* Recent Saved Items */}
                         <div className={styles.section}>
-                            <h2 className={styles.sectionTitle}>{language === 'hi' ? 'हालिया गतिविधियां' : 'Recent Saved Items'}</h2>
-                            <div className={styles.savedList}>
-                                {savedItems.map((item, idx) => (
-                                    <div key={idx} className={styles.savedItem}>
-                                        <div className={styles.itemIcon}>{item.title[0]}</div>
-                                        <div className={styles.itemInfo}>
-                                            <h4>{item.title}</h4>
-                                            <span>{item.type} • {item.date}</span>
+                            <h2 className={styles.sectionTitle}>{language === 'hi' ? 'सहेजे गए आइटम' : 'Saved Items'}</h2>
+                            {bookmarkedItems.length > 0 ? (
+                                <div className={styles.savedList}>
+                                    {bookmarkedItems.map((item, idx) => (
+                                        <div key={idx} className={styles.savedItem}>
+                                            <div className={styles.itemIcon}>{item.title[0]}</div>
+                                            <div className={styles.itemInfo}>
+                                                <h4>{item.title}</h4>
+                                                <span>{item.type}</span>
+                                            </div>
+                                            <Link href={`/${language}/medicines/${item.id}`} className="btn btn-sm">
+                                                {language === 'hi' ? 'देखें' : 'View'}
+                                            </Link>
                                         </div>
-                                        <button className="btn btn-sm">{language === 'hi' ? 'देखें' : 'View'}</button>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <p style={{ color: '#666' }}>
+                                    {language === 'hi' ? 'कोई आइटम सहेजा नहीं गया।' : 'No items saved yet.'}
+                                </p>
+                            )}
                         </div>
+
+                        {/* Recommended For You */}
+                        {dosha && recommendedProducts.length > 0 && (
+                            <div className={styles.section} style={{ marginTop: '2rem' }}>
+                                <h2 className={styles.sectionTitle}>{language === 'hi' ? 'आपके लिए अनुशंसित' : 'Recommended For You'}</h2>
+                                <div className={styles.savedList}>
+                                    {recommendedProducts.map((p, idx) => (
+                                        <div key={idx} className={styles.savedItem}>
+                                            <div className={styles.itemIcon} style={{ background: '#e6fffa', color: '#047481' }}>R</div>
+                                            <div className={styles.itemInfo}>
+                                                <h4>{p.name}</h4>
+                                                <span>{p.category}</span>
+                                            </div>
+                                            <Link href={`/${language}/medicines/${p.id}`} className="btn btn-sm">
+                                                {language === 'hi' ? 'देखें' : 'View'}
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </main>
                 </div>
             </div>

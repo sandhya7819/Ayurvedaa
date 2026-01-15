@@ -76,7 +76,8 @@
 }
 
 .searchWrapper {
-    width: 250px;
+    width: 380px;
+    flex-shrink: 0;
 }
 
 @media (max-width: 768px) {

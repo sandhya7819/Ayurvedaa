@@ -1495,6 +1495,54 @@ export const medicines = [
             safety: 'उच्च खुराक लेने पर कोलेस्ट्रॉल की निगरानी करें। तेज बुखार होने पर बचें।',
             classical_ref: 'अष्टांग हृदयम'
         }
+    },
+    {
+        id: '101',
+        name: 'Shilajit Resin',
+        name_hi: ' शिलाजीत रेजिन',
+        slug: 'shilajit-resin',
+        brand: 'Kapiva',
+        price: '₹999',
+        rating: 4.8,
+        image: '/images/product-generic.png',
+        category: 'Supplements',
+        affiliateLink: 'https://www.amazon.in/dp/B07W9KJR8M',
+        seller: 'Amazon',
+        trustBadges: ['Lab Tested', 'Sourced from Himalayas', 'Heavy Metal Free'],
+        specs: {
+            form: 'Resin',
+            quantity: '20g',
+            shelfLife: '36 Months',
+            origin: 'Himalayas'
+        },
+        details: {
+            description: 'Pure Himalayan Shilajit Resin. Boosts stamina, improves performance, and supports healthy aging.',
+            reviews: []
+        }
+    },
+    {
+        id: '102',
+        name: 'Brahmi Ghrita',
+        name_hi: 'ब्रह्मी घृत',
+        slug: 'brahmi-ghrita-product',
+        brand: 'Kottakkal',
+        price: '₹350',
+        rating: 4.7,
+        image: '/images/product-generic.png',
+        category: 'Ghee',
+        affiliateLink: 'https://www.amazon.in/dp/B000000005',
+        seller: 'Amazon',
+        trustBadges: ['Authentic Ayurvedic', 'Cognitive Support'],
+        specs: {
+            form: 'Ghee',
+            quantity: '150g',
+            shelfLife: '12 Months',
+            origin: 'Kerala'
+        },
+        details: {
+            description: 'Traditional Ayurvedic Ghee for memory and concentration.',
+            reviews: []
+        }
     }
 ];
 

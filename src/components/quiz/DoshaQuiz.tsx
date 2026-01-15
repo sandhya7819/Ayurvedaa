@@ -1,137 +1,194 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { CheckCircle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import styles from './DoshaQuiz.module.css';
-
-type Dosha = 'Vata' | 'Pitta' | 'Kapha';
-
-interface Question {
-    id: number;
-    text: string;
-    text_hi: string;
-    options: {
-        text: string;
-        text_hi: string;
-        dosha: Dosha;
-    }[];
-}
-
-const questions: Question[] = [
-    {
-        id: 1,
-        text: "How would you describe your body frame?",
-        text_hi: "आप अपनी शारीरिक बनावट का वर्णन कैसे करेंगे?",
-        options: [
-            { text: "Thin, bony, small joints", text_hi: "पतला, हड्डियों वाला, छोटे जोड़", dosha: "Vata" },
-            { text: "Medium build, muscular", text_hi: "मध्यम शरीर, गठीला", dosha: "Pitta" },
-            { text: "Large, sturdy, heavy bone structure", text_hi: "बड़ा, मजबूत, भारी हड्डियों वाला ढांचा", dosha: "Kapha" }
-        ]
-    },
-    {
-        id: 2,
-        text: "How is your skin mostly?",
-        text_hi: "आपकी त्वचा ज्यादातर कैसी रहती है?",
-        options: [
-            { text: "Dry, rough, thin", text_hi: "रूखी, खुरदरी, पतली", dosha: "Vata" },
-            { text: "Sensitive, reddish, warm", text_hi: "संवेदनशील, लालिमा युक्त, गर्म", dosha: "Pitta" },
-            { text: "Oily, smooth, cool", text_hi: "तैलीय, मुलायम, ठंडी", dosha: "Kapha" }
-        ]
-    },
-    {
-        id: 3,
-        text: "How is your digestion?",
-        text_hi: "ल आपकी पाचन शक्ति कैसी है?",
-        options: [
-            { text: "Irregular, gases, bloating", text_hi: "अनियमित, गैस, पेट फूलना", dosha: "Vata" },
-            { text: "Strong, sharp hunger, acidity", text_hi: "मजबूत, तेज भूख, एसिडिटी", dosha: "Pitta" },
-            { text: "Slow, steady, mild hunger", text_hi: "धीमी, स्थिर, हल्की भूख", dosha: "Kapha" }
-        ]
-    },
-    {
-        id: 4,
-        text: "How is your sleep pattern?",
-        text_hi: "आपकी नींद का पैटर्न कैसा है?",
-        options: [
-            { text: "Light, interrupted, trouble falling asleep", text_hi: "हल्की, बीच में टूटने वाली, सोने में परेशानी", dosha: "Vata" },
-            { text: "Sound, short, refreshing", text_hi: "गहरी, छोटी, तरोताजा करने वाली", dosha: "Pitta" },
-            { text: "Deep, long, love to sleep", text_hi: "गहरी, लंबी, सोना पसंद है", dosha: "Kapha" }
-        ]
-    },
-    {
-        id: 5,
-        text: "How do you react to stress?",
-        text_hi: "तनाव में आपकी क्या प्रतिक्रिया होती है?",
-        options: [
-            { text: "Anxious, fearful, worry a lot", text_hi: "घबराहट, डर, बहुत चिंता", dosha: "Vata" },
-            { text: "Angry, irritable, frustrated", text_hi: "गुस्सा, चिड़चिड़ापन, हताशा", dosha: "Pitta" },
-            { text: "Calm, withdrawn, slow to react", text_hi: "शांत, पीछे हटना, धीमी प्रतिक्रिया", dosha: "Kapha" }
-        ]
-    }
-];
+import { quizQuestions, Dosha } from '@/lib/quizData';
+import { ArrowRight, CheckCircle, RefreshCcw, Share2 } from 'lucide-react';
 
 export default function DoshaQuiz() {
     const { language } = useLanguage();
-    const router = useRouter();
+    const t = language === 'hi' ? {
+        startTitle: "Discover Your True Nature",
+        startDesc: "According to Ayurveda, your health is determined by your unique constitution (Dosha). This in-depth analysis will reveal your dominant energy.",
+        startBtn: "Start Analysis",
+        question: "Question",
+        next: "Next",
+        calculating: "Calculating your Prakriti...",
+        resultTitle: "Your Dominant Dosha is",
+        restart: "Retake Test",
+        share: "Share Result",
+        vataDesc: "Vata energy is associated with movement, creativity, and flexibility. You are likely quick-minded, energetic, and adaptable, but may be prone to anxiety or dryness.",
+        pittaDesc: "Pitta energy is associated with transformation, intelligence, and heat. You are likely determined, sharp, and a natural leader, but may be prone to anger or inflammation.",
+        kaphaDesc: "Kapha energy is associated with structure, stability, and calm. You are likely loyal, strong, and patient, but may be prone to lethargy or weight gain."
+    } : {
+        startTitle: "Discover Your True Nature",
+        startDesc: "According to Ayurveda, your health is determined by your unique constitution (Dosha). This in-depth analysis will reveal your unique energy profile.",
+        startBtn: "Start Analysis",
+        question: "Question",
+        next: "Next",
+        calculating: "Calculating your Prakriti...",
+        resultTitle: "Your Dominant Dosha is",
+        restart: "Retake Test",
+        share: "Share Result",
+        vataDesc: "Vata energy is associated with movement, creativity, and flexibility. You are likely quick-minded, energetic, and adaptable, but may be prone to anxiety or dryness.",
+        pittaDesc: "Pitta energy is associated with transformation, intelligence, and heat. You are likely determined, sharp, and a natural leader, but may be prone to anger or inflammation.",
+        kaphaDesc: "Kapha energy is associated with structure, stability, and calm. You are likely loyal, strong, and patient, but may be prone to lethargy or weight gain."
+    };
+
+    // Hindi Overrides
+    if (language === 'hi') {
+        t.startTitle = "अपनी असली प्रकृति जानें";
+        t.startDesc = "आयुर्वेद के अनुसार, आपका स्वास्थ्य आपकी अनूठी प्रकृति (दोष) द्वारा निर्धारित होता है। यह विश्लेषण आपकी प्रमुख ऊर्जा को प्रकट करेगा।";
+        t.startBtn = "विश्लेषण शुरू करें";
+        t.question = "प्रश्न";
+        t.next = "अगला";
+        t.calculating = "आपकी प्रकृति की गणना कर रहा है...";
+        t.resultTitle = "आपका प्रमुख दोष है";
+        t.restart = "फिर से टेस्ट लें";
+        t.share = "परिणाम साझा करें";
+        t.vataDesc = "वात ऊर्जा गति, रचनात्मकता और लचीलेपन से जुड़ी है। आप शायद तेज दिमाग वाले, ऊर्जावान और अनुकूलनीय हैं, लेकिन चिंता या सूखेपन के लिए प्रवृत्त हो सकते हैं।";
+        t.pittaDesc = "पित्त ऊर्जा परिवर्तन, बुद्धिमत्ता और गर्मी से जुड़ी है। आप शायद दृढ़ निश्चयी, तेज और एक स्वाभाविक नेता हैं, लेकिन गुस्से या सूजन के लिए प्रवृत्त हो सकते हैं।";
+        t.kaphaDesc = "कफ ऊर्जा संरचना, स्थिरता और शांति से जुड़ी है। आप शायद वफादार, मजबूत और धैर्यवान हैं, लेकिन सुस्ती या वजन बढ़ने के लिए प्रवृत्त हो सकते हैं।";
+    }
+
+    const [view, setView] = useState<'INTRO' | 'QUIZ' | 'RESULT'>('INTRO');
     const [currentStep, setCurrentStep] = useState(0);
-    const [scores, setScores] = useState({ Vata: 0, Pitta: 0, Kapha: 0 });
+    const [answers, setAnswers] = useState<Record<number, Dosha>>({});
+    const [result, setResult] = useState<{ vata: number, pitta: number, kapha: number, dominant: Dosha } | null>(null);
+
+    const handleStart = () => {
+        setView('QUIZ');
+        setCurrentStep(0);
+        setAnswers({});
+    };
 
     const handleOptionSelect = (dosha: Dosha) => {
-        const newScores = { ...scores, [dosha]: scores[dosha] + 1 };
-        setScores(newScores);
+        const newAnswers = { ...answers, [currentStep]: dosha };
+        setAnswers(newAnswers);
 
-        if (currentStep < questions.length - 1) {
-            setCurrentStep(currentStep + 1);
+        if (currentStep < quizQuestions.length - 1) {
+            setTimeout(() => setCurrentStep(currentStep + 1), 300); // Small delay for visual feedback
         } else {
-            // Calculate Result
-            const maxScore = Math.max(newScores.Vata, newScores.Pitta, newScores.Kapha);
-            let result: Dosha = 'Vata'; // Default
-            if (newScores.Pitta === maxScore) result = 'Pitta';
-            if (newScores.Kapha === maxScore) result = 'Kapha';
-
-            // Save to local storage for Dashboard
-            if (typeof window !== 'undefined') {
-                localStorage.setItem('userDosha', result);
-                localStorage.setItem('lastTestDate', new Date().toLocaleDateString());
-            }
-
-            // Redirect to result page
-            router.push(`/dosha-test/result?type=${result}`);
+            calculateResult(newAnswers);
         }
     };
 
-    const currentQ = questions[currentStep];
+    const calculateResult = (finalAnswers: Record<number, Dosha>) => {
+        const scores = { Vata: 0, Pitta: 0, Kapha: 0 };
+        Object.values(finalAnswers).forEach(d => scores[d]++);
+
+        const total = quizQuestions.length;
+        const vataPercent = Math.round((scores.Vata / total) * 100);
+        const pittaPercent = Math.round((scores.Pitta / total) * 100);
+        const kaphaPercent = Math.round((scores.Kapha / total) * 100);
+
+        // Find dominant
+        let dominant: Dosha = 'Vata';
+        let max = scores.Vata;
+        if (scores.Pitta > max) { max = scores.Pitta; dominant = 'Pitta'; }
+        if (scores.Kapha > max) { max = scores.Kapha; dominant = 'Kapha'; }
+
+        setResult({
+            vata: vataPercent,
+            pitta: pittaPercent,
+            kapha: kaphaPercent,
+            dominant
+        });
+        setView('RESULT');
+    };
+
+    const currentQ = quizQuestions[currentStep];
+
+    // Views
+    if (view === 'INTRO') {
+        return (
+            <div className={styles.quizContainer}>
+                <div className={styles.introView}>
+                    <h1 className={styles.introTitle}>{t.startTitle}</h1>
+                    <p className={styles.introDesc}>{t.startDesc}</p>
+                    <button className={styles.startBtn} onClick={handleStart}>
+                        {t.startBtn} <ArrowRight style={{ marginLeft: '10px' }} />
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    if (view === 'RESULT' && result) {
+        let desc = t.vataDesc;
+        if (result.dominant === 'Pitta') desc = t.pittaDesc;
+        if (result.dominant === 'Kapha') desc = t.kaphaDesc;
+
+        return (
+            <div className={styles.quizContainer}>
+                <div className={styles.resultView}>
+                    <p className={styles.resultSubtitle} style={{ marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Analysis Complete</p>
+                    <h2 className={styles.resultTitle}>{t.resultTitle} {language === 'hi' ? (result.dominant === 'Vata' ? 'वात' : result.dominant === 'Pitta' ? 'पित्त' : 'कफ') : result.dominant}</h2>
+
+                    <div className={styles.chartContainer}>
+                        <div className={styles.chartBar}>
+                            <div className={styles.barFill} style={{ height: `${result.vata}%`, background: '#a855f7' }}></div>
+                            <span className={styles.barLabel}>Vata</span>
+                        </div>
+                        <div className={styles.chartBar}>
+                            <div className={styles.barFill} style={{ height: `${result.pitta}%`, background: '#ef4444' }}></div>
+                            <span className={styles.barLabel}>Pitta</span>
+                        </div>
+                        <div className={styles.chartBar}>
+                            <div className={styles.barFill} style={{ height: `${result.kapha}%`, background: '#22c55e' }}></div>
+                            <span className={styles.barLabel}>Kapha</span>
+                        </div>
+                    </div>
+
+                    <div className={styles.characteristics}>
+                        <h3 className={styles.charTitle}>Characteristics</h3>
+                        <p className={styles.charText}>{desc}</p>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                        <button className={styles.startBtn} onClick={handleStart} style={{ background: '#334155' }}>
+                            <RefreshCcw size={18} style={{ marginRight: '8px' }} /> {t.restart}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <div className={styles.quizCard}>
-            <div className={styles.progress}>
-                <div
-                    className={styles.progressBar}
-                    style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
-                ></div>
-            </div>
+        <div className={styles.quizContainer}>
+            <div className={styles.quizContent}>
+                <div className={styles.header}>
+                    <div className={styles.sectionTitle}>
+                        {language === 'hi' ? currentQ.section : currentQ.section} • {t.question} {currentStep + 1} / {quizQuestions.length}
+                    </div>
+                    <div className={styles.progressBarBox}>
+                        <div
+                            className={styles.progressBarFill}
+                            style={{ width: `${((currentStep + 1) / quizQuestions.length) * 100}%` }}
+                        ></div>
+                    </div>
+                </div>
 
-            <h3 className={styles.stepIndicator}>
-                {language === 'hi' ? `प्रश्न ${currentStep + 1} / ${questions.length}` : `Question ${currentStep + 1} of ${questions.length}`}
-            </h3>
+                <div className={styles.questionArea}>
+                    <h2 className={styles.questionText}>
+                        {language === 'hi' ? currentQ.question_hi : currentQ.question}
+                    </h2>
 
-            <h2 className={styles.question}>
-                {language === 'hi' ? currentQ.text_hi : currentQ.text}
-            </h2>
-
-            <div className={styles.options}>
-                {currentQ.options.map((opt, idx) => (
-                    <button
-                        key={idx}
-                        className={styles.optionBtn}
-                        onClick={() => handleOptionSelect(opt.dosha)}
-                    >
-                        <span className={styles.checkIcon}><CheckCircle size={20} /></span>
-                        {language === 'hi' ? opt.text_hi : opt.text}
-                    </button>
-                ))}
+                    <div className={styles.optionsGrid}>
+                        {currentQ.options.map((opt, idx) => (
+                            <button
+                                key={idx}
+                                className={`${styles.optionBtn} ${answers[currentStep] === opt.dosha ? styles.selectedOption : ''}`}
+                                onClick={() => handleOptionSelect(opt.dosha)}
+                            >
+                                <span className={styles.optionText}>{language === 'hi' ? opt.text_hi : opt.text}</span>
+                                {answers[currentStep] === opt.dosha && <CheckCircle color="#0069ff" size={24} />}
+                            </button>
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
