@@ -125,6 +125,16 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         'community_trusted': { en: 'Community Trusted', hi: 'समुदाय द्वारा विश्वसनीय' },
         'community_desc': { en: 'Helping thousands find their path to wellness since 2010.', hi: '2010 से हजारों लोगों को कल्याण की राह खोजने में मदद करना।' },
 
+        // Health Evaluation Section
+        'eval_health_title': { en: "Evaluate Your Health", hi: "अपने स्वास्थ्य का मूल्यांकन करें" },
+        'eval_health_desc': {
+            en: "Understand your unique body constitution (Vata, Pitta, Kapha) to find personalized Ayurvedic solutions.",
+            hi: "व्यक्तिगत आयुर्वेदिक समाधान खोजने के लिए अपनी अनूठी शारीरिक प्रकृति (वात, पित्त, कफ) को समझें।"
+        },
+        'eval_health_btn': { en: "Start Your Health Evaluation", hi: "अपना स्वास्थ्य मूल्यांकन शुरू करें" },
+
+        // Search Suggestion Types
+
         // Search Suggestion Types
         'herb': { en: 'Herb', hi: 'जड़ी-बूटी' },
         'condition': { en: 'Condition', hi: 'स्वास्थ्य स्थिति' },

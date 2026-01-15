@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import QuickConditions from "@/components/sections/QuickConditions";
+import HealthEvaluation from "@/components/sections/HealthEvaluation";
 import ConditionCategories from "@/components/sections/ConditionCategories";
 import FeaturedHerbs from "@/components/sections/FeaturedHerbs";
 import TrustedProducts from "@/components/sections/TrustedProducts";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Hero />
       <QuickConditions />
+      <HealthEvaluation />
       <ConditionCategories />
       <FeaturedHerbs />
       <DidYouKnow />

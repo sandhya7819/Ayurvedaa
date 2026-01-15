@@ -6,7 +6,13 @@ import styles from './DoshaQuiz.module.css';
 import { quizQuestions, Dosha } from '@/lib/quizData';
 import { ArrowRight, CheckCircle, RefreshCcw, Share2 } from 'lucide-react';
 
-export default function DoshaQuiz() {
+interface DoshaQuizProps {
+    title?: string;
+    description?: string;
+    buttonText?: string;
+}
+
+export default function DoshaQuiz({ title, description, buttonText }: DoshaQuizProps) {
     const { language } = useLanguage();
     const t = language === 'hi' ? {
         startTitle: "Discover Your True Nature",
@@ -51,6 +57,11 @@ export default function DoshaQuiz() {
         t.pittaDesc = "पित्त ऊर्जा परिवर्तन, बुद्धिमत्ता और गर्मी से जुड़ी है। आप शायद दृढ़ निश्चयी, तेज और एक स्वाभाविक नेता हैं, लेकिन गुस्से या सूजन के लिए प्रवृत्त हो सकते हैं।";
         t.kaphaDesc = "कफ ऊर्जा संरचना, स्थिरता और शांति से जुड़ी है। आप शायद वफादार, मजबूत और धैर्यवान हैं, लेकिन सुस्ती या वजन बढ़ने के लिए प्रवृत्त हो सकते हैं।";
     }
+
+    // Override with props if provided (mainly for custom section titles)
+    if (title) t.startTitle = title;
+    if (description) t.startDesc = description;
+    if (buttonText) t.startBtn = buttonText;
 
     const [view, setView] = useState<'INTRO' | 'QUIZ' | 'RESULT'>('INTRO');
     const [currentStep, setCurrentStep] = useState(0);
